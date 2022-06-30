@@ -1,0 +1,13 @@
+{
+  "name": "programming.org.ua",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihor-bobyr/programming.org.ua.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ihor-bobyr/programming.org.ua/issues"
+  },
+  "homepage": "https://github.com/ihor-bobyr/programming.org.ua"
+}
