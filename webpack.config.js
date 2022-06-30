@@ -23,7 +23,6 @@ module.exports = {
       inject: 'body',
       minify: false,
       filename: 'index.html',
-      inlineSource: '.(css)$',
     }),
   ],
   module: {
