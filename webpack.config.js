@@ -33,12 +33,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader', // translates CSS into CommonJS
-          'postcss-loader',
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
