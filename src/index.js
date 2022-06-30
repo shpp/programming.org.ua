@@ -1,6 +1,5 @@
 import './index.scss';
 
-'use strict';
+('use strict');
 
 require.context('/assets/images', true);
-
