@@ -19,10 +19,10 @@ module.exports = {
       chunkFilename: '[name].css',
     }),
     new HtmlWebpackPlugin({
-      template: `src/index.html`,
+      template: 'src/index.html',
       inject: 'body',
       minify: false,
-      filename: `index.html`,
+      filename: 'index.html',
       inlineSource: '.(css)$',
     }),
   ],
