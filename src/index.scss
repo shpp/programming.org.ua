@@ -1,0 +1,123 @@
+$color-main-green: #27ae60;
+$color-dark-green: #295;
+$color-white: rgba(white, 0.87);
+$color-font: rgba(black, 0.87);
+$color-menu: #2c3e50;
+
+body,
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  color: $color-font;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: white;
+  border-bottom: 5px solid $color-main-green;
+  height: 90px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100vw;
+  z-index: 2;
+
+  .logo {
+    font-family: arial, serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 90px;
+    text-decoration: none;
+    color: $color-main-green;
+
+    &:first-letter {
+      color: black;
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    .menu > ul {
+      display: flex;
+      align-items: center;
+
+      & > li {
+        display: flex;
+
+        a {
+          height: 100%;
+          color: $color-menu;
+          font-size: 18px;
+          line-height: 50px;
+          margin: 0 5px;
+          padding: 0 15px;
+          transition: background 0.1s, color 0.1s;
+          text-decoration: none;
+
+          &:hover {
+            &[href] {
+              color: $color-main-green;
+            }
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+
+    .languages {
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          line-height: 1;
+          height: 100%;
+          font-size: 0.7em;
+          text-decoration: none;
+          margin: 3px 6px;
+        }
+      }
+    }
+
+    .authenticate {
+      .sign-in,
+      .sign-up {
+        margin: 0 5px;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.button-primary {
+  background: $color-main-green;
+  color: $color-white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: $color-dark-green;
+  }
+}
