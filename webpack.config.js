@@ -38,13 +38,22 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-        use: ['file-loader?name=img/[name].[ext]'],
+        generator: {
+          filename: 'img/[name].[ext]',
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         type: 'asset/resource',
-        use: ['file-loader?name=fonts/[name].[ext]'],
+        generator: {
+          filename: 'fonts/[name].[ext]',
+        },
       },
     ],
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
 };
