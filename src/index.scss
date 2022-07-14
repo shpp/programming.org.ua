@@ -9,27 +9,57 @@ $color-white: rgba(white, 0.87);
 $color-font: rgba(black, 0.87);
 $color-menu: #2c3e50;
 
+@mixin media-xl {
+  @media screen and (max-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin media-sm {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @media screen and (max-width: 576px) {
+    @content;
+  }
+}
+
 .container {
   width: 1320px;
   margin: auto;
 
-  @media screen and (max-width: 1400px) {
+  @include media-xl {
     width: 1140px;
   }
 
-  @media screen and (max-width: 1200px) {
+  @include media-lg {
     width: 960px;
   }
 
-  @media screen and (max-width: 992px) {
+  @include media-md {
     width: 720px;
   }
 
-  @media screen and (max-width: 768px) {
+  @include media-sm {
     width: 540px;
   }
 
-  @media screen and (max-width: 576px) {
+  @include media-xs {
     width: 100%;
     margin-left: 16px;
     margin-right: 16px;
@@ -81,7 +111,7 @@ header {
   width: 100vw;
   z-index: 2;
 
-  @media screen and (max-width: 1200px) {
+  @include media-lg {
     height: fit-content;
   }
 
@@ -137,7 +167,7 @@ header {
       }
 
       .mobile-menu-close {
-        @media screen and (max-width: 1200px) {
+        @include media-lg {
           display: flex;
         }
       }
@@ -145,7 +175,7 @@ header {
       & > .content {
         width: 100%;
 
-        @media screen and (max-width: 1200px) {
+        @include media-lg {
           display: flex;
           flex-direction: column;
         }
@@ -153,7 +183,7 @@ header {
     }
 
     .mobile-menu-open {
-      @media screen and (max-width: 1200px) {
+      @include media-lg {
         display: flex;
       }
     }
@@ -163,14 +193,14 @@ header {
       align-items: center;
       justify-content: flex-end;
 
-      @media screen and (max-width: 1200px) {
+      @include media-lg {
         display: none;
       }
 
       .menu {
         margin-right: 32px;
 
-        @media screen and (max-width: 1200px) {
+        @include media-lg {
           margin-right: 0;
           margin-top: 84px;
         }
@@ -179,7 +209,7 @@ header {
           display: flex;
           align-items: center;
 
-          @media screen and (max-width: 1200px) {
+          @include media-lg {
             flex-direction: column;
           }
 
@@ -225,7 +255,7 @@ header {
       }
 
       .languages {
-        @media screen and (max-width: 1200px) {
+        @include media-lg {
           display: flex;
           margin: 8px 0 16px;
         }
@@ -259,7 +289,7 @@ header {
         display: flex;
         height: 100%;
 
-        @media screen and (max-width: 1200px) {
+        @include media-lg {
           margin: 8px 0;
         }
 
@@ -316,7 +346,7 @@ footer {
     display: flex;
     justify-content: space-between;
 
-    @media screen and (max-width: 992px) {
+    @include media-md {
       flex-direction: column;
       justify-content: flex-start;
     }
