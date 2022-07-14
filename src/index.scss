@@ -44,6 +44,10 @@ html {
   color: $color-font;
 }
 
+body {
+  padding-top: 90px;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -68,6 +72,7 @@ header {
   padding: 0 20px;
   box-sizing: border-box;
   position: fixed;
+  top: 0;
   width: 100vw;
   z-index: 2;
 
