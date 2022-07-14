@@ -61,6 +61,10 @@ a:focus {
   outline: $color-main-green dashed 2px;
 }
 
+::selection {
+  background: rgba(39, 174, 96, 0.4);
+}
+
 header {
   display: flex;
   align-items: center;
