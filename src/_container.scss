@@ -1,0 +1,28 @@
+@import 'mixins';
+
+.container {
+  width: 1320px;
+  margin: auto;
+
+  @include media-xl {
+    width: 1140px;
+  }
+
+  @include media-lg {
+    width: 960px;
+  }
+
+  @include media-md {
+    width: 720px;
+  }
+
+  @include media-sm {
+    width: 540px;
+  }
+
+  @include media-xs {
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}

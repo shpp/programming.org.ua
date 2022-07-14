@@ -1,0 +1,82 @@
+@import 'constants';
+@import 'mixins';
+
+footer {
+  padding: 32px 16px;
+  background-color: #3d3d3d;
+  color: rgba(white, 0.6);
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    background: {
+      position: center;
+      size: cover;
+      repeat: no-repeat;
+      image: url(/assets/images/galaxyrefitstarboard.png);
+      position-x: 0;
+    }
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+
+    @include media-md {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    nav {
+      li {
+        margin: 16px 0;
+      }
+
+      a {
+        color: rgba(white, 0.87);
+        font-family: 'Helvetica', sans-serif;
+        font-size: 100%;
+        transition: color 0.1s;
+        white-space: pre-wrap;
+        text-decoration: underline;
+        text-decoration-color: $color-main-green;
+        text-underline-position: under;
+
+        &:hover {
+          color: $color-main-green;
+        }
+      }
+    }
+
+    .support-us {
+      background: gold;
+      color: rgba(black, 0.87);
+      text-decoration: none;
+      height: 40px;
+      width: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.1s;
+
+      &:hover {
+        background-color: #e6c200;
+      }
+    }
+  }
+
+  hr {
+    border-width: thin;
+    margin: 16px 0;
+    width: 50px;
+  }
+}

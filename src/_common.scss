@@ -1,0 +1,46 @@
+@import 'constants';
+
+body,
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  color: $color-font;
+}
+
+body {
+  padding-top: 90px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+a:focus {
+  outline: $color-main-green dashed 2px;
+}
+
+::selection {
+  background: rgba(39, 174, 96, 0.4);
+}
+
+.button-primary {
+  background: $color-main-green;
+  color: $color-white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: $color-dark-green;
+  }
+}
