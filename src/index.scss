@@ -9,28 +9,29 @@ $color-font: rgba(black, 0.87);
 $color-menu: #2c3e50;
 
 .container {
-  width: 100%;
-  margin-left: 16px;
-  margin-right: 16px;
+  width: 1320px;
+  margin: auto;
 
   @media screen and (max-width: 1400px) {
-    width: 1320px;
-  }
-
-  @media screen and (max-width: 1200px) {
     width: 1140px;
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1200px) {
     width: 960px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     width: 720px;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     width: 540px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 
