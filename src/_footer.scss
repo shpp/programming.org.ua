@@ -3,8 +3,8 @@
 
 footer {
   padding: 32px 16px;
-  background-color: #3d3d3d;
-  color: rgba(white, 0.6);
+  background-color: $color-dark-gray;
+  color: $color-light-gray;
   position: relative;
   z-index: 1;
 
@@ -42,7 +42,7 @@ footer {
       }
 
       a {
-        color: rgba(white, 0.87);
+        color: $color-white;
         font-family: 'Helvetica', sans-serif;
         font-size: 100%;
         transition: color 0.1s;
@@ -58,8 +58,8 @@ footer {
     }
 
     .support-us {
-      background: gold;
-      color: rgba(black, 0.87);
+      background: $color-yellow;
+      color: $color-font;
       text-decoration: none;
       height: 40px;
       width: 132px;
@@ -69,7 +69,7 @@ footer {
       transition: background-color 0.1s;
 
       &:hover {
-        background-color: #e6c200;
+        background-color: $color-dark-yellow;
       }
     }
   }

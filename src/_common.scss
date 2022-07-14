@@ -27,7 +27,7 @@ a:focus {
 }
 
 ::selection {
-  background: rgba(39, 174, 96, 0.4);
+  background: rgba($color-main-green, 0.4);
 }
 
 .button-primary {
