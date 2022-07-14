@@ -59,11 +59,11 @@ a:focus {
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   background-color: white;
   border-bottom: 5px solid $color-main-green;
-  height: 90px;
+  min-height: 90px;
   padding: 0 20px;
   box-sizing: border-box;
   position: fixed;
@@ -71,7 +71,7 @@ header {
   z-index: 2;
 
   @media screen and (max-width: 1200px) {
-    height: 100%;
+    height: fit-content;
   }
 
   .logo {
@@ -81,6 +81,9 @@ header {
     line-height: 90px;
     text-decoration: none;
     color: $color-main-green;
+    position: absolute;
+    top: 0;
+    left: 16px;
 
     &:first-letter {
       color: black;
@@ -101,6 +104,9 @@ header {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: absolute;
+      right: 16px;
+      top: 21px;
 
       i {
         width: 100%;
@@ -144,6 +150,7 @@ header {
     & > .content {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
 
       @media screen and (max-width: 1200px) {
         display: none;
@@ -151,6 +158,11 @@ header {
 
       .menu {
         margin-right: 32px;
+
+        @media screen and (max-width: 1200px) {
+          margin-right: 0;
+          margin-top: 84px;
+        }
 
         & > ul {
           display: flex;
@@ -174,6 +186,7 @@ header {
               top: 50px;
               left: 50%;
               transform: translateX(-50%);
+              z-index: 2;
               background-color: white;
               box-shadow: 0 1px 3px rgb(black, 0.4), 0 1px 2px rgb(black, 0.4);
             }
@@ -203,6 +216,7 @@ header {
       .languages {
         @media screen and (max-width: 1200px) {
           display: flex;
+          margin: 8px 0 16px;
         }
 
         li {
@@ -221,18 +235,31 @@ header {
             height: 100%;
             font-size: 0.7em;
             text-decoration: none;
-            margin: 3px 6px;
+            padding: 3px 6px;
             color: $color-font;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
       }
 
       .authenticate {
+        display: flex;
+        height: 100%;
+
+        @media screen and (max-width: 1200px) {
+          margin: 8px 0;
+        }
+
         .sign-in,
         .sign-up {
           margin: 0 5px;
           padding: 8px 16px;
           text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .sign-in {
