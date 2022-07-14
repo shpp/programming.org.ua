@@ -144,7 +144,6 @@ header {
               line-height: 50px;
               margin: 0 5px;
               padding: 0 15px;
-              transition: background 0.1s, color 0.1s;
               text-decoration: none;
 
               &:hover {
@@ -210,7 +209,6 @@ header {
 
         .sign-in {
           color: $color-menu;
-          transition: color 0.1s;
 
           &:hover {
             color: $color-main-green;

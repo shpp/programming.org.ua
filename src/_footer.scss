@@ -45,7 +45,6 @@ footer {
         color: $color-white;
         font-family: 'Helvetica', sans-serif;
         font-size: 100%;
-        transition: color 0.1s;
         white-space: pre-wrap;
         text-decoration: underline;
         text-decoration-color: $color-main-green;
@@ -66,7 +65,6 @@ footer {
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.1s;
 
       &:hover {
         background-color: $color-dark-yellow;
