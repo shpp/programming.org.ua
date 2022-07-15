@@ -1,0 +1,95 @@
+@import 'constants';
+@import 'mixins';
+
+.banner {
+  padding: 64px 32px;
+  background-color: $color-main-green;
+  color: $color-white;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+
+  @include media-sm {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  &:before {
+    content: '';
+    background-image: url('../assets/images/galaxyrefitstarboard-clean.png');
+    background-size: cover;
+    background-position: 0 20%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: auto;
+
+    @include media-sm {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .courses {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 32px;
+    margin: 0 32px;
+
+    @include media-sm {
+      flex-direction: column;
+    }
+
+    .course {
+      margin: 8px 16px;
+      display: flex;
+      width: 300px;
+      flex-direction: column;
+      background-color: white;
+      box-shadow: 0 1px 3px $color-gray, 0 1px 2px $color-gray;
+      text-decoration: none;
+      padding: 34px 0;
+      position: relative;
+      transform: scale(1);
+      color: $color-font;
+
+      &:hover {
+        box-shadow: 0 0 20px -5px $color-gray;
+        transform: scale(1.05);
+      }
+
+      &-type {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px;
+        margin: 0;
+      }
+
+      &-date {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        color: $color-gray;
+        font-size: 12px;
+        padding: 1%;
+      }
+    }
+  }
+}
