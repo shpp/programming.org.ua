@@ -135,15 +135,22 @@ header {
               z-index: 2;
               background-color: white;
               box-shadow: 0 1px 3px rgb(black, 0.4), 0 1px 2px rgb(black, 0.4);
+
+              li > a {
+                padding: 0 24px;
+              }
             }
 
+            & > a,
             a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
               height: 100%;
               color: $color-menu;
               font-size: 18px;
               line-height: 50px;
-              margin: 0 5px;
-              padding: 0 15px;
+              padding: 0 16px;
               text-decoration: none;
 
               &:hover {
@@ -152,6 +159,14 @@ header {
                 }
 
                 background-color: rgba(black, 0.05);
+              }
+            }
+
+            & > a {
+              margin: 0 8px;
+
+              i {
+                margin-left: 8px;
               }
             }
           }
