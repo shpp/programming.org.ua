@@ -36,6 +36,7 @@ footer {
       justify-content: flex-start;
     }
 
+    // todo: use class instead of tag selector
     nav {
       li {
         margin: 16px 0;
@@ -72,6 +73,7 @@ footer {
     }
   }
 
+  // todo: use class instead of tag selector
   hr {
     border-width: thin;
     margin: 16px 0;

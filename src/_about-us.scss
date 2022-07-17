@@ -11,6 +11,7 @@
   .text {
     font-size: 20px;
 
+    // todo: use class instead of tag selector
     a {
       text-decoration: underline;
       text-decoration-color: $color-main-green;

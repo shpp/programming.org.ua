@@ -28,12 +28,14 @@
     z-index: -1;
   }
 
+  // todo: use class instead of tag selector
   h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 48px;
     margin: 0;
   }
 
+  // todo: use class instead of tag selector
   ul {
     display: flex;
     align-items: center;
