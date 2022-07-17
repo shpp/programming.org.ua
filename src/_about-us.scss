@@ -16,6 +16,10 @@
       text-decoration-color: $color-main-green;
       text-underline-position: under;
       color: $color-font;
+
+      &:hover {
+        color: $color-main-green;
+      }
     }
   }
 
