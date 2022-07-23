@@ -141,6 +141,26 @@
           </div>
         </div>
       </section>
+      <section class="blog-posts" @vue:mounted="mounted()">
+        <div class="container">
+          <h2>Latest blog posts</h2>
+          <ul>
+            <li v-for="post in blogPosts">
+              <img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt="" />
+              <h3>
+                <a :href="post.link">{{ post.title.rendered }}</a>
+              </h3>
+              <div v-html="post.excerpt.rendered"></div>
+              <span class="date">{{post.date.split('T')[0]}}</span>
+            </li>
+          </ul>
+          <div class="more-posts-container">
+            <a class="more-posts" href="https://blog.programming.org.ua">
+              More post <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
       <section class="partners">
         <div class="partners-slider">
           <div class="swiper-wrapper">
@@ -310,5 +330,6 @@
         <div class="copyright">© 2012–2022 Programming School++</div>
       </div>
     </footer>
+    <script src="https://unpkg.com/petite-vue" defer></script>
   </body>
 </html>
