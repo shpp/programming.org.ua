@@ -178,6 +178,7 @@ header {
       .languages {
         @include media-lg {
           display: flex;
+          align-items: baseline;
           margin: 8px 0 16px;
         }
 
