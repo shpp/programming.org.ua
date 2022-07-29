@@ -141,6 +141,21 @@
           </div>
         </div>
       </section>
+      <section class="feedbacks">
+        <h2>Feedbacks</h2>
+        <div class="container">
+          <div class="swiper feedbacks-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="feedback in feedbacks">{{feedback}}</div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="buttons">
+            <a href="en/feedback-form" class="leave-your-feedback"> Leave your feedback </a>
+            <a href="/feedback-all" class="watch-all-responses">Watch all responses</a>
+          </div>
+        </div>
+      </section>
       <section class="blog-posts" @vue:mounted="mounted()">
         <div class="container">
           <h2>Latest blog posts</h2>
