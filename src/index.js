@@ -2409,6 +2409,7 @@ new Swiper(document.querySelector('.feedbacks-slider'), {
   modules: [Pagination, Navigation],
 });
 
+// todo: review and simplify
 class Accordion {
   constructor(el) {
     this.el = el;
