@@ -1,7 +1,7 @@
 @import 'constants';
 @import 'mixins';
 
-header {
+body > header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
