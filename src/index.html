@@ -144,14 +144,29 @@
       <section class="feedbacks">
         <h2>Feedbacks</h2>
         <div class="container">
-          <div class="swiper feedbacks-slider">
+          <div class="swiper feedbacks-slider" @vue:mounted="mounted()">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="feedback in feedbacks">{{feedback}}</div>
+              <div class="swiper-slide" v-for="(feedback, index) in feedbacks">
+                <header>
+                  <img :src="getImage(feedback)" :alt="getName(feedback)" />
+                  <a :href="feedback.link" target="_blank">
+                    <strong>{{getName(feedback)}}</strong>
+                  </a>
+                </header>
+                <p v-if="!isLongText(feedback.message)">{{feedback.message}}</p>
+                <p v-else>
+                  {{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
+                  <a v-if="!shouldShowFullText(index)" @click="more(index)" href="#">read more ...</a>
+                  <a v-else @click="less(index)" href="#">read less ...</a>
+                </p>
+              </div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
+          <i class="feedbacks-previous fa fa-chevron-left" aria-hidden="true"></i>
+          <i class="feedbacks-next fa fa-chevron-right" aria-hidden="true"></i>
           <div class="buttons">
-            <a href="en/feedback-form" class="leave-your-feedback"> Leave your feedback </a>
+            <a href="/en/feedback-form" class="leave-your-feedback button-primary"> Leave your feedback </a>
             <a href="/feedback-all" class="watch-all-responses">Watch all responses</a>
           </div>
         </div>

@@ -2348,66 +2348,65 @@ globalThis.PetiteVue.createApp({
   },
 }).mount('.blog-posts');
 
-globalThis.PetiteVue.createApp({
-  feedbacks: [
-    {
-      name: 'Kostyantyn',
-      surname: 'Yakimenko',
-      message:
-        'A unique educational system, promotion of simple human values (honesty, kindness, mutual aid), creative atmosphere - all this is about Ш++. A year ago, I was at a crossroads and did not know where to go next, now I’m a beginner web developer with a strong understanding of my path.',
-      link: 'http://www.facebook.com/profile.php?id=100031293060928',
-      image: 'константин_Screenshot at 14-06-51.png',
-    },
-    {
-      name: 'Illya',
-      surname: 'Shevchuk',
-      message:
-        'Ш++ gave me a unique experience, new contacts in a professional environment, and the most important: knowledge :) But neither the learning system that was new to me, nor the mentors rule as much as your desire to learn and grow decides.',
-      link: 'http://www.facebook.com/ishvchk',
-      image: 'илья_WG0ROigZbXc.jpg',
-    },
-    {
-      name: 'Vadim',
-      surname: 'Kravchenko',
-      message: "You haven't already signed up to Ш++ courses? You are just wasting your time...\r\n",
-      link: 'https://www.facebook.com/linxok',
-      image: 'вадим_2.jpg',
-    },
-    {
-      name: 'Mykola',
-      surname: 'Bezay',
-      message:
-        'A School is a playground, a team, a family and even an atmosphere, that inspires those who really want to change, to find themselves some strength and time. And everyone will find here a place and an opportunity to try themselves in programming.\r\nHere you can learn as quickly as possible - there is a clear, proven program, honest tests that will not let you go further if the material is not learned well, and most importantly people who are ready to help and tell you when it is difficult, the unique experience in code reviews and soft skills training.\r\nI am probably one of the record holders for the duration of studies, but this only shows that at School you will never be left without support and knowledge. I am extremely grateful to every mentor for helping me to change my life and to step on the development ladder.\r\nLearn for yourself, train touch typing ;) develop, help others to do it and help the School++!)',
-      link: 'https://www.facebook.com/nikolay.bezay',
-      image: '04f26f22aa0ee9541f8b72b00435b15afxM2V1.jpg',
-    },
-    {
-      name: 'Kostyantyn',
-      surname: 'Russo',
-      message:
-        'Sometimes it was hard but always interesting. I have changed occupation and now I can say that I am a Web developer :) Thanks Ш++! Thanks you all :)',
-      link: 'http://www.facebook.com/konstantin.russo',
-      image: 'kostya_rus.jpg',
-    },
-    {
-      name: 'Stanislav',
-      surname: 'Lavruk',
-      message:
-        'There is a pleasant motivating atmosphere what makes you grow, find out something new for yourself, and move on, in this place. During training, I found new friends and acquaintances. Thanks to Ш++, I chose my own path, got a good stock of programming knowledge for further development, and was able to start my IT career.',
-      link: 'https://www.facebook.com/profile.php?id=100005978775323',
-      image: 'станислав_IMG_1511 (1).jpg',
-    },
-  ],
-}).mount('.feedbacks-slider');
-new Swiper(document.querySelector('.feedbacks-slider'), {
-  slidesPerView: 3,
+const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), {
   spaceBetween: 30,
+  autoHeight: true,
+  breakpoints: {
+    768: { slidesPerView: 1 },
+    1200: { slidesPerView: 3 },
+  },
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
+  navigation: {
+    nextEl: '.feedbacks-next',
+    prevEl: '.feedbacks-previous',
+  },
   modules: [Pagination, Navigation],
 });
+globalThis.PetiteVue.createApp({
+  mounted() {
+    fetch('https://back.programming.org.ua/api/feedback', {
+      headers: {
+        accept: 'application/json, text/plain, */*',
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      body: 'count=6&onlyStudents=true&feedbackType=random&lang=en',
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.feedbacks = data.data.feedbacks;
+        setTimeout(() => feedbacksSlider.update(), 0)
+      });
+  },
+  feedbacks: [],
+  smallTextLength: 300,
+  // todo: find better name for variable
+  fullTexts: {},
+  shouldShowFullText(index) {
+    return this.fullTexts[index];
+  },
+  getName: (feedback) => [feedback.name, feedback.surname].join(' '),
+  getImage: (feedback) => `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
+  getShortText(text) {
+    return `${text.slice(0, this.smallTextLength)}...`;
+  },
+  more(index) {
+    this.fullTexts[index] = true;
+    setTimeout(() => feedbacksSlider.update(), 0);
+  },
+  less(index) {
+    this.fullTexts[index] = false;
+    setTimeout(() => feedbacksSlider.update(), 0);
+  },
+  isLongText(text) {
+    return text.length > this.smallTextLength;
+  },
+}).mount('.feedbacks-slider');
 
 // todo: review and simplify
 class Accordion {

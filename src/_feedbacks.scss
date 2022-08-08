@@ -1,30 +1,153 @@
+@import 'constants';
+@import 'mixins';
+
 .feedbacks {
+  padding: 32px 0;
+
+  h2 {
+    text-align: center;
+  }
+
+  .container {
+    position: relative;
+
+    .feedbacks-next,
+    .feedbacks-previous {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background-color: $color-gray-2;
+      color: white;
+      border-radius: 100%;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.25s ease-in-out;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+
+      @include media-sm {
+        display: none;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.swiper-button-disabled,
+      &.swiper-button-disabled:hover {
+        opacity: 0.3;
+        cursor: initial;
+      }
+    }
+
+    .feedbacks-previous {
+      left: 0;
+    }
+
+    .feedbacks-next {
+      right: 0;
+    }
+  }
+
   .feedbacks-slider {
-    width: 100%;
+    padding: 32px 0;
+    box-sizing: border-box;
+    width: calc(100% - 128px);
     overflow: hidden;
     position: relative;
 
+    @include media-sm {
+      width: 100%;
+    }
+
+    .swiper-slide {
+      user-select: none;
+      cursor: pointer;
+      border: 5px solid $color-light-gray-2;
+      padding: 16px;
+      box-sizing: border-box;
+
+      header {
+        display: flex;
+        align-items: center;
+
+        img {
+          display: block;
+          width: 60px;
+          height: 60px;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+
+        strong {
+          margin: 0 16px;
+          padding: 16px 0;
+        }
+      }
+
+      // todo: implement common link styles
+      a {
+        text-align: center;
+        text-decoration: underline;
+        color: $color-font;
+        text-decoration-color: $color-main-green;
+        text-underline-position: under;
+
+        &:hover {
+          color: $color-main-green;
+        }
+      }
+    }
+
     .swiper-pagination {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
     }
+
     .swiper-pagination-bullet {
-      padding: 5px 10px;
-      width: auto;
-      height: 30px;
-      text-align: center;
-      line-height: 30px;
-      font-size: 12px;
-      color: black;
-      opacity: 1;
-      background: rgba(black, 0.2);
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 10px;
+      height: 13px;
+      margin-left: 2px;
+      margin-right: 2px;
+      width: 13px;
+      background-color: $color-gray;
+      cursor: pointer;
     }
+
     .swiper-pagination-bullet-active {
-      color: white;
-      background: #007aff;
+      background-color: $color-gray-2;
+    }
+  }
+
+  .buttons {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    .leave-your-feedback {
+      padding: 8px 16px;
+    }
+
+    .watch-all-responses {
+      text-align: center;
+      text-decoration: underline;
+      color: $color-font;
+      text-decoration-color: $color-main-green;
+      text-underline-position: under;
+
+      &:hover {
+        color: $color-main-green;
+      }
     }
   }
 }
