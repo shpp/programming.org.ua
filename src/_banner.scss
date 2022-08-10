@@ -33,6 +33,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 48px;
     margin: 0;
+    word-break: break-word;
   }
 
   // todo: use class instead of tag selector
@@ -42,6 +43,7 @@
     justify-content: space-evenly;
     width: 60%;
     margin: auto;
+    text-align: left;
 
     @include media-sm {
       flex-direction: column;
