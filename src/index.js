@@ -183,3 +183,28 @@ class Accordion {
 }
 
 document.querySelectorAll('details').forEach((el) => new Accordion(el));
+
+// todo: get translations url from config
+fetch('https://data.kowo.space/data/programming.org.ua/translations/en.json')
+  .then((res) => res.json())
+  .then((translations) => {
+    // todo: find a way to import message widget not in index.html
+    new global.MessengersWidget({
+      color: '#27ae60',
+      title: translations.contact.title,
+      messengers: {
+        phone: '+380502011180',
+        email: 'info@programming.org.ua',
+        telegram: 'shpp_me',
+        viber: '380502011180',
+        facebook: '626295794236927',
+      },
+      titles: {
+        phone: translations.contact.call,
+        email: translations.contact.email,
+        telegram: translations.contact.telegram,
+        viber: translations.contact.viber,
+        facebook: translations.contact.facebook,
+      },
+    });
+  });
