@@ -33,9 +33,11 @@ new Swiper(document.querySelector('.partners-slider'), {
   modules: [Autoplay],
 });
 
+// todo: implement ability to import vue here instead of index.html
 globalThis.PetiteVue.createApp({
   blogPosts: [],
   mounted() {
+    // todo: use config to get needed url
     fetch('https://blog.programming.org.ua/wp-json/wp/v2/posts?_embed=true&per_page=9')
       .then((res) => res.json())
       .then((res) => {
@@ -63,6 +65,7 @@ const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), 
 });
 globalThis.PetiteVue.createApp({
   mounted() {
+    // todo: use config to get neede url
     fetch('https://back.programming.org.ua/api/feedback', {
       headers: {
         accept: 'application/json, text/plain, */*',
