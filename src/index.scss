@@ -1,9 +1,4 @@
-// todo: move fontawesome setup to separate file
-$fa-font-path: '/assets/fonts/fontawesome/webfonts';
-@import '/assets/fonts/fontawesome/scss/solid.scss';
-@import '/assets/fonts/fontawesome/scss/fontawesome';
-@import '/assets/fonts/fontawesome/scss/brands.scss';
-
+@import 'font-asesome';
 @import 'common';
 @import 'container';
 @import 'header';
