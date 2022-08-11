@@ -272,8 +272,8 @@
                 <p v-if="!isLongText(feedback.message)">{{feedback.message}}</p>
                 <p v-else>
                   {{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
-                  <a v-if="!shouldShowFullText(index)" @click="more(index)" href="#">read more ...</a>
-                  <a v-else @click="less(index)" href="#">read less ...</a>
+                  <a v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
+                  <a v-else @click="less(index)">read less ...</a>
                 </p>
               </div>
             </div>
