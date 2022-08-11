@@ -15,6 +15,13 @@ body {
 
 a {
   transition: all 0.1s ease-in-out;
+  text-decoration: underline;
+  text-decoration-color: $color-main-green;
+  text-underline-position: under;
+
+  &:focus {
+    outline: $color-main-green dashed 2px;
+  }
 }
 
 h1,
@@ -29,10 +36,6 @@ ul {
   li {
     list-style: none;
   }
-}
-
-a:focus {
-  outline: $color-main-green dashed 2px;
 }
 
 ::selection {
