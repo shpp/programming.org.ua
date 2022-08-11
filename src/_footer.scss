@@ -1,7 +1,7 @@
 @import 'constants';
 @import 'mixins';
 
-footer {
+.footer {
   padding: 32px 16px;
   background-color: $color-dark-gray;
   color: $color-light-gray;
@@ -27,7 +27,7 @@ footer {
     z-index: -1;
   }
 
-  .top {
+  &-top {
     display: flex;
     justify-content: space-between;
 
@@ -35,43 +35,39 @@ footer {
       flex-direction: column;
       justify-content: flex-start;
     }
+  }
 
-    // todo: use class instead of tag selector
-    nav {
-      li {
-        margin: 16px 0;
-      }
+  &-list-item {
+    margin: 16px 0;
 
-      a {
-        color: $color-white;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 100%;
-        white-space: pre-wrap;
-
-        &:hover {
-          color: $color-main-green;
-        }
-      }
-    }
-
-    .support-us {
-      background: $color-yellow;
-      color: $color-font;
-      text-decoration: none;
-      height: 40px;
-      width: 132px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &-link {
+      color: $color-white;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 100%;
+      white-space: pre-wrap;
 
       &:hover {
-        background-color: $color-dark-yellow;
+        color: $color-main-green;
       }
     }
   }
 
-  // todo: use class instead of tag selector
-  hr {
+  &-support-us {
+    background: $color-yellow;
+    color: $color-font;
+    text-decoration: none;
+    height: 40px;
+    width: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $color-dark-yellow;
+    }
+  }
+
+  &-separator {
     border-width: thin;
     margin: 16px 0;
     width: 50px;
