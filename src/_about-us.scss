@@ -10,14 +10,13 @@
 
   &-text {
     font-size: 20px;
+  }
 
-    // todo: use class instead of tag selector
-    a {
-      color: $color-font;
+  &-link {
+    color: $color-font;
 
-      &:hover {
-        color: $color-main-green;
-      }
+    &:hover {
+      color: $color-main-green;
     }
   }
 
