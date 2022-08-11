@@ -1,6 +1,7 @@
 @import 'constants';
 @import 'mixins';
 
+// todo: use classes for selectors
 .blog-posts {
   background-color: $color-light-gray-2;
   padding-top: 32px;
