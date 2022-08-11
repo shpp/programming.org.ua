@@ -105,7 +105,7 @@ createApp({
   isLongText(text) {
     return text.length > this.smallTextLength;
   },
-}).mount('.feedbacks-slider');
+}).mount('.feedbacks');
 
 // todo: review and simplify
 class Accordion {
