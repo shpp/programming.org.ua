@@ -1,6 +1,7 @@
 import './index.scss';
 import Swiper, { Autoplay, Pagination, Navigation } from 'swiper';
 import 'swiper/css';
+import { createApp } from 'petite-vue';
 
 ('use strict');
 
@@ -33,8 +34,7 @@ new Swiper(document.querySelector('.partners-slider'), {
   modules: [Autoplay],
 });
 
-// todo: implement ability to import vue here instead of index.html
-globalThis.PetiteVue.createApp({
+createApp({
   blogPosts: [],
   mounted() {
     // todo: use config to get needed url
@@ -63,7 +63,7 @@ const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), 
   },
   modules: [Pagination, Navigation],
 });
-globalThis.PetiteVue.createApp({
+createApp({
   mounted() {
     // todo: use config to get neede url
     fetch('https://back.programming.org.ua/api/feedback', {
