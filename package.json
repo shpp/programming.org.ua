@@ -37,6 +37,7 @@
     "bracketSpacing": true
   },
   "dependencies": {
+    "petite-vue": "^0.4.1",
     "swiper": "^8.3.1"
   }
 }
