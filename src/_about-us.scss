@@ -13,9 +13,6 @@
 
     // todo: use class instead of tag selector
     a {
-      text-decoration: underline;
-      text-decoration-color: $color-main-green;
-      text-underline-position: under;
       color: $color-font;
 
       &:hover {
