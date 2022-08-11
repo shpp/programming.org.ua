@@ -3,12 +3,12 @@
 .about-us {
   padding: 32px 0;
 
-  .title {
+  &-title {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
   }
 
-  .text {
+  &-text {
     font-size: 20px;
 
     // todo: use class instead of tag selector
@@ -24,7 +24,7 @@
     }
   }
 
-  .container {
+  &-container {
     max-width: 550px;
   }
 }
