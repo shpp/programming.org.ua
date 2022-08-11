@@ -84,10 +84,9 @@ createApp({
   },
   feedbacks: [],
   smallTextLength: 300,
-  // todo: find better name for variable
-  fullTexts: {},
+  isFullTextMap: {},
   shouldShowFullText(index) {
-    return this.fullTexts[index];
+    return this.isFullTextMap[index];
   },
   getName: (feedback) => [feedback.name, feedback.surname].join(' '),
   getImage: (feedback) => `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
@@ -95,11 +94,11 @@ createApp({
     return `${text.slice(0, this.smallTextLength)}...`;
   },
   more(index) {
-    this.fullTexts[index] = true;
+    this.isFullTextMap[index] = true;
     setTimeout(() => feedbacksSlider.update(), 0);
   },
   less(index) {
-    this.fullTexts[index] = false;
+    this.isFullTextMap[index] = false;
     setTimeout(() => feedbacksSlider.update(), 0);
   },
   isLongText(text) {
