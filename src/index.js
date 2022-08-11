@@ -192,7 +192,7 @@ fetch('https://data.kowo.space/data/programming.org.ua/translations/en.json')
   .then((res) => res.json())
   .then((translations) => {
     // todo: find a way to import message widget not in index.html
-    new global.MessengersWidget({
+    new globalThis.MessengersWidget({
       color: '#27ae60',
       title: translations.contact.title,
       messengers: {
