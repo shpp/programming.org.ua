@@ -4,15 +4,27 @@
 .feedbacks {
   padding: 32px 0;
 
-  h2 {
+  &-title {
     text-align: center;
   }
 
-  .container {
+  &-container {
+    position: relative;
+  }
+
+  &-slider {
+    padding: 32px 0;
+    box-sizing: border-box;
+    width: calc(100% - 128px);
+    overflow: hidden;
     position: relative;
 
-    .feedbacks-next,
-    .feedbacks-previous {
+    @include media-sm {
+      width: 100%;
+    }
+
+    &-next,
+    &-previous {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -44,59 +56,12 @@
       }
     }
 
-    .feedbacks-previous {
+    &-previous {
       left: 0;
     }
 
-    .feedbacks-next {
+    &-next {
       right: 0;
-    }
-  }
-
-  .feedbacks-slider {
-    padding: 32px 0;
-    box-sizing: border-box;
-    width: calc(100% - 128px);
-    overflow: hidden;
-    position: relative;
-
-    @include media-sm {
-      width: 100%;
-    }
-
-    .swiper-slide {
-      user-select: none;
-      cursor: pointer;
-      border: 5px solid $color-light-gray-2;
-      padding: 16px;
-      box-sizing: border-box;
-
-      header {
-        display: flex;
-        align-items: center;
-
-        img {
-          display: block;
-          width: 60px;
-          height: 60px;
-          border-radius: 100%;
-          object-fit: cover;
-        }
-
-        strong {
-          margin: 0 16px;
-          padding: 16px 0;
-        }
-      }
-
-      a {
-        text-align: center;
-        color: $color-font;
-
-        &:hover {
-          color: $color-main-green;
-        }
-      }
     }
 
     .swiper-pagination {
@@ -104,37 +69,76 @@
       align-items: center;
       justify-content: center;
       margin-top: 16px;
-    }
 
-    .swiper-pagination-bullet {
-      border-radius: 50px;
-      display: inline-block;
-      font-size: 10px;
-      height: 13px;
-      margin-left: 2px;
-      margin-right: 2px;
-      width: 13px;
-      background-color: $color-gray;
-      cursor: pointer;
-    }
+      &-bullet {
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 10px;
+        height: 13px;
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 13px;
+        background-color: $color-gray;
+        cursor: pointer;
 
-    .swiper-pagination-bullet-active {
-      background-color: $color-gray-2;
+        &-active {
+          background-color: $color-gray-2;
+        }
+      }
     }
   }
 
-  .buttons {
+  &-slide {
+    user-select: none;
+    cursor: pointer;
+    border: 5px solid $color-light-gray-2;
+    padding: 16px;
+    box-sizing: border-box;
+
+    &-header {
+      display: flex;
+      align-items: center;
+    }
+
+    &-image {
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      object-fit: cover;
+    }
+
+    &-name-link,
+    &-link {
+      color: $color-font;
+
+      &:hover {
+        color: $color-main-green;
+      }
+    }
+
+    &-link {
+      text-align: center;
+    }
+
+    &-name-link {
+      margin: 0 16px;
+      padding: 16px 0;
+    }
+  }
+
+  &-buttons {
     padding: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 32px;
 
-    .leave-your-feedback {
+    &-leave-your-feedback {
       padding: 8px 16px;
     }
 
-    .watch-all-responses {
+    &-watch-all-responses {
       text-align: center;
       text-decoration: underline;
       color: $color-font;

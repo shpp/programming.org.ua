@@ -58,8 +58,8 @@ const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), 
     clickable: true,
   },
   navigation: {
-    nextEl: '.feedbacks-next',
-    prevEl: '.feedbacks-previous',
+    nextEl: '.feedbacks-slider-next',
+    prevEl: '.feedbacks-slider-previous',
   },
   modules: [Pagination, Navigation],
 });
