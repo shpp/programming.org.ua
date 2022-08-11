@@ -256,11 +256,10 @@
           </div>
         </div>
       </section>
-      <!--      todo: do not show feedbacks section in case there are no feedbacks-->
-      <section class="feedbacks">
+      <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
         <h2>Feedbacks</h2>
         <div class="container">
-          <div class="swiper feedbacks-slider" @vue:mounted="mounted()">
+          <div class="swiper feedbacks-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(feedback, index) in feedbacks">
                 <header>
@@ -287,8 +286,7 @@
           </div>
         </div>
       </section>
-      <!--      todo: do not show blog posts section in case there are no blog posts-->
-      <section class="blog-posts" @vue:mounted="mounted()">
+      <section class="blog-posts" @vue:mounted="mounted()" :style="{ display: blogPosts?.length > 0 ? 'block' : 'none' }">
         <div class="container">
           <h2>Latest blog posts</h2>
           <ul>
