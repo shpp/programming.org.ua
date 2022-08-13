@@ -1,5 +1,5 @@
-@import 'constants';
-@import 'mixins';
+@import 'src/constants';
+@import 'src/mixins';
 
 .banner {
   padding: 64px 32px;
@@ -16,7 +16,7 @@
 
   &:before {
     content: '';
-    background-image: url('../assets/images/galaxyrefitstarboard-clean.png');
+    background-image: url('../../assets/images/galaxyrefitstarboard-clean.png');
     background-size: cover;
     background-position: 0 20%;
     height: 100%;
