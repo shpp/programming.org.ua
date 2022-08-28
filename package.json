@@ -39,6 +39,8 @@
     "bracketSpacing": true
   },
   "dependencies": {
+    "handlebars": "^4.7.7",
+    "handlebars-loader": "^1.7.2",
     "petite-vue": "^0.4.1",
     "swiper": "^8.3.1"
   }
