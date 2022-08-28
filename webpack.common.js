@@ -3,9 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index-page/index.js',
     common: './src/common.js',
-    'feedback-all/index': './src/feedbacks-page/index.js',
+    index: './src/pages/index-page/index.js',
+    'feedback-all/index': './src/pages/feedbacks-page/index.js',
   },
   plugins: [
     new MiniCssExtractPlugin({

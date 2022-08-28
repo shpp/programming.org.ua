@@ -1,3 +1,4 @@
+import './common.scss';
 require.context('/assets/images', true);
 
 globalThis.programmingOrgUa = {
