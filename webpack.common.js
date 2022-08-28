@@ -25,6 +25,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },

@@ -147,61 +147,7 @@
       ></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <header>
-      <a href="/" class="logo"> Ш++ </a>
-      <div class="right">
-        <div class="content">
-          <nav class="menu">
-            <ul>
-              <li>
-                <a>Courses <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                <ul>
-                  <li>
-                    <a href="/courses/adults">Adults</a>
-                  </li>
-                  <li>
-                    <a href="/courses#teens">Teens</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="/about">About us</a>
-              </li>
-              <li>
-                <a href="/feedback-all">Feedbacks</a>
-              </li>
-              <li>
-                <a href="https://blog.programming.org.ua">News</a>
-              </li>
-              <li>
-                <a href="/contacts">Contact info</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="authenticate">
-            <a href="/anketa" class="button-primary sign-up">Sign up</a>
-            <a href="https://portal.programming.org.ua/login" class="sign-in">Sign in</a>
-          </div>
-          <ul class="languages">
-            <li class="ru">
-              <a href="/ru">RU</a>
-            </li>
-            <li class="ua">
-              <a href="/ua">UA</a>
-            </li>
-            <li class="en">
-              <a href="/en">EN</a>
-            </li>
-          </ul>
-        </div>
-        <button class="mobile-menu-open" type="button" onclick="programmingOrgUa.openMobileMenu()">
-          <i class="fa fa-bars"></i>
-        </button>
-        <button class="mobile-menu-close" type="button" onclick="programmingOrgUa.closeMobileMenu()">
-          <i class="fa fa-times"></i>
-        </button>
-      </div>
-    </header>
+    {{> ../partials/header}}
     <main>
       <section class="banner">
         <h1 class="banner-title">We teach computer programming</h1>
@@ -263,12 +209,12 @@
                 <header class="feedbacks-slide-header">
                   <img class="feedbacks-slide-image" :src="getImage(feedback)" :alt="getName(feedback)" />
                   <a class="feedbacks-slide-name-link" :href="feedback.link" target="_blank">
-                    <strong>{{getName(feedback)}}</strong>
+                    <strong>\{{getName(feedback)}}</strong>
                   </a>
                 </header>
-                <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">{{feedback.message}}</p>
+                <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
                 <p class="feedbacks-slide-text" v-else>
-                  {{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
+                  \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
                   <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
                   <a class="feedbacks-slide-link" v-else @click="less(index)">read less ...</a>
                 </p>
@@ -291,10 +237,10 @@
             <li v-for="post in blogPosts">
               <img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt="" />
               <h3>
-                <a :href="post.link">{{ post.title.rendered }}</a>
+                <a :href="post.link">\{{ post.title.rendered }}</a>
               </h3>
               <div v-html="post.excerpt.rendered"></div>
-              <span class="date">{{post.date.split('T')[0]}}</span>
+              <span class="date">\{{post.date.split('T')[0]}}</span>
             </li>
           </ul>
           <div class="more-posts-container">
@@ -703,52 +649,6 @@
         </div>
       </section>
     </main>
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-top">
-          <nav>
-            <ul class="footer-list">
-              <li class="footer-list-item">
-                <i class="fa fa-location-dot"></i>
-                <a class="footer-list-item-link" href="https://g.page/shpp-kr" target="_blank" rel="noreferrer noopener"
-                  >Vasylivskyi ln. 10, Kropyvnytskyi, Ukraine</a
-                >
-              </li>
-              <li class="footer-list-item">
-                <i class="fa fa-phone"></i>
-                <a class="footer-list-item-link" href="tel:+380502011180">050 20 111 80</a>
-              </li>
-              <li class="footer-list-item">
-                <i class="fa fa-envelope"></i>
-                <a class="footer-list-item-link" href="mailto:info@programming.org.ua">info@programming.org.ua</a>
-              </li>
-            </ul>
-          </nav>
-
-          <nav>
-            <ul class="footer-list">
-              <li class="footer-list-item">
-                <i class="fa-brands fa-instagram"></i>
-                <a class="footer-list-item-link" href="https://www.instagram.com/shpp.kr" target="_blank" rel="noreferrer noopener"
-                  >Instagram</a
-                >
-              </li>
-              <li class="footer-list-item">
-                <i class="fa-brands fa-facebook-square"></i>
-                <a class="footer-list-item-link" href="https://fb.com/shpp.kr" target="_blank" rel="noreferrer noopener">Facebook</a>
-              </li>
-              <li class="footer-list-item">
-                <i class="fa-brands fa-telegram"></i>
-                <a class="footer-list-item-link" href="https://t.me/shppkr" target="_blank" rel="noreferrer noopener">Telegram</a>
-              </li>
-            </ul>
-          </nav>
-
-          <a href="/supportus" class="footer-support-us">Support us</a>
-        </div>
-        <hr class="footer-separator" />
-        <div class="footer-copyright">© 2012–2022 Programming School++</div>
-      </div>
-    </footer>
+    {{> ../partials/footer}}
   </body>
 </html>
