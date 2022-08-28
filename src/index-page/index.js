@@ -5,24 +5,14 @@ import { createApp } from 'petite-vue';
 
 ('use strict');
 
-require.context('/assets/images', true);
-
 init();
 
 function init() {
-  setupGlobalScope();
   setupFeedbacks();
   setupBlogPosts();
   setupManifesto();
   setupPartnersSlider();
   setupMessengersWidget();
-}
-
-function setupGlobalScope() {
-  globalThis.programmingOrgUa = {
-    openMobileMenu: () => document.querySelector('header > .right')?.classList.add('mobile-menu-opened'),
-    closeMobileMenu: () => document.querySelector('header > .right')?.classList.remove('mobile-menu-opened'),
-  };
 }
 
 function setupBlogPosts() {
