@@ -1,4 +1,4 @@
-@import 'constants';
+@import 'styles/constants';
 
 body,
 html {
@@ -56,3 +56,8 @@ ul {
     background-color: $color-dark-green;
   }
 }
+
+@import "styles/font-asesome";
+@import "styles/container";
+@import "header/header";
+@import "footer/footer";
