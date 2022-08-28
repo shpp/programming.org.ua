@@ -7,9 +7,17 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index-page/index.html',
+      chunks : ['index'],
       inject: 'body',
       minify: true,
       filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/feedbacks-page/index.html',
+      chunks : ['feedback-all/index'],
+      inject: 'body',
+      minify: true,
+      filename: './feedback-all/index.html',
     }),
   ],
   performance: {
