@@ -1,0 +1,68 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.feedbacks {
+  padding: 32px 0;
+
+  &-title {
+    text-align: center;
+  }
+
+  &-container {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  &-form-button {
+    height: 44px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+}
+
+.feedback {
+  border: 5px solid $color-light-gray-2;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+  }
+
+  &-image {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  &-name-link,
+  &-link {
+    color: $color-font;
+
+    &:hover {
+      color: $color-main-green;
+    }
+  }
+
+  &-link {
+    cursor: pointer;
+  }
+
+  &-name-link {
+    margin: 0 16px;
+    padding: 16px 0;
+  }
+}

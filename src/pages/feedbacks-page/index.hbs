@@ -5,6 +5,29 @@
 </head>
 <body>
     {{> ../../header/header}}
+    <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
+        <div class="feedbacks-container container">
+            <h2 class="feedbacks-title">
+                Feedbacks about us
+            </h2>
+            <a class="button-primary feedbacks-form-button" href="/feedback-form">Leave your feedback</a>
+            <div class="feedback" v-for="(feedback, index) in feedbacks">
+                <header class="feedback-header">
+                    <img class="feedback-image" :src="getImage(feedback)" :alt="getName(feedback)" />
+                    <a class="feedback-name-link" :href="feedback.link" target="_blank">
+                        <strong>\{{getName(feedback)}}</strong>
+                    </a>
+                </header>
+                <p class="feedback-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
+                <p class="feedback-text" v-else>
+                    \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
+                    </br>
+                    <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
+                    <a class="feedback-link" v-else @click="less(index)">read less ...</a>
+                </p>
+            </div>
+        </div>
+    </section>
     {{> ../../footer/footer}}
 </body>
 </html>
