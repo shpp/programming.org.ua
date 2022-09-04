@@ -103,6 +103,7 @@
                 <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
                 <p class="feedbacks-slide-text" v-else>
                   \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
+                  </br>
                   <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
                   <a class="feedbacks-slide-link" v-else @click="less(index)">read less ...</a>
                 </p>
