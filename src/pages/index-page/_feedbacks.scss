@@ -63,27 +63,27 @@
     &-next {
       right: 0;
     }
+  }
 
-    .swiper-pagination {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 16px;
+  .swiper-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
 
-      &-bullet {
-        border-radius: 50px;
-        display: inline-block;
-        font-size: 10px;
-        height: 13px;
-        margin-left: 2px;
-        margin-right: 2px;
-        width: 13px;
-        background-color: $color-gray;
-        cursor: pointer;
+    &-bullet {
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 10px;
+      height: 13px;
+      margin-left: 2px;
+      margin-right: 2px;
+      width: 13px;
+      background-color: $color-gray;
+      cursor: pointer;
 
-        &-active {
-          background-color: $color-gray-2;
-        }
+      &-active {
+        background-color: $color-gray-2;
       }
     }
   }
