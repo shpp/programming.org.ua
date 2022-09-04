@@ -91,28 +91,30 @@
       <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
         <h2 class="feedbacks-title">Feedbacks</h2>
         <div class="feedbacks-container container">
-          <div class="swiper feedbacks-slider">
-            <div class="swiper-wrapper">
-              <div class="feedbacks-slide swiper-slide" v-for="(feedback, index) in feedbacks">
-                <header class="feedbacks-slide-header">
-                  <img class="feedbacks-slide-image" :src="getImage(feedback)" :alt="getName(feedback)" />
-                  <a class="feedbacks-slide-name-link" :href="feedback.link" target="_blank">
-                    <strong>\{{getName(feedback)}}</strong>
-                  </a>
-                </header>
-                <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
-                <p class="feedbacks-slide-text" v-else>
-                  \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
-                  </br>
-                  <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
-                  <a class="feedbacks-slide-link" v-else @click="less(index)">read less ...</a>
-                </p>
+          <div class="feedbacks-slider-container">
+            <div class="swiper feedbacks-slider">
+              <div class="swiper-wrapper">
+                <div class="feedbacks-slide swiper-slide" v-for="(feedback, index) in feedbacks">
+                  <header class="feedbacks-slide-header">
+                    <img class="feedbacks-slide-image" :src="getImage(feedback)" :alt="getName(feedback)" />
+                    <a class="feedbacks-slide-name-link" :href="feedback.link" target="_blank">
+                      <strong>\{{getName(feedback)}}</strong>
+                    </a>
+                  </header>
+                  <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
+                  <p class="feedbacks-slide-text" v-else>
+                      \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
+                    </br>
+                    <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
+                    <a class="feedbacks-slide-link" v-else @click="less(index)">read less ...</a>
+                  </p>
+                </div>
               </div>
             </div>
+            <i class="feedbacks-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
+            <i class="feedbacks-slider-next fa fa-chevron-right" aria-hidden="true"></i>
           </div>
           <div class="swiper-pagination"></div>
-          <i class="feedbacks-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
-          <i class="feedbacks-slider-next fa fa-chevron-right" aria-hidden="true"></i>
           <div class="feedbacks-buttons">
             <a href="/en/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary"> Leave your feedback </a>
             <a href="/feedback-all" class="feedbacks-buttons-watch-all-responses">Watch all responses</a>

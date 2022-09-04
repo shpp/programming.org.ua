@@ -12,12 +12,17 @@
     position: relative;
   }
 
-  &-slider {
+  &-slider-container {
+    width: 100%;
     padding: 32px 0;
     box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &-slider {
     width: calc(100% - 128px);
     overflow: hidden;
-    position: relative;
 
     @include media-sm {
       width: 100%;
