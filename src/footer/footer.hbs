@@ -5,7 +5,7 @@
         <ul class='footer-list'>
           <li class='footer-list-item'>
             <i class='fa fa-location-dot'></i>
-            <a class='footer-list-item-link' href='https://g.page/shpp-kr' target='_blank' rel='noreferrer noopener'>Vasylivskyi ln. 10, Kropyvnytskyi, Ukraine</a>
+            <a class='footer-list-item-link' href='https://g.page/shpp-kr' target='_blank' rel='noreferrer noopener'>{{ htmlWebpackPlugin.options.translations.contacts.address }}</a>
           </li>
           <li class='footer-list-item'>
             <i class='fa fa-phone'></i>
@@ -40,9 +40,9 @@
         </ul>
       </nav>
 
-      <a href='/supportus' class='footer-support-us'>Support us</a>
+      <a href='/supportus' class='footer-support-us'>{{ htmlWebpackPlugin.options.translations.support_us_button }}</a>
     </div>
     <hr class='footer-separator' />
-    <div class='footer-copyright'>© 2012–2022 Programming School++</div>
+    <div class='footer-copyright'>© 2012–2022 {{ htmlWebpackPlugin.options.translations.copyright }}</div>
   </div>
 </footer>

@@ -23,13 +23,17 @@ function setupBlogPosts() {
       fetch('https://blog.programming.org.ua/wp-json/wp/v2/posts?_embed=true&per_page=9')
         .then((res) => res.json())
         .then((res) => {
-          this.blogPosts = res.filter(({ polylang_current_lang }) => polylang_current_lang === 'en_GB'); // todo: update polylang_current_lang after add language support;
+          this.blogPosts = res.filter(
+            ({ polylang_current_lang }) =>
+              polylang_current_lang === { en: 'en_GB', ua: 'uk', ru: 'ru_RU' }[document.documentElement.lang] ?? 'en_GB'
+          );
         });
     },
   }).mount('.blog-posts');
 }
 
 function setupFeedbacks() {
+  const language = document.documentElement.lang ?? 'en';
   const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), {
     spaceBetween: 30,
     autoHeight: true,
@@ -55,7 +59,7 @@ function setupFeedbacks() {
           accept: 'application/json, text/plain, */*',
           'content-type': 'application/x-www-form-urlencoded',
         },
-        body: 'count=6&onlyStudents=true&feedbackType=random&lang=en',
+        body: `count=6&onlyStudents=true&feedbackType=random&lang=${language}`,
         method: 'POST',
         mode: 'cors',
         credentials: 'omit',
