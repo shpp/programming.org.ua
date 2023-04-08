@@ -21,7 +21,7 @@ module.exports = async () => merge(common, {
     }),
     new HtmlWebpackPlugin({
       template: 'src/pages/index-page/index.hbs',
-      chunks: ['common', 'en/index'],
+      chunks: ['common', 'index'],
       inject: 'body',
       minify: false,
       filename: 'en/index.html',
@@ -29,7 +29,7 @@ module.exports = async () => merge(common, {
     }),
     new HtmlWebpackPlugin({
       template: 'src/pages/index-page/index.hbs',
-      chunks: ['common', 'ua/index'],
+      chunks: ['common', 'index'],
       inject: 'body',
       minify: false,
       filename: 'ua/index.html',
@@ -37,7 +37,7 @@ module.exports = async () => merge(common, {
     }),
     new HtmlWebpackPlugin({
       template: 'src/pages/index-page/index.hbs',
-      chunks: ['common', 'ru/index'],
+      chunks: ['common', 'index'],
       inject: 'body',
       minify: false,
       filename: 'ru/index.html',

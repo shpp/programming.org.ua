@@ -5,9 +5,6 @@ module.exports = {
   entry: {
     common: './src/common.js',
     index: './src/pages/index-page/index.js',
-    'en/index': './src/pages/index-page/index.js',
-    'ua/index': './src/pages/index-page/index.js',
-    'ru/index': './src/pages/index-page/index.js',
     'feedback-all/index': './src/pages/feedbacks-page/index.js',
   },
   plugins: [
