@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ htmlWebpackPlugin.options.translations.key }}">
 <head>
     <!-- Google Tag Manager -->
     <script>
@@ -32,9 +32,13 @@
     <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
         <div class="feedbacks-container container">
             <h2 class="feedbacks-title">
-                Feedbacks about us
+              {{ htmlWebpackPlugin.options.translations.feedback_all_head }}
             </h2>
-            <a class="button-primary feedbacks-form-button" href="/feedback-form">Leave your feedback</a>
+            <a
+              class="button-primary feedbacks-form-button"
+              href="/feedback-form">
+                {{ htmlWebpackPlugin.options.translations.feedback_button }}
+            </a>
             <div class="feedback" v-for="(feedback, index) in feedbacks">
                 <header class="feedback-header">
                     <img class="feedback-image" :src="getImage(feedback)" :alt="getName(feedback)" />
@@ -46,7 +50,7 @@
                 <p class="feedback-text" v-else>
                     \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
                     </br>
-                    <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
+                    <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{ htmlWebpackPlugin.options.translations.read_more }}</a>
                 </p>
             </div>
         </div>
