@@ -33,7 +33,6 @@ function setupBlogPosts() {
 }
 
 function setupFeedbacks() {
-  const language = document.documentElement.lang ?? 'en';
   const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), {
     spaceBetween: 30,
     autoHeight: true,
@@ -59,7 +58,7 @@ function setupFeedbacks() {
           accept: 'application/json, text/plain, */*',
           'content-type': 'application/x-www-form-urlencoded',
         },
-        body: `count=6&onlyStudents=true&feedbackType=random&lang=${language}`,
+        body: `count=6&onlyStudents=true&feedbackType=random&lang=${document.documentElement.lang ?? 'en'}`,
         method: 'POST',
         mode: 'cors',
         credentials: 'omit',
