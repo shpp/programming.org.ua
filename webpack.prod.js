@@ -17,41 +17,40 @@ module.exports = async () =>
           translations: await fetch(`https://data.kowo.space/data/programming.org.ua/translations/${lang}.json`).then((res) => res.json()),
           startDate: await nearestDate,
         }))
-      )
-        .then((languages) =>
-          languages
-            .map(({ lang, translations, startDate }) => ({
-              filenamePrefix: `${lang !== 'ua' ? `${lang}/` : ''}`,
-              translations,
-              startDate,
-              locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[translations.key] || 'en_GB'
-            }))
-            .reduce(
-              (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale }) => [
-                ...htmlWebpackPlugins,
-                new HtmlWebpackPlugin({
-                  template: 'src/pages/index-page/index.hbs',
-                  chunks: ['common', 'index'],
-                  inject: 'body',
-                  minify: true,
-                  filename: `${filenamePrefix}index.html`,
-                  translations,
-                  startDate,
-                  locale
-                }),
-                new HtmlWebpackPlugin({
-                  template: 'src/pages/feedbacks-page/index.hbs',
-                  chunks: ['common', 'feedback-all/index'],
-                  inject: 'body',
-                  minify: true,
-                  filename: `${filenamePrefix}feedback-all/index.html`,
-                  translations,
-                  locale
-                }),
-              ],
-              []
-            )
-        )),
+      ).then((languages) =>
+        languages
+          .map(({ lang, translations, startDate }) => ({
+            filenamePrefix: `${lang !== 'ua' ? `${lang}/` : ''}`,
+            translations,
+            startDate,
+            locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[translations.key] || 'en_GB',
+          }))
+          .reduce(
+            (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale }) => [
+              ...htmlWebpackPlugins,
+              new HtmlWebpackPlugin({
+                template: 'src/pages/index-page/index.hbs',
+                chunks: ['common', 'index'],
+                inject: 'body',
+                minify: true,
+                filename: `${filenamePrefix}index.html`,
+                translations,
+                startDate,
+                locale,
+              }),
+              new HtmlWebpackPlugin({
+                template: 'src/pages/feedbacks-page/index.hbs',
+                chunks: ['common', 'feedback-all/index'],
+                inject: 'body',
+                minify: true,
+                filename: `${filenamePrefix}feedback-all/index.html`,
+                translations,
+                locale,
+              }),
+            ],
+            []
+          )
+      )),
     ],
     performance: {
       hints: 'warning',
