@@ -36,6 +36,7 @@ module.exports = async () =>
               minify: false,
               filename: `${filenamePrefix}index.html`,
               content: {
+                lang,
                 translations,
                 startDate,
                 locale,
@@ -75,6 +76,7 @@ module.exports = async () =>
               minify: false,
               filename: `${filenamePrefix}feedback-all/index.html`,
               content: {
+                lang,
                 translations,
                 locale,
                 langPrefix,
