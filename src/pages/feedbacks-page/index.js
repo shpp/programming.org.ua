@@ -11,7 +11,7 @@ createApp({
         accept: 'application/json, text/plain, */*',
         'content-type': 'application/x-www-form-urlencoded',
       },
-      body: 'count=6&onlyStudents=true&feedbackType=student&lang=en',
+      body: `count=6&onlyStudents=true&feedbackType=student&lang=${document.documentElement.lang ?? 'en'}`,
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
