@@ -33,9 +33,6 @@ createApp({
   more(index) {
     this.isFullTextMap[index] = true;
   },
-  less(index) {
-    this.isFullTextMap[index] = false;
-  },
   isLongText(text) {
     return text.length > this.smallTextLength;
   },

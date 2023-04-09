@@ -47,7 +47,6 @@
                     \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
                     </br>
                     <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">read more ...</a>
-                    <a class="feedback-link" v-else @click="less(index)">read less ...</a>
                 </p>
             </div>
         </div>
