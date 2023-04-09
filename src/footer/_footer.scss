@@ -57,7 +57,10 @@
     color: $color-font;
     text-decoration: none;
     height: 40px;
-    width: 132px;
+    min-width: 132px;
+    max-width: fit-content;
+    padding: 0 16px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
