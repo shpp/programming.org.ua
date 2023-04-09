@@ -28,7 +28,7 @@
         ></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    {{> ../../header/header}}
+    {{> ../../header/header pageRoute='feedback-all'}}
     <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
         <div class="feedbacks-container container">
             <h2 class="feedbacks-title">
