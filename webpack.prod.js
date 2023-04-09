@@ -24,9 +24,10 @@ module.exports = async () =>
             translations,
             startDate,
             locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[translations.key] || 'en_GB',
+            langPrefix: translations.key === 'ua' ? '' : `/${lang}`,
           }))
           .reduce(
-            (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale }) => [
+            (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix }) => [
               ...htmlWebpackPlugins,
               new HtmlWebpackPlugin({
                 template: 'src/pages/index-page/index.hbs',
@@ -37,6 +38,7 @@ module.exports = async () =>
                 translations,
                 startDate,
                 locale,
+                langPrefix,
               }),
               new HtmlWebpackPlugin({
                 template: 'src/pages/feedbacks-page/index.hbs',
@@ -46,6 +48,7 @@ module.exports = async () =>
                 filename: `${filenamePrefix}feedback-all/index.html`,
                 translations,
                 locale,
+                langPrefix,
               }),
             ],
             []
