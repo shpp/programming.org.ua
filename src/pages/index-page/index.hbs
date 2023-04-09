@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ htmlWebpackPlugin.options.translations.key }}">
+<html lang="{{ htmlWebpackPlugin.options.content.translations.key }}">
   <head>
     <!-- Google Tag Manager -->
     <script>
@@ -39,46 +39,46 @@
     <main>
       <section class="banner">
         <h1 class="banner-title">
-          {{ htmlWebpackPlugin.options.translations.home.intro.title }}
+          {{ htmlWebpackPlugin.options.content.translations.home.intro.title }}
         </h1>
         <ul class="banner-list">
           <li class="banner-list-item">
             <i class="fa fa-check"></i>
-            {{ htmlWebpackPlugin.options.translations.home.intro.item1 }}
+            {{ htmlWebpackPlugin.options.content.translations.home.intro.item1 }}
           </li>
           <li class="banner-list-item">
             <i class="fa fa-check"></i>
-            {{{ htmlWebpackPlugin.options.translations.home.intro.item2 }}}
+            {{{ htmlWebpackPlugin.options.content.translations.home.intro.item2 }}}
           </li>
           <li class="banner-list-item">
             <i class="fa fa-check"></i>
-            {{ htmlWebpackPlugin.options.shppAge }}
+            {{ htmlWebpackPlugin.options.content.shppAge }}
           </li>
         </ul>
         <div class="banner-courses">
-          <a class="banner-course" href="{{ htmlWebpackPlugin.options.langPrefix }}/courses/adults">
-            <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.title }}</h3>
-            <span class="banner-course-tip">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.tip }}</span>
-            <span class="banner-course-date">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.start }}{{ htmlWebpackPlugin.options.startDate }}</span>
+          <a class="banner-course" href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults">
+            <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.title }}</h3>
+            <span class="banner-course-tip">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.tip }}</span>
+            <span class="banner-course-date">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.start }}{{ htmlWebpackPlugin.options.content.startDate }}</span>
           </a>
-          <a class="banner-course" href="{{ htmlWebpackPlugin.options.langPrefix }}/courses#teens">
-            <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.translations.home.intro.courses.teens.title }}</h3>
-            <span class="banner-course-tip">{{ htmlWebpackPlugin.options.translations.home.intro.courses.teens.age }}</span>
+          <a class="banner-course" href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens">
+            <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.title }}</h3>
+            <span class="banner-course-tip">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.age }}</span>
           </a>
         </div>
       </section>
       <section class="about-us">
         <div class="about-us-container container">
-          <h2 class="about-us-title">{{ htmlWebpackPlugin.options.translations.home.about.title }}</h2>
+          <h2 class="about-us-title">{{ htmlWebpackPlugin.options.content.translations.home.about.title }}</h2>
           <div class="about-us-text">
-            {{#each htmlWebpackPlugin.options.translations.courses_p }}
+            {{#each htmlWebpackPlugin.options.content.translations.courses_p }}
             <p>{{{ this }}}</p>
             {{/each}}
           </div>
         </div>
       </section>
       <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
-        <h2 class="feedbacks-title">{{ htmlWebpackPlugin.options.translations.home.feedbacks.title }}</h2>
+        <h2 class="feedbacks-title">{{ htmlWebpackPlugin.options.content.translations.home.feedbacks.title }}</h2>
         <div class="feedbacks-container container">
           <div class="feedbacks-slider-container">
             <div class="swiper feedbacks-slider">
@@ -94,7 +94,7 @@
                   <p class="feedbacks-slide-text" v-else>
                       \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
                     </br>
-                    <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{ htmlWebpackPlugin.options.translations.read_more }}</a>
+                    <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{ htmlWebpackPlugin.options.content.translations.read_more }}</a>
                   </p>
                 </div>
               </div>
@@ -104,14 +104,14 @@
           </div>
           <div class="swiper-pagination"></div>
           <div class="feedbacks-buttons">
-            <a href="{{ htmlWebpackPlugin.options.langPrefix }}/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary">{{ htmlWebpackPlugin.options.translations.feedback_button }}</a>
-            <a href="{{ htmlWebpackPlugin.options.langPrefix }}/feedback-all" class="feedbacks-buttons-watch-all-responses">{{ htmlWebpackPlugin.options.translations.adults.feedbacks.see_all }}</a>
+            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary">{{ htmlWebpackPlugin.options.content.translations.feedback_button }}</a>
+            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all" class="feedbacks-buttons-watch-all-responses">{{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.see_all }}</a>
           </div>
         </div>
       </section>
       <section class="blog-posts" @vue:mounted="mounted()" :style="{ display: blogPosts?.length > 0 ? 'block' : 'none' }">
         <div class="container">
-          <h2>{{ htmlWebpackPlugin.options.translations.home.latest_news.title }}</h2>
+          <h2>{{ htmlWebpackPlugin.options.content.translations.home.latest_news.title }}</h2>
           <ul>
             <li v-for="post in blogPosts">
               <img
@@ -128,7 +128,7 @@
           </ul>
           <div class="more-posts-container">
             <a class="more-posts" href="https://blog.programming.org.ua">
-              {{ htmlWebpackPlugin.options.translations.home.latest_news.see_all }}
+              {{ htmlWebpackPlugin.options.content.translations.home.latest_news.see_all }}
             </a>
           </div>
         </div>
@@ -136,11 +136,11 @@
       <section class="manifesto">
         <div class="container">
           <h2>
-            {{{ htmlWebpackPlugin.options.translations.good_school_manifesto.title }}}
+            {{{ htmlWebpackPlugin.options.content.translations.good_school_manifesto.title }}}
           </h2>
 
           <ul>
-            {{#each htmlWebpackPlugin.options.translations.good_school_manifesto.p }}
+            {{#each htmlWebpackPlugin.options.content.translations.good_school_manifesto.p }}
             <li>
               <details>
                 <summary>
