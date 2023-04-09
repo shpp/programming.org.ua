@@ -20,14 +20,15 @@ module.exports = async () =>
       ).then((languages) =>
         languages
           .map(({ lang, translations, startDate }) => ({
+            lang,
             filenamePrefix: `${lang !== 'ua' ? `${lang}/` : ''}`,
             translations,
             startDate,
-            locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[translations.key] || 'en_GB',
-            langPrefix: translations.key === 'ua' ? '' : `/${lang}`,
+            locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[lang] || 'en_GB',
+            langPrefix: lang === 'ua' ? '' : `/${lang}`,
           }))
           .reduce(
-            (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix }) => [
+            (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix, lang }) => [
               ...htmlWebpackPlugins,
               new HtmlWebpackPlugin({
                 template: 'src/pages/index-page/index.hbs',
@@ -41,7 +42,6 @@ module.exports = async () =>
                   locale,
                   langPrefix,
                   shppAge: (() => {
-                    const lang = translations.key || 'en';
                     const creationDate = '01-05-2015';
                     const pattern = translations.home.intro.item3;
                     const inRange = (x, from, to) => x >= from && x <= to;
