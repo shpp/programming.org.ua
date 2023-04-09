@@ -16,7 +16,7 @@ module.exports = async () =>
           lang,
           translations: await fetch(`https://data.kowo.space/data/programming.org.ua/translations/${lang}.json`).then((res) => res.json()),
           startDate: await nearestDate,
-          filenamePrefix: `${lang !== 'ua' ? `${lang}/` : ''}`,
+          filenamePrefix: `${lang === 'ua' ? '' : `${lang}/`}`,
           locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[lang] || 'en_GB',
           langPrefix: lang === 'ua' ? '' : `/${lang}`,
         }))
