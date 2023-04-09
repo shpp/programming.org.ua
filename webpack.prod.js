@@ -3,6 +3,10 @@ const common = require('./webpack.common.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fetch = require('node-fetch');
 
+const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
+  .then((res) => res.json())
+  .then((response) => response.data.nearestStartDate);
+
 module.exports = async () =>
   merge(common, {
     mode: 'production',
@@ -11,14 +15,19 @@ module.exports = async () =>
         ['ua', 'en', 'ru'].map(async (lang) => ({
           lang,
           translations: await fetch(`https://data.kowo.space/data/programming.org.ua/translations/${lang}.json`).then((res) => res.json()),
+          startDate: await nearestDate,
         }))
       )
-        .then((languages) => [...languages, { lang: null, translations: languages.find(({ lang }) => lang === 'ua').translations }])
+        .then((languages) => [...languages, { ...languages.find(({ lang }) => lang === 'ua'), lang: null }])
         .then((languages) =>
           languages
-            .map(({ lang, translations }) => ({ filenamePrefix: `${lang ? `${lang}/` : ''}`, translations }))
+            .map(({ lang, translations, startDate }) => ({
+              filenamePrefix: `${lang ? `${lang}/` : ''}`,
+              translations,
+              startDate,
+            }))
             .reduce(
-              (htmlWebpackPlugins, { filenamePrefix, translations }) => [
+              (htmlWebpackPlugins, { filenamePrefix, translations, startDate }) => [
                 ...htmlWebpackPlugins,
                 new HtmlWebpackPlugin({
                   template: 'src/pages/index-page/index.hbs',
@@ -27,6 +36,7 @@ module.exports = async () =>
                   minify: true,
                   filename: `${filenamePrefix}index.html`,
                   translations,
+                  startDate,
                 }),
                 new HtmlWebpackPlugin({
                   template: 'src/pages/feedbacks-page/index.hbs',
