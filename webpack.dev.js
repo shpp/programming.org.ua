@@ -23,11 +23,10 @@ module.exports = async () =>
           startDate: await nearestDate,
         }))
       )
-        .then((languages) => [...languages, { ...languages.find(({ lang }) => lang === 'ua'), lang: null }])
         .then((languages) =>
           languages
             .map(({ lang, translations, startDate }) => ({
-              filenamePrefix: `${lang ? `${lang}/` : ''}`,
+              filenamePrefix: `${lang !== 'ua' ? `${lang}/` : ''}`,
               translations,
               startDate,
             }))

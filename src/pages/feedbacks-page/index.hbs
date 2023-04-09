@@ -36,7 +36,7 @@
             </h2>
             <a
               class="button-primary feedbacks-form-button"
-              href="/{{ htmlWebpackPlugin.options.translations.key }}/feedback-form">
+              href="{{ langPrefix htmlWebpackPlugin.options.translations.key }}/feedback-form">
                 {{ htmlWebpackPlugin.options.translations.feedback_button }}
             </a>
             <div class="feedback" v-for="(feedback, index) in feedbacks">
