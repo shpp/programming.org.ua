@@ -40,7 +40,10 @@
         </ul>
       </nav>
 
-      <a href='/supportus' class='footer-support-us'>{{ htmlWebpackPlugin.options.translations.support_us_button }}</a>
+      <a
+        href='/{{ htmlWebpackPlugin.options.translations.key }}/supportus'
+        class='footer-support-us'
+      >{{ htmlWebpackPlugin.options.translations.support_us_button }}</a>
     </div>
     <hr class='footer-separator' />
     <div class='footer-copyright'>© 2012–2022 {{ htmlWebpackPlugin.options.translations.copyright }}</div>

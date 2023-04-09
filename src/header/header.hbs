@@ -1,5 +1,5 @@
 <header>
-  <a href='/' class='logo'> Ш++ </a>
+  <a href='/{{ htmlWebpackPlugin.options.translations.key }}' class='logo'> Ш++ </a>
   <div class='right'>
     <div class='content'>
       <nav class='menu'>
@@ -8,29 +8,29 @@
             <a>{{ htmlWebpackPlugin.options.translations.courses.default }} <i class='fa fa-angle-down' aria-hidden='true'></i></a>
             <ul>
               <li>
-                <a href='/courses/adults'>{{ htmlWebpackPlugin.options.translations.courses.adults }}</a>
+                <a href='/{{ htmlWebpackPlugin.options.translations.key }}/courses/adults'>{{ htmlWebpackPlugin.options.translations.courses.adults }}</a>
               </li>
               <li>
-                <a href='/courses#teens'>{{ htmlWebpackPlugin.options.translations.courses.teens }}</a>
+                <a href='/{{ htmlWebpackPlugin.options.translations.key }}/courses#teens'>{{ htmlWebpackPlugin.options.translations.courses.teens }}</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href='/about'>{{ htmlWebpackPlugin.options.translations.about.title }}</a>
+            <a href='/{{ htmlWebpackPlugin.options.translations.key }}/about'>{{ htmlWebpackPlugin.options.translations.about.title }}</a>
           </li>
           <li>
-            <a href='/feedback-all'>{{ htmlWebpackPlugin.options.translations.feedback_all_link }}</a>
+            <a href='/{{ htmlWebpackPlugin.options.translations.key }}/feedback-all'>{{ htmlWebpackPlugin.options.translations.feedback_all_link }}</a>
           </li>
           <li>
             <a href='https://blog.programming.org.ua'>{{ htmlWebpackPlugin.options.translations.news }}</a>
           </li>
           <li>
-            <a href='/contacts'>{{ htmlWebpackPlugin.options.translations.contacts.default }}</a>
+            <a href='/{{ htmlWebpackPlugin.options.translations.key }}/contacts'>{{ htmlWebpackPlugin.options.translations.contacts.default }}</a>
           </li>
         </ul>
       </nav>
       <div class='authenticate'>
-        <a href='/anketa' class='button-primary sign-up'>{{ htmlWebpackPlugin.options.translations.anketa }}</a>
+        <a href='{{ htmlWebpackPlugin.options.translations.key }}/anketa' class='button-primary sign-up'>{{ htmlWebpackPlugin.options.translations.anketa }}</a>
         <a href='https://portal.programming.org.ua/login' class='sign-in'>{{ htmlWebpackPlugin.options.translations.sign_in }}</a>
       </div>
       <ul class='languages'>

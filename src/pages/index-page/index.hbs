@@ -56,12 +56,12 @@
           </li>
         </ul>
         <div class="banner-courses">
-          <a class="banner-course" href="/courses/adults">
+          <a class="banner-course" href="/{{ htmlWebpackPlugin.options.translations.key }}/courses/adults">
             <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.title }}</h3>
             <span class="banner-course-tip">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.tip }}</span>
             <span class="banner-course-date">{{ htmlWebpackPlugin.options.translations.home.intro.courses.adults.start }} {{ start_p2p_date }}</span>
           </a>
-          <a class="banner-course" href="/courses#teens">
+          <a class="banner-course" href="/{{ htmlWebpackPlugin.options.translations.key }}/courses#teens">
             <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.translations.home.intro.courses.teens.title }}</h3>
             <span class="banner-course-tip">{{ htmlWebpackPlugin.options.translations.home.intro.courses.teens.age }}</span>
           </a>
@@ -104,8 +104,8 @@
           </div>
           <div class="swiper-pagination"></div>
           <div class="feedbacks-buttons">
-            <a href="/en/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary">{{ htmlWebpackPlugin.options.translations.feedback_button }}</a>
-            <a href="/feedback-all" class="feedbacks-buttons-watch-all-responses">{{ htmlWebpackPlugin.options.translations.adults.feedbacks.see_all }}</a>
+            <a href="/{{ htmlWebpackPlugin.options.translations.key }}/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary">{{ htmlWebpackPlugin.options.translations.feedback_button }}</a>
+            <a href="/{{ htmlWebpackPlugin.options.translations.key }}/feedback-all" class="feedbacks-buttons-watch-all-responses">{{ htmlWebpackPlugin.options.translations.adults.feedbacks.see_all }}</a>
           </div>
         </div>
       </section>
