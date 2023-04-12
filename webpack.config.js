@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fetch = require('node-fetch');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
   .then((res) => res.json())
@@ -93,6 +94,10 @@ module.exports = async (_, { mode = 'development' }) => ({
         []
       )
     )),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__ : true,
+      __VUE_PROD_DEVTOOLS__: false
+    })
   ],
   module: {
     rules: [

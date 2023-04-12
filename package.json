@@ -40,7 +40,7 @@
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.2",
     "node-fetch": "^2.6.9",
-    "petite-vue": "^0.4.1",
-    "swiper": "^8.3.1"
+    "swiper": "^9.2.0",
+    "vue": "^3.2.47"
   }
 }

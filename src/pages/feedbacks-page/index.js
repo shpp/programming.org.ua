@@ -1,5 +1,5 @@
 import './index.scss';
-import { createApp } from 'petite-vue';
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
 
 ('use strict');
 
@@ -19,21 +19,27 @@ createApp({
       .then((res) => res.json())
       .then((data) => (this.feedbacks = data.data.feedbacks));
   },
-  feedbacks: [],
-  smallTextLength: 300,
-  isFullTextMap: {},
-  shouldShowFullText(index) {
-    return this.isFullTextMap[index];
+  data() {
+    return {
+      feedbacks: [],
+      smallTextLength: 300,
+      isFullTextMap: {},
+    };
   },
-  getName: ({ name, surname }) => [name, surname].join(' '),
-  getImage: ({ image }) => `https://back.programming.org.ua/storage/img/feedbacks/${image}`,
-  getShortText(text) {
-    return `${text.slice(0, this.smallTextLength)}...`;
-  },
-  more(index) {
-    this.isFullTextMap[index] = true;
-  },
-  isLongText(text) {
-    return text.length > this.smallTextLength;
+  methods: {
+    shouldShowFullText(index) {
+      return this.isFullTextMap[index];
+    },
+    getName: ({ name, surname }) => [name, surname].join(' '),
+    getImage: ({ image }) => `https://back.programming.org.ua/storage/img/feedbacks/${image}`,
+    getShortText(text) {
+      return `${text.slice(0, this.smallTextLength)}...`;
+    },
+    more(index) {
+      this.isFullTextMap[index] = true;
+    },
+    isLongText(text) {
+      return text.length > this.smallTextLength;
+    },
   },
 }).mount('.feedbacks');

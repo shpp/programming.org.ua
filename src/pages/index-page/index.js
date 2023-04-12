@@ -1,7 +1,7 @@
 import './index.scss';
 import Swiper, { Autoplay, Pagination, Navigation } from 'swiper';
 import 'swiper/css';
-import { createApp } from 'petite-vue';
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
 
 ('use strict');
 
@@ -17,7 +17,9 @@ function init() {
 
 function setupBlogPosts() {
   createApp({
-    blogPosts: [],
+    data() {
+      return { blogPosts: [] };
+    },
     mounted() {
       // todo: use config to get needed url
       fetch('https://blog.programming.org.ua/wp-json/wp/v2/posts?_embed=true&per_page=9')
@@ -29,27 +31,15 @@ function setupBlogPosts() {
           );
         });
     },
+    methods: {
+      getImage(post = null) {
+        return post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.large?.source_url || null;
+      },
+    },
   }).mount('.blog-posts');
 }
 
 function setupFeedbacks() {
-  const feedbacksSlider = new Swiper(document.querySelector('.feedbacks-slider'), {
-    spaceBetween: 30,
-    autoHeight: true,
-    breakpoints: {
-      768: { slidesPerView: 1 },
-      1200: { slidesPerView: 3 },
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.feedbacks-slider-next',
-      prevEl: '.feedbacks-slider-previous',
-    },
-    modules: [Pagination, Navigation],
-  });
   createApp({
     mounted() {
       // todo: use config to get neede url
@@ -66,30 +56,52 @@ function setupFeedbacks() {
         .then((res) => res.json())
         .then((data) => {
           this.feedbacks = data.data.feedbacks;
-          setTimeout(() => feedbacksSlider.update(), 0);
+
+          setTimeout(() => {
+            this.slider = new Swiper(this.$refs.sliderRef, {
+              spaceBetween: 30,
+              autoHeight: true,
+              breakpoints: {
+                768: { slidesPerView: 1 },
+                1200: { slidesPerView: 3 },
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              navigation: {
+                nextEl: '.feedbacks-slider-next',
+                prevEl: '.feedbacks-slider-previous',
+              },
+              modules: [Pagination, Navigation],
+            });
+          }, 0);
         });
     },
-    feedbacks: [],
-    smallTextLength: 300,
-    isFullTextMap: {},
-    shouldShowFullText(index) {
-      return this.isFullTextMap[index];
+    data() {
+      return {
+        feedbacks: [],
+        smallTextLength: 300,
+        isFullTextMap: {},
+        slider: null,
+      };
     },
-    getName: (feedback) => [feedback.name, feedback.surname].join(' '),
-    getImage: (feedback) => `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
-    getShortText(text) {
-      return `${text.slice(0, this.smallTextLength)}...`;
-    },
-    more(index) {
-      this.isFullTextMap[index] = true;
-      setTimeout(() => feedbacksSlider.update(), 0);
-    },
-    less(index) {
-      this.isFullTextMap[index] = false;
-      setTimeout(() => feedbacksSlider.update(), 0);
-    },
-    isLongText(text) {
-      return text.length > this.smallTextLength;
+    methods: {
+      shouldShowFullText(index) {
+        return this.isFullTextMap[index];
+      },
+      getName: (feedback) => [feedback.name, feedback.surname].join(' '),
+      getImage: (feedback) => `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
+      getShortText(text) {
+        return `${text.slice(0, this.smallTextLength)}...`;
+      },
+      more(index) {
+        this.isFullTextMap[index] = true;
+        setTimeout(() => this.slider?.updateAutoHeight(), 0);
+      },
+      isLongText(text) {
+        return text.length > this.smallTextLength;
+      },
     },
   }).mount('.feedbacks');
 }
