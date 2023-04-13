@@ -32,13 +32,15 @@ module.exports = async (_, { mode = 'development' }) => ({
       chunkFilename: '[name].css',
     }),
     ...(await Promise.all(
-      ['ua', 'en', 'ru'].map(async (lang) => ({
-        lang,
-        translations: await fetch(`https://data.kowo.space/data/programming.org.ua/translations/${lang}.json`).then((res) => res.json()),
+      ['ua', 'en', 'ru', 'default-language'].map(async (lang) => ({
+        lang: lang === 'default-language' ? 'ua' : lang,
+        translations: await fetch(
+          `https://data.kowo.space/data/programming.org.ua/translations/${lang === 'default-language' ? 'ua' : lang}.json`
+        ).then((res) => res.json()),
         startDate: await nearestDate,
-        filenamePrefix: `${lang === 'ua' ? '' : `${lang}/`}`,
-        locale: { en: 'en_GB', ua: 'uk_UA', ru: 'ru_RU' }[lang] || 'en_GB',
-        langPrefix: lang === 'ua' ? '' : `/${lang}`,
+        filenamePrefix: `${lang === 'default-language' ? '' : `${lang}/`}`,
+        locale: { en: 'en_GB', ua: 'uk_UA', 'default-language': 'uk_UA', ru: 'ru_RU' }[lang] || 'en_GB',
+        langPrefix: lang === 'default-language' || lang === 'ua' ? '' : `/${lang}`,
       }))
     ).then((languages) =>
       languages.reduce(
