@@ -49,3 +49,24 @@
     <div class='footer-copyright'>© 2012–2022 {{ htmlWebpackPlugin.options.content.translations.copyright }}</div>
   </div>
 </footer>
+<script src="https://shpp.github.io/messengers-widget/js/messengers-widget.js"></script>
+<script>
+  new MessengersWidget({
+    color: '#27ae60',
+    title: '{{htmlWebpackPlugin.options.content.translations.contact.title}}',
+    messengers: {
+      phone: '+380502011180',
+      email: 'info@programming.org.ua',
+      telegram: 'shpp_me',
+      viber: '380502011180',
+      facebook: '626295794236927',
+    },
+    titles: {
+      phone: '{{htmlWebpackPlugin.options.content.translations.contact.call}}',
+      email: '{{htmlWebpackPlugin.options.content.translations.contact.email}}',
+      telegram: '{{htmlWebpackPlugin.options.content.translations.contact.telegram}}',
+      viber: '{{htmlWebpackPlugin.options.content.translations.contact.viber}}',
+      facebook: '{{htmlWebpackPlugin.options.content.translations.contact.facebook}}',
+    },
+  });
+</script>
