@@ -31,7 +31,6 @@ module.exports = async (_, { mode = 'development' }) => ({
       filename: '[name].css',
       chunkFilename: '[name].css',
     }),
-    // todo: run translations request 3 times instead of 4
     ...(await Promise.all(
       ['ua', 'en', 'ru', 'default-language'].map(async (lang) => ({
         lang: lang === 'default-language' ? 'ua' : lang,
