@@ -45,14 +45,14 @@
         <a href='https://portal.programming.org.ua/login' class='sign-in'>{{ htmlWebpackPlugin.options.content.translations.sign_in }}</a>
       </div>
       <ul class='languages'>
-        <li class='ru'>
-          <a href='javascript:window.open("/ru/{{pageRoute}}" + location.search + location.hash, "_self")'>RU</a>
+        <li class='language ru'>
+          <a href='/ru/{{pageRoute}}'>RU</a>
         </li>
-        <li class='ua'>
-          <a href='javascript:window.open("/{{pageRoute}}" + location.search + location.hash, "_self")'>UA</a>
+        <li class='language ua'>
+          <a href='/{{pageRoute}}'>UA</a>
         </li>
-        <li class='en'>
-          <a href='javascript:window.open("/en/{{pageRoute}}" + location.search + location.hash, "_self")'>EN</a>
+        <li class='language en'>
+          <a href='/en/{{pageRoute}}'>EN</a>
         </li>
       </ul>
     </div>
