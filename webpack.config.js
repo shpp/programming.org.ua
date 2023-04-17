@@ -7,6 +7,12 @@ const webpack = require('webpack');
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
   .then((res) => res.json())
   .then((response) => response.data.nearestStartDate);
+const languages = {
+  ua: 'Ukrainian',
+  ru: 'russian',
+  en: 'English',
+  defaultLanguage: 'Default',
+};
 
 module.exports = async (_, { mode = 'development' }) => ({
   entry: {
@@ -36,15 +42,40 @@ module.exports = async (_, { mode = 'development' }) => ({
       chunkFilename: '[name].css',
     }),
     ...(await Promise.all(
-      ['ua', 'en', 'ru', 'default-language'].map(async (lang) => ({
-        lang: lang === 'default-language' ? 'ua' : lang,
-        translations: await fetch(
-          `https://data.kowo.space/data/programming.org.ua/translations/${lang === 'default-language' ? 'ua' : lang}.json`
-        ).then((res) => res.json()),
+      Object.entries({
+        [languages.ua]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ua.json`).then((response) => response.json()),
+        [languages.ru]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ru.json`).then((response) => response.json()),
+        [languages.en]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/en.json`).then((response) => response.json()),
+        get [languages.defaultLanguage]() {
+          return this[languages.ua];
+        },
+      }).map(async ([language, translation]) => ({
+        lang: {
+          [languages.ua]: 'ua',
+          [languages.ru]: 'ru',
+          [languages.en]: 'en',
+          [languages.defaultLanguage]: 'ua',
+        }[language],
+        translations: await translation,
         startDate: await nearestDate,
-        filenamePrefix: `${lang === 'default-language' ? '' : `${lang}/`}`,
-        locale: { en: 'en_GB', ua: 'uk_UA', 'default-language': 'uk_UA', ru: 'ru_RU' }[lang] || 'en_GB',
-        langPrefix: lang === 'default-language' || lang === 'ua' ? '' : `/${lang}`,
+        filenamePrefix: {
+          [languages.ua]: 'ua/',
+          [languages.ru]: 'ru/',
+          [languages.en]: 'en/',
+          [languages.defaultLanguage]: '',
+        }[language],
+        locale: {
+          [languages.en]: 'en_GB',
+          [languages.ua]: 'uk_UA',
+          [languages.defaultLanguage]: 'uk_UA',
+          [languages.ru]: 'ru_RU',
+        }[language],
+        langPrefix: {
+          [languages.ua]: '',
+          [languages.ru]: '/ru',
+          [languages.en]: '/en',
+          [languages.defaultLanguage]: '',
+        }[language],
       }))
     ).then((languages) =>
       languages.reduce(
