@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fetch = require('node-fetch');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
@@ -264,9 +264,9 @@ module.exports = async (_, { mode = 'development' }) => ({
     }),
     new CopyPlugin({
       patterns: [
-        { from: "public", to: "" } //to the dist root directory
+        { from: 'public', to: '' }, //to the dist root directory
       ],
-  }),
+    }),
   ],
   module: {
     rules: [
