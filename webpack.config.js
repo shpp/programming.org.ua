@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fetch = require('node-fetch');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require('webpack');
 
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
@@ -261,6 +262,11 @@ module.exports = async (_, { mode = 'development' }) => ({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public", to: "" } //to the dist root directory
+      ],
+  }),
   ],
   module: {
     rules: [
@@ -277,7 +283,7 @@ module.exports = async (_, { mode = 'development' }) => ({
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'img/[name][ext]',
