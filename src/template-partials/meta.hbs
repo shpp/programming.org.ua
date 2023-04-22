@@ -15,3 +15,7 @@
 <meta name='twitter:description' content='{{ pageTranslations.meta.description }}' />
 <link rel='shortcut icon' href='/img/favicon.png' type='image/png' />
 <title>{{ pageTranslations.meta.title }}</title>
+<link rel='canonical' href='{{htmlWebpackPlugin.options.content.canonicalUrl}}' />
+{{#each htmlWebpackPlugin.options.content.alternativeLocales}}
+    <link rel='alternate' hreflang='{{this.lang}}' href='{{this.url}}' />
+{{/each}}

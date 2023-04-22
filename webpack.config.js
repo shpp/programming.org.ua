@@ -7,12 +7,61 @@ const webpack = require('webpack');
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
   .then((res) => res.json())
   .then((response) => response.data.nearestStartDate);
-const languages = {
-  ua: 'Ukrainian',
-  ru: 'russian',
-  en: 'English',
-  defaultLanguage: 'Default',
+
+const getShppAge = (lang, pattern) => {
+  const creationDate = '01-05-2015';
+  const inRange = (x, from, to) => x >= from && x <= to;
+  const tokens = {
+    years1: { ru: 'лет', uk: 'років', en: 'years' },
+    years2: { ru: 'год', uk: 'рік', en: 'year' },
+    years3: { ru: 'года', uk: 'роки', en: 'years' },
+  };
+
+  const [day, month, year] = creationDate.split('-');
+  const schoolFoundationDate = new Date(year, month - 1, day);
+  const ageDifMs = Date.now() - schoolFoundationDate;
+  const ageDate = new Date(ageDifMs);
+  const yearsNum = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  const yearsStr = inRange(yearsNum, 5, 20)
+    ? tokens.years1[lang]
+    : yearsNum % 10 === 1
+    ? tokens.years2[lang]
+    : inRange(yearsNum % 10, 2, 4)
+    ? tokens.years3[lang]
+    : tokens.years1[lang];
+
+  return (pattern || '').replace('{{yearsNum}}', yearsNum).replace('{{yearsStr}}', yearsStr);
+}
+
+const localesConfig = {
+  uk: {
+    lang: 'uk',
+    filenamePrefix: 'ua/',
+    locale: 'uk_UA',
+    langPrefix: ''
+  },
+  ru: {
+    lang: 'ru',
+    filenamePrefix: 'ru/',
+    locale: 'ru_RU',
+    langPrefix: '/ru'
+  },
+  en: {
+    lang: 'en',
+    filenamePrefix: 'en/',
+    locale: 'en_GB',
+    langPrefix: '/en'
+  },
+  defaultLanguage: {
+    lang: 'uk',
+    filenamePrefix: '',
+    locale: 'uk_UA',
+    langPrefix: ''
+  }
 };
+
+const BASE_URL = 'https://programming.org.ua';
 
 module.exports = async (_, { mode = 'development' }) => ({
   entry: {
@@ -43,241 +92,171 @@ module.exports = async (_, { mode = 'development' }) => ({
     }),
     ...(await Promise.all(
       Object.entries({
-        [languages.ua]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ua.json`).then((response) => response.json()),
-        [languages.ru]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ru.json`).then((response) => response.json()),
-        [languages.en]: fetch(`https://data.kowo.space/data/programming.org.ua/translations/en.json`).then((response) => response.json()),
-        get [languages.defaultLanguage]() {
-          return this[languages.ua];
+        uk: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ua.json`).then((response) => response.json()),
+        ru: fetch(`https://data.kowo.space/data/programming.org.ua/translations/ru.json`).then((response) => response.json()),
+        en: fetch(`https://data.kowo.space/data/programming.org.ua/translations/en.json`).then((response) => response.json()),
+        get defaultLanguage() {
+          return this.uk;
         },
       }).map(async ([language, translation]) => ({
-        lang: {
-          [languages.ua]: 'ua',
-          [languages.ru]: 'ru',
-          [languages.en]: 'en',
-          [languages.defaultLanguage]: 'ua',
-        }[language],
+        ...localesConfig[language],
         translations: await translation,
         startDate: await nearestDate,
-        filenamePrefix: {
-          [languages.ua]: 'ua/',
-          [languages.ru]: 'ru/',
-          [languages.en]: 'en/',
-          [languages.defaultLanguage]: '',
-        }[language],
-        locale: {
-          [languages.en]: 'en_GB',
-          [languages.ua]: 'uk_UA',
-          [languages.defaultLanguage]: 'uk_UA',
-          [languages.ru]: 'ru_RU',
-        }[language],
-        langPrefix: {
-          [languages.ua]: '',
-          [languages.ru]: '/ru',
-          [languages.en]: '/en',
-          [languages.defaultLanguage]: '',
-        }[language],
       }))
     ).then((languages) =>
       languages.reduce(
-        (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix, lang }) => [
-          ...htmlWebpackPlugins,
-          new HtmlWebpackPlugin({
-            template: 'src/pages/index-page/index.hbs',
-            chunks: ['common', 'index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}index.html`,
-            content: {
-              lang,
-              translations,
-              startDate,
-              locale,
-              langPrefix,
-              shppAge: (() => {
-                const creationDate = '01-05-2015';
-                const pattern = translations.home.intro.item3;
-                const inRange = (x, from, to) => x >= from && x <= to;
-                const tokens = {
-                  years1: { ru: 'лет', ua: 'років', en: 'years' },
-                  years2: { ru: 'год', ua: 'рік', en: 'year' },
-                  years3: { ru: 'года', ua: 'роки', en: 'years' },
-                };
+        (htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix, lang }) => {
+          const shppAge = getShppAge(lang, translations.home.intro.item3);
+          const alternativeLocales = ['en', 'ru', 'uk'].filter(l => l !== lang).map(l => localesConfig[l]);
 
-                const [day, month, year] = creationDate.split('-');
-                const schoolFoundationDate = new Date(year, month - 1, day);
-                const ageDifMs = Date.now() - schoolFoundationDate;
-                const ageDate = new Date(ageDifMs);
-                const yearsNum = Math.abs(ageDate.getUTCFullYear() - 1970);
+          const getCommonContent = relativePagePath => ({
+            lang,
+            translations,
+            locale,
+            langPrefix,
+            canonicalUrl: `${BASE_URL}${filenamePrefix}${relativePagePath}`,
+            alternativeLocales: alternativeLocales.map(({langPrefix, lang}) => ({
+              lang,
+              url: `${BASE_URL}${langPrefix}${relativePagePath}`,
+            }))
+          });
 
-                const yearsStr = inRange(yearsNum, 5, 20)
-                  ? tokens.years1[lang]
-                  : yearsNum % 10 === 1
-                  ? tokens.years2[lang]
-                  : inRange(yearsNum % 10, 2, 4)
-                  ? tokens.years3[lang]
-                  : tokens.years1[lang];
-
-                return (pattern || '').replace('{{yearsNum}}', yearsNum).replace('{{yearsStr}}', yearsStr);
-              })(),
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/feedbacks-page/index.hbs',
-            chunks: ['common', 'feedback-all/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}feedback-all/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/about-us-page/index.hbs',
-            chunks: ['common', 'about/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}about/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/adults-courses-page/index.hbs',
-            chunks: ['common', 'courses/adults/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}courses/adults/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/contacts-page/index.hbs',
-            chunks: ['common', 'contacts/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}contacts/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/courses-page/index.hbs',
-            chunks: ['common', 'courses/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}courses/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/feedback-form-page/index.hbs',
-            chunks: ['common', 'feedback-form/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}feedback-form/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/sign-up-index-page/index.hbs',
-            chunks: ['common', 'anketa/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}anketa/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/sign-up-teens-page/index.hbs',
-            chunks: ['common', 'anketa/teens/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}anketa/teens/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/sign-up-adults-page/index.hbs',
-            chunks: ['common', 'anketa/adults/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}anketa/adults/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/sign-up-success-page/index.hbs',
-            chunks: ['common', 'anketa/last/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}anketa/last/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/sign-up-confirmation-page/index.hbs',
-            chunks: ['common', 'email-confirmed/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}email-confirmed/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-          new HtmlWebpackPlugin({
-            template: 'src/pages/support-us-page/index.hbs',
-            chunks: ['common', 'supportus/index'],
-            inject: 'body',
-            minify: mode === 'production',
-            filename: `${filenamePrefix}supportus/index.html`,
-            content: {
-              lang,
-              translations,
-              locale,
-              langPrefix,
-            },
-          }),
-        ],
+          return [
+            ...htmlWebpackPlugins,
+            new HtmlWebpackPlugin({
+              template: 'src/pages/index-page/index.hbs',
+              chunks: ['common', 'index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}index.html`,
+              content: {
+                ...getCommonContent('/'),
+                startDate,
+                shppAge,
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/feedbacks-page/index.hbs',
+              chunks: ['common', 'feedback-all/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}feedback-all/index.html`,
+              content: {
+                ...getCommonContent('/feedback-all/'),
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/about-us-page/index.hbs',
+              chunks: ['common', 'about/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}about/index.html`,
+              content: {
+                ...getCommonContent('/about/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/adults-courses-page/index.hbs',
+              chunks: ['common', 'courses/adults/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}courses/adults/index.html`,
+              content: {
+                ...getCommonContent('/courses/adults/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/contacts-page/index.hbs',
+              chunks: ['common', 'contacts/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}contacts/index.html`,
+              content: {
+                ...getCommonContent('/contacts/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/courses-page/index.hbs',
+              chunks: ['common', 'courses/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}courses/index.html`,
+              content: {
+                ...getCommonContent('/courses/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/feedback-form-page/index.hbs',
+              chunks: ['common', 'feedback-form/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}feedback-form/index.html`,
+              content: {
+                ...getCommonContent('/feedback-form/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/sign-up-index-page/index.hbs',
+              chunks: ['common', 'anketa/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}anketa/index.html`,
+              content: {
+                ...getCommonContent('/anketa/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/sign-up-teens-page/index.hbs',
+              chunks: ['common', 'anketa/teens/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}anketa/teens/index.html`,
+              content: {
+                ...getCommonContent('/anketa/teens/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/sign-up-adults-page/index.hbs',
+              chunks: ['common', 'anketa/adults/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}anketa/adults/index.html`,
+              content: {
+                ...getCommonContent('/anketa/adults/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/sign-up-success-page/index.hbs',
+              chunks: ['common', 'anketa/last/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}anketa/last/index.html`,
+              content: {
+                ...getCommonContent('/anketa/last/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/sign-up-confirmation-page/index.hbs',
+              chunks: ['common', 'email-confirmed/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}email-confirmed/index.html`,
+              content: {
+                ...getCommonContent('/email-confirmed/')
+              },
+            }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/support-us-page/index.hbs',
+              chunks: ['common', 'supportus/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}supportus/index.html`,
+              content: {
+                ...getCommonContent('/supportus/')
+              },
+            }),
+          ]
+        },
         []
       )
     )),
