@@ -10,7 +10,6 @@ html {
 }
 
 body {
-  padding-top: 90px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -75,5 +74,6 @@ ul {
 
 @import 'styles/font-asesome';
 @import 'styles/container';
+@import 'styles/notifications';
 @import 'header/header';
 @import 'footer/footer';

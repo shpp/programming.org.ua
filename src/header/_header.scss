@@ -1,237 +1,240 @@
 @import '../styles/constants';
 @import '../styles/mixins';
 
-body > header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  background-color: white;
-  border-bottom: 5px solid $color-main-green;
-  min-height: 90px;
-  padding: 0 20px;
-  box-sizing: border-box;
-  position: fixed;
+.header {
+  position: sticky;
   top: 0;
   width: 100vw;
   z-index: 2;
+  border-bottom: 5px solid $color-main-green;
+  background-color: white;
 
-  @include media-lg {
-    height: fit-content;
-  }
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-  .logo {
-    font-family: arial, serif;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 90px;
-    text-decoration: none;
-    color: $color-main-green;
-    position: absolute;
-    top: 0;
-    left: 16px;
+    min-height: 90px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    max-width: 1920px;
+    margin: auto;
 
-    &:first-letter {
-      color: black;
+    @include media-lg {
+      height: fit-content;
     }
   }
 
-  .right {
+  &-title {
+    .logo {
+      font-family: arial, serif;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 90px;
+      text-decoration: none;
+      color: $color-main-green;
+      display: inline-block; // this line is required for ::first-letter selector to be working
+
+      &:first-letter {
+        color: black;
+      }
+    }
+
+    .mobile-menu {
+      .mobile-menu-open,
+      .mobile-menu-close {
+        display: none;
+        border: none;
+        background: none;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        // todo: use well named class instead of tag for selector
+        i {
+          width: 100%;
+          height: 100%;
+          font-size: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .mobile-menu-open {
+        @include media-lg {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &.mobile-menu-opened {
+    .header-container,
+    .header-content,
+    .authenticate {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu-open {
+      display: none;
+    }
+
+    .mobile-menu-close {
+      display: flex;
+    }
+  }
+
+  &-title {
+    margin-right: auto;
+
+    @include media-lg {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &-content {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
-    .mobile-menu-open,
-    .mobile-menu-close {
+    @include media-lg {
       display: none;
-      border: none;
-      background: none;
-      width: 48px;
-      height: 48px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      position: absolute;
-      right: 16px;
-      top: 21px;
+    }
 
-      // todo: use well named class instead of tag for selector
-      i {
-        width: 100%;
-        height: 100%;
-        font-size: 32px;
+    .menu {
+      margin-right: 32px;
+
+      @include media-lg {
+        margin-right: 0;
+      }
+
+      // todo: improve styles maintainability with adding nested menu class
+      & > ul {
+        display: flex;
+        align-items: center;
+
+        @include media-lg {
+          flex-direction: column;
+        }
+
+        & > li {
+          display: flex;
+          position: relative;
+
+          &:hover > ul {
+            display: block;
+          }
+
+          & > ul {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            background-color: white;
+            box-shadow: 0 1px 3px rgb(black, 0.4), 0 1px 2px rgb(black, 0.4);
+
+            li > a {
+              padding: 0 24px;
+            }
+          }
+
+          & > a,
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: $color-menu;
+            font-size: 18px;
+            line-height: 50px;
+            padding: 0 16px;
+            text-decoration: none;
+
+            &:hover {
+              &[href] {
+                color: $color-main-green;
+              }
+
+              background-color: rgba(black, 0.05);
+            }
+          }
+
+          & > a {
+            margin: 0 8px;
+
+            i {
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    .languages {
+      @include media-lg {
+        display: flex;
+        align-items: baseline;
+        margin: 8px 0 16px;
+      }
+
+      // todo: improve readability by replacing li/a by classes
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.en:lang(en),
+        &.ru:lang(ru),
+        &.uk:lang(uk) {
+          border-bottom: 1px dotted $color-font;
+        }
+
+        a {
+          line-height: 1;
+          height: 100%;
+          font-size: 0.7em;
+          text-decoration: none;
+          padding: 3px 6px;
+          color: $color-font;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .authenticate {
+      display: flex;
+      height: 100%;
+
+      @include media-lg {
+        margin: 8px 0;
+      }
+
+      .sign-in,
+      .sign-up {
+        margin: 0 5px;
+        padding: 8px 16px;
+        text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-    }
 
-    &.mobile-menu-opened {
-      width: 100%;
+      .sign-in {
+        color: $color-menu;
 
-      .mobile-menu-open {
-        display: none;
-      }
-
-      .mobile-menu-close {
-        @include media-lg {
-          display: flex;
-        }
-      }
-
-      & > .content {
-        width: 100%;
-
-        @include media-lg {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-    }
-
-    .mobile-menu-open {
-      @include media-lg {
-        display: flex;
-      }
-    }
-
-    & > .content {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      @include media-lg {
-        display: none;
-      }
-
-      .menu {
-        margin-right: 32px;
-
-        @include media-lg {
-          margin-right: 0;
-          margin-top: 84px;
-        }
-
-        // todo: improve styles maintainability with adding nested menu class
-        & > ul {
-          display: flex;
-          align-items: center;
-
-          @include media-lg {
-            flex-direction: column;
-          }
-
-          & > li {
-            display: flex;
-            position: relative;
-
-            &:hover > ul {
-              display: block;
-            }
-
-            & > ul {
-              display: none;
-              position: absolute;
-              top: 50px;
-              left: 50%;
-              transform: translateX(-50%);
-              z-index: 2;
-              background-color: white;
-              box-shadow: 0 1px 3px rgb(black, 0.4), 0 1px 2px rgb(black, 0.4);
-
-              li > a {
-                padding: 0 24px;
-              }
-            }
-
-            & > a,
-            a {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 100%;
-              color: $color-menu;
-              font-size: 18px;
-              line-height: 50px;
-              padding: 0 16px;
-              text-decoration: none;
-
-              &:hover {
-                &[href] {
-                  color: $color-main-green;
-                }
-
-                background-color: rgba(black, 0.05);
-              }
-            }
-
-            & > a {
-              margin: 0 8px;
-
-              i {
-                margin-left: 8px;
-              }
-            }
-          }
-        }
-      }
-
-      .languages {
-        @include media-lg {
-          display: flex;
-          align-items: baseline;
-          margin: 8px 0 16px;
-        }
-
-        // todo: improve readability by replacing li/a by classes
-        li {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          &.en:lang(en),
-          &.ru:lang(ru),
-          &.uk:lang(uk) {
-            border-bottom: 1px dotted $color-font;
-          }
-
-          a {
-            line-height: 1;
-            height: 100%;
-            font-size: 0.7em;
-            text-decoration: none;
-            padding: 3px 6px;
-            color: $color-font;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-      }
-
-      .authenticate {
-        display: flex;
-        height: 100%;
-
-        @include media-lg {
-          margin: 8px 0;
-        }
-
-        .sign-in,
-        .sign-up {
-          margin: 0 5px;
-          padding: 8px 16px;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .sign-in {
-          color: $color-menu;
-
-          &:hover {
-            color: $color-main-green;
-          }
+        &:hover {
+          color: $color-main-green;
         }
       }
     }

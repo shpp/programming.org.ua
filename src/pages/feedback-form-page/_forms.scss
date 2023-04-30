@@ -88,6 +88,9 @@
         color: $color-menu;
 
         figcaption {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           font-size: 14px;
           margin: 16px;
         }

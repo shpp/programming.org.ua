@@ -1,0 +1,22 @@
+@import 'constants';
+
+.notification {
+  font-size: 16px;
+  padding: 10px 15px;
+  text-align: center;
+
+  &-warning {
+    color: $color-dark-gray;
+    background-color: $color-light-yellow;
+  }
+
+  &-success {
+    background-color: $color-light-green;
+    color: $color-main-green;
+  }
+
+  &-error {
+    background-color: $color-light-red;
+    color: $color-red;
+  }
+}

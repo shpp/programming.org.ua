@@ -276,6 +276,9 @@ module.exports = async (_, { mode = 'development' }) => ({
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
+        options: {
+          helperDirs: [__dirname + '/utils/handlebars-helpers'],
+        },
       },
       {
         test: /\.css$/,

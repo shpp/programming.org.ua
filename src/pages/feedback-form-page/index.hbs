@@ -103,13 +103,13 @@
       </button>
     </div>
     <Transition name="slide-fade">
-      <div class="snackbar-success" v-if="responseCode === 200">
+      <div class="notification notification-success snackbar" v-if="responseCode === 200">
         {{htmlWebpackPlugin.options.content.translations.feedback_response_success}}
       </div>
-      <div class="snackbar-error" v-else-if="responseCode === 418">
+      <div class="notification notification-error snackbar" v-else-if="responseCode === 418">
         {{htmlWebpackPlugin.options.content.translations.feedback_response_error_418}}
       </div>
-      <div class="snackbar-error" v-else-if="[500, 400].includes(responseCode)">
+      <div class="notification notification-error snackbar" v-else-if="[500, 400].includes(responseCode)">
         {{htmlWebpackPlugin.options.content.translations.feedback_response_error_500}}
       </div>
     </Transition>

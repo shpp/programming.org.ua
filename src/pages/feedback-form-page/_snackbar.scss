@@ -1,23 +1,13 @@
 @import '../../styles/constants';
 
-[class^='snackbar'] {
-  padding: 8px;
-  color: $color-white;
-  width: 500px;
+.snackbar {
+  max-width: 500px;
   position: fixed;
   left: 0;
-  top: 100px;
+  top: 200px;
   margin: auto;
-  text-align: center;
   right: 0;
-}
-
-.snackbar-error {
-  background-color: $color-red;
-}
-
-.snackbar-success {
-  background-color: $color-main-green;
+  z-index: 3;
 }
 
 /*

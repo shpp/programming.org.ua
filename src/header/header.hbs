@@ -1,18 +1,34 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript>
   <iframe
-    src="https://www.googletagmanager.com/ns.html?id=GTM-WLZMJ4J"
-    height="0"
-    width="0"
-    style="display: none; visibility: hidden"
+    src='https://www.googletagmanager.com/ns.html?id=GTM-WLZMJ4J'
+    height='0'
+    width='0;
+    style='display: none; visibility: hidden;
   ></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header>
-  <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/' class='logo'> Ш++ </a>
-  <div class='right'>
-    <div class='content'>
+<header class='header'>
+  {{#isEqual htmlWebpackPlugin.options.content.translations.isMaintenance 'true'}}
+    <div class='notification notification-error'>{{htmlWebpackPlugin.options.content.translations.maintenanceInfo}} </div>
+  {{/isEqual}}
+  {{#isEqual htmlWebpackPlugin.options.content.lang 'ru'}}
+    <div class='notification notification-warning'>{{htmlWebpackPlugin.options.content.translations.russianWarning}}</div>
+  {{/isEqual}}
+  <div class='header-container'>
+    <div class='header-title'>
+      <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/' class='logo'>Ш++</a>
+      <div class='mobile-menu'>
+        <button class='mobile-menu-open' type='button' onclick='programmingOrgUa.openMobileMenu()'>
+          <i class='fa fa-bars'></i>
+        </button>
+        <button class='mobile-menu-close' type='button' onclick='programmingOrgUa.closeMobileMenu()'>
+          <i class='fa fa-times'></i>
+        </button>
+      </div>
+    </div>
+    <div class='header-content'>
       <nav class='menu'>
         <ul>
           <li>
@@ -49,18 +65,12 @@
           <a href='/ru/{{pageRoute}}'>RU</a>
         </li>
         <li class='language uk'>
-          <a href='/{{pageRoute}}'>UK</a>
+          <a href='/{{pageRoute}}'>UA</a>
         </li>
         <li class='language en'>
           <a href='/en/{{pageRoute}}'>EN</a>
         </li>
       </ul>
     </div>
-    <button class='mobile-menu-open' type='button' onclick='programmingOrgUa.openMobileMenu()'>
-      <i class='fa fa-bars'></i>
-    </button>
-    <button class='mobile-menu-close' type='button' onclick='programmingOrgUa.closeMobileMenu()'>
-      <i class='fa fa-times'></i>
-    </button>
-  </div>
-</header>
+  </header>
+</div>
