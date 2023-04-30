@@ -39,6 +39,16 @@
           </div>
         </div>
       </section>
+      <section class="war">
+        <div class="war-container container">
+          <h2 class="war-title">{{htmlWebpackPlugin.options.content.translations.home.war.title}}</h2>
+          <div class="war-text">
+            {{#each htmlWebpackPlugin.options.content.translations.home.war.p}}
+              <p>{{{this}}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </section>
       <section class="about-us">
         <div class="about-us-container container">
           <h2 class="about-us-title">{{ htmlWebpackPlugin.options.content.translations.home.about.title }}</h2>

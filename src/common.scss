@@ -25,6 +25,10 @@ a {
   &:focus {
     outline: $color-main-green dashed 2px;
   }
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 h1,
