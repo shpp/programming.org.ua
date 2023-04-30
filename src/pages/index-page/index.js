@@ -2,6 +2,7 @@ import './index.scss';
 import Swiper, { Autoplay, Pagination, Navigation } from 'swiper';
 import 'swiper/css';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import { displayHiddenComponentMixin } from '../../mixins';
 
 ('use strict');
 
@@ -16,6 +17,7 @@ function init() {
 
 function setupBlogPosts() {
   createApp({
+    mixins: [displayHiddenComponentMixin],
     data() {
       return { blogPosts: [] };
     },
@@ -40,6 +42,7 @@ function setupBlogPosts() {
 
 function setupFeedbacks() {
   createApp({
+    mixins: [displayHiddenComponentMixin],
     mounted() {
       // todo: use config to get neede url
       fetch('https://back.programming.org.ua/api/feedback', {

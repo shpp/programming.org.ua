@@ -1,9 +1,11 @@
+import { displayHiddenComponentMixin } from '../../mixins';
 import './index.scss';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 
 ('use strict');
 
 createApp({
+  mixins: [displayHiddenComponentMixin],
   mounted() {
     // todo: use config to get neede url
     fetch('https://back.programming.org.ua/api/feedback', {
@@ -45,4 +47,4 @@ createApp({
       return text.length > this.smallTextLength;
     },
   },
-}).mount('.feedbacks');
+}).mount('main');

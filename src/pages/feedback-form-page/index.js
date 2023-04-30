@@ -1,10 +1,12 @@
 import './index.scss';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import ImageUpload from './image-upload';
+import { displayHiddenComponentMixin } from '../../mixins';
 
 ('use strict');
 
 createApp({
+  mixins: [displayHiddenComponentMixin],
   components: {
     ImageUpload,
   },
@@ -14,9 +16,6 @@ createApp({
     loading: false,
     responseCode: null,
   }),
-  mounted() {
-    this.$refs.form.classList.remove('hidden');
-  },
   methods: {
     async validateAndSubmit() {
       this.shouldBeValidated = true;

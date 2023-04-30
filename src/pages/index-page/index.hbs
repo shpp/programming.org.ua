@@ -59,7 +59,7 @@
           </div>
         </div>
       </section>
-      <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
+      <section class="feedbacks vue-container">
         <h2 class="feedbacks-title">{{ htmlWebpackPlugin.options.content.translations.home.feedbacks.title }}</h2>
         <div class="feedbacks-container container">
           <div class="feedbacks-slider-container">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </section>
-      <section class="blog-posts" @vue:mounted="mounted()" :style="{ display: blogPosts?.length > 0 ? 'block' : 'none' }">
+      <section class="blog-posts vue-container">
         <div class="container">
           <h2>{{ htmlWebpackPlugin.options.content.translations.home.latest_news.title }}</h2>
           <ul>

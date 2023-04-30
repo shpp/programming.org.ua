@@ -49,10 +49,6 @@ ul {
   outline: $color-main-green dashed 2px;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 .button-primary {
   background: $color-main-green;
   border: none;
@@ -66,6 +62,14 @@ ul {
 
   &:hover {
     background-color: $color-dark-green;
+  }
+}
+
+.vue-container {
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
   }
 }
 
