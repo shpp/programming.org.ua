@@ -69,7 +69,7 @@
         i {
           margin-left: auto;
           color: $color-main-green;
-          transition: all 0.1s ease-in-out;
+          transition: all $hover-transition-speed ease-in-out;
           transform-origin: center;
         }
       }

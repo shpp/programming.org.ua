@@ -1,0 +1,151 @@
+@import 'constants';
+
+.form {
+    background-color: $color-white;
+    border: 2px solid $color-light-gray-2;
+    box-sizing: border-box;
+    margin: 48px auto;
+    max-width: 540px;
+    padding: 16px 32px;
+
+    h2 {
+        text-align: center;
+    }
+
+    &-element {
+        margin-bottom: 24px;
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+
+            sup {
+                color: $color-red;
+            }
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            border: 2px solid $color-light-gray-2;
+            color: $color-menu;
+            display: block;
+            font-size: 18px;
+            min-height: 48px;
+            padding: 8px;
+            width: 100%;
+
+            &:invalid {
+                border: 2px dashed $color-red;
+
+                &:focus {
+                    border: 2px solid $color-light-gray-2;
+                }
+            }
+        }
+
+        &-image {
+            label {
+                border: 2px dashed $color-light-gray-2;
+                min-height: 80px;
+                padding: 16px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $color-menu;
+                cursor: pointer;
+                margin-top: 0;
+
+                &.dragActive {
+                    border: 2px dashed $color-gray;
+                }
+            }
+
+            input[type=file] {
+                opacity: 0;
+                display: block;
+                height: 0;
+                width: 0;
+            }
+
+            input:invalid+label,
+            input:invalid+figure {
+                border: 2px dashed $color-red;
+            }
+            input:focus+label {
+                border: 2px dashed $color-main-green;
+            }
+
+            figure {
+                display: flex;
+                border: 2px dashed $color-light-gray-2;
+                margin: 0;
+                align-items: center;
+                justify-content: space-between;
+                padding: 8px;
+                color: $color-menu;
+
+                figcaption {
+                    font-size: 14px;
+                    margin: 16px;
+                }
+
+                img,
+                .preview {
+                    background-position: center center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    object-fit: cover;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+
+                button {
+                    background: $color-red;
+                    color: $color-white;
+                    border: none;
+                    height: 24px;
+                    width: 24px;
+                    line-height: 24px;
+                    cursor: pointer;
+                    margin-left: auto;
+                    transition: background $hover-transition-speed;
+
+                    &:hover {
+                        transition: background $hover-transition-speed;
+                        background-color: $color-dark-red;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &-submit {
+        text-align: center;
+        padding: 24px;
+    }
+}
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #ccc;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #ccc;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #ccc;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #ccc;
+}
