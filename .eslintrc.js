@@ -11,6 +11,5 @@ module.exports = {
   },
   rules: {
     'no-new': 'off',
-    strict: ['error', 'global'],
   },
 };
