@@ -3,10 +3,8 @@
 // This is useful in cases when you don't want for ugly Vue template be visible before JS with Vue is inited on page
 const displayHiddenComponentMixin = {
   mounted() {
-    this.$el.parentNode.classList.add('visible')
-  }
+    this.$el.parentNode.classList.add('visible');
+  },
 };
 
-export {
-  displayHiddenComponentMixin
-}
+export { displayHiddenComponentMixin };

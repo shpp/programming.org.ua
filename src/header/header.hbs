@@ -1,76 +1,101 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-  <iframe
-    src='https://www.googletagmanager.com/ns.html?id=GTM-WLZMJ4J'
-    height='0'
-    width='0;
-    style='display: none; visibility: hidden;
-  ></iframe>
+  <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-WLZMJ4J' height='0' width='0;
+  style='display: none; visibility: hidden; />
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header class='header'>
+<header class="header">
   {{#isEqual htmlWebpackPlugin.options.content.translations.isMaintenance 'true'}}
-    <div class='notification notification-error'>{{htmlWebpackPlugin.options.content.translations.maintenanceInfo}} </div>
+  <div class="notification notification-error">
+    {{ htmlWebpackPlugin.options.content.translations.maintenanceInfo }}
+  </div>
   {{/isEqual}}
   {{#isEqual htmlWebpackPlugin.options.content.lang 'ru'}}
-    <div class='notification notification-warning'>{{htmlWebpackPlugin.options.content.translations.russianWarning}}</div>
+  <div class="notification notification-warning">
+    {{ htmlWebpackPlugin.options.content.translations.russianWarning }}
+  </div>
   {{/isEqual}}
-  <div class='header-container'>
-    <div class='header-title'>
-      <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/' class='logo'>Ш++</a>
-      <div class='mobile-menu'>
-        <button class='mobile-menu-open' type='button' onclick='programmingOrgUa.openMobileMenu()'>
-          <i class='fa fa-bars'></i>
+  <div class="header-container">
+    <div class="header-title">
+      <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/" class="logo">Ш++</a>
+      <div class="mobile-menu">
+        <button class="mobile-menu-open" type="button" onclick="programmingOrgUa.openMobileMenu()">
+          <i class="fa fa-bars"></i>
         </button>
-        <button class='mobile-menu-close' type='button' onclick='programmingOrgUa.closeMobileMenu()'>
-          <i class='fa fa-times'></i>
+        <button
+          class="mobile-menu-close"
+          type="button"
+          onclick="programmingOrgUa.closeMobileMenu()"
+        >
+          <i class="fa fa-times"></i>
         </button>
       </div>
     </div>
-    <div class='header-content'>
-      <nav class='menu'>
+    <div class="header-content">
+      <nav class="menu">
         <ul>
           <li>
-            <a>{{ htmlWebpackPlugin.options.content.translations.courses.default }} <i class='fa fa-angle-down' aria-hidden='true'></i></a>
+            <a
+              >{{ htmlWebpackPlugin.options.content.translations.courses.default }}
+              <i class="fa fa-angle-down" aria-hidden="true"></i
+            ></a>
             <ul>
               <li>
-                <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults'>{{ htmlWebpackPlugin.options.content.translations.courses.adults }}</a>
+                <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults">{{
+                  htmlWebpackPlugin.options.content.translations.courses.adults
+                }}</a>
               </li>
               <li>
-                <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens'>{{ htmlWebpackPlugin.options.content.translations.courses.teens }}</a>
+                <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens">{{
+                  htmlWebpackPlugin.options.content.translations.courses.teens
+                }}</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/about'>{{ htmlWebpackPlugin.options.content.translations.about.title }}</a>
+            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/about">{{
+              htmlWebpackPlugin.options.content.translations.about.title
+            }}</a>
           </li>
           <li>
-            <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all'>{{ htmlWebpackPlugin.options.content.translations.feedback_all_link }}</a>
+            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all">{{
+              htmlWebpackPlugin.options.content.translations.feedback_all_link
+            }}</a>
           </li>
           <li>
-            <a href='https://blog.programming.org.ua'>{{ htmlWebpackPlugin.options.content.translations.news }}</a>
+            <a href="https://blog.programming.org.ua">{{
+              htmlWebpackPlugin.options.content.translations.news
+            }}</a>
           </li>
           <li>
-            <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/contacts'>{{ htmlWebpackPlugin.options.content.translations.contacts.default }}</a>
+            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/contacts">{{
+              htmlWebpackPlugin.options.content.translations.contacts.default
+            }}</a>
           </li>
         </ul>
       </nav>
-      <div class='authenticate'>
-        <a href='{{ htmlWebpackPlugin.options.content.langPrefix }}/anketa' class='button-primary sign-up'>{{ htmlWebpackPlugin.options.content.translations.anketa }}</a>
-        <a href='https://portal.programming.org.ua/login' class='sign-in'>{{ htmlWebpackPlugin.options.content.translations.sign_in }}</a>
+      <div class="authenticate">
+        <a
+          href="{{ htmlWebpackPlugin.options.content.langPrefix }}/anketa"
+          class="button-primary sign-up"
+          >{{ htmlWebpackPlugin.options.content.translations.anketa }}</a
+        >
+        <a href="https://portal.programming.org.ua/login" class="sign-in">{{
+          htmlWebpackPlugin.options.content.translations.sign_in
+        }}</a>
       </div>
-      <ul class='languages'>
-        <li class='language ru'>
-          <a href='/ru/{{pageRoute}}'>RU</a>
+      <ul class="languages">
+        <li class="language ru">
+          <a href="/ru/{{ pageRoute }}">RU</a>
         </li>
-        <li class='language uk'>
-          <a href='/{{pageRoute}}'>UA</a>
+        <li class="language uk">
+          <a href="/{{ pageRoute }}">UA</a>
         </li>
-        <li class='language en'>
-          <a href='/en/{{pageRoute}}'>EN</a>
+        <li class="language en">
+          <a href="/en/{{ pageRoute }}">EN</a>
         </li>
       </ul>
     </div>
-  </header>
-</div>
+  </div>
+</header>

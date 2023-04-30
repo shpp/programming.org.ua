@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ htmlWebpackPlugin.options.content.lang }}">
-<head>
-  {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.email_confirmed}}
-  {{> ../../template-partials/head}}
-</head>
-<body>
-{{> ../../header/header pageRoute='email-confirmed'}}
-<main>
-  sign up confirmed page
-</main>
-{{> ../../footer/footer}}
-</body>
+  <head>
+    {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.email_confirmed}}
+    {{> ../../template-partials/head}}
+  </head>
+  <body>
+    {{> ../../header/header pageRoute='email-confirmed'}}
+    <main>sign up confirmed page</main>
+    {{> ../../footer/footer}}
+  </body>
 </html>

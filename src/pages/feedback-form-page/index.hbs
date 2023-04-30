@@ -1,120 +1,132 @@
 <!DOCTYPE html>
 <html lang="{{ htmlWebpackPlugin.options.content.lang }}">
-<head>
-  {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.feedback_form}}
-  {{> ../../template-partials/head}}
-</head>
-<body>
-{{> ../../header/header pageRoute='feedback-form'}}
-<main class="vue-container">
-  <form class="form" ref="form" @submit.prevent>
-    <h2>{{htmlWebpackPlugin.options.content.translations.feedback_form_head}}</h1>
-    <div class="form-element">
-      <label for="feedback-role">
-        {{htmlWebpackPlugin.options.content.translations.feedback_whoareyou}}
-        <sup>*</sup>
-      </label>
-      <select id="role" v-model="role" name="role">
-        <option value="student">{{htmlWebpackPlugin.options.content.translations.feedback_role_user}}</option>
-        <option value="company">{{htmlWebpackPlugin.options.content.translations.feedback_role_company}}</option>
-      </select>
-    </div>
-    <div class="form-element">
-      <label for="name">
-        <span v-if="role === 'student'">
-          {{htmlWebpackPlugin.options.content.translations.ff_name}}
-        </span>
-        <span v-else>
-          {{htmlWebpackPlugin.options.content.translations.feedback_company_name}}
-        </span>
-        <sup>*</sup>
-      </label>
-      <input
-        type="text"
-        name="name"
-        :required="shouldBeValidated"
-        :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.ff_name_pl}}' : ''"
-        autofocus
-        id="name">
-    </div>
-    <div class="form-element" v-if="role === 'student'">
-      <label for="surname">
-        {{htmlWebpackPlugin.options.content.translations.ff_surname}}
-        <sup>*</sup>
-      </label>
-      <input
-        type="text"
-        name="surname"
-        :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.ff_surname_pl}}' : ''"
-        :required="shouldBeValidated"
-        id="surname">
-    </div>
-    <div class="form-element">
-      <label for="link">
-        <span v-if="role === 'student'">
-          {{htmlWebpackPlugin.options.content.translations.feedback_facebook}}
-        </span>
-        <span v-else>
-          {{htmlWebpackPlugin.options.content.translations.feedback_company_site}}
-        </span>
-        <sup>*</sup>
-      </label>
-      <input
-        type="text"
-        :required="shouldBeValidated"
-        :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.feedback_facebook_pl}}' : ''"
-        :pattern="role === 'student' ? 'https://(www.)?facebook.com/[a-zA-Z0-9._\\-\/]+' : 'https?://[a-zA-Z0-9._\\-\/\?\#]+'"
-        name="link"
-        id="link">
-    </div>
-    <div class="form-element">
-      <label for="image">
-        <span v-if="role === 'student'">
-          {{htmlWebpackPlugin.options.content.translations.feedback_avatar}}
-        </span>
-        <span v-else>
-          {{htmlWebpackPlugin.options.content.translations.feedback_company_logo}}
-        </span>
-        <sup>*</sup>
-      </label>
-      <image-upload
-        placeholder="{{htmlWebpackPlugin.options.content.translations.feedback_file}}"
-        name="image"
-        :required="shouldBeValidated"
-      />
-    </div>
-    <div class="form-element">
-      <label for="message">
-        {{htmlWebpackPlugin.options.content.translations.feedback_message}}
-        <sup>*</sup>
-      </label>
-      <textarea
-        :required="shouldBeValidated"
-        name="message"
-        id="message"
-        rows="10"></textarea>
-    </div>
-    <div class="form-submit">
-      <button class="button-primary" type="button" disabled v-if="loading">
-        {{htmlWebpackPlugin.options.content.translations.feedback_submiting}}
-      </button>
-      <button class="button-primary" type="button" @click="validateAndSubmit" v-else>
-        {{htmlWebpackPlugin.options.content.translations.feedback_submit}}
-      </button>
-    </div>
-    <Transition name="slide-fade">
-      <div class="notification notification-success snackbar" v-if="responseCode === 200">
-        {{htmlWebpackPlugin.options.content.translations.feedback_response_success}}
-      </div>
-      <div class="notification notification-error snackbar" v-else-if="responseCode === 418">
-        {{htmlWebpackPlugin.options.content.translations.feedback_response_error_418}}
-      </div>
-      <div class="notification notification-error snackbar" v-else-if="[500, 400].includes(responseCode)">
-        {{htmlWebpackPlugin.options.content.translations.feedback_response_error_500}}
-      </div>
-    </Transition>
-  </form>
-</main>
-{{> ../../footer/footer}}
-</body>
+  <head>
+    {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.feedback_form}}
+    {{> ../../template-partials/head}}
+  </head>
+  <body>
+    {{> ../../header/header pageRoute='feedback-form'}}
+    <main class="vue-container">
+      <form class="form" ref="form" @submit.prevent>
+        <h2>{{ htmlWebpackPlugin.options.content.translations.feedback_form_head }}</h2>
+        <div class="form-element">
+          <label for="feedback-role">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_whoareyou }}
+            <sup>*</sup>
+          </label>
+          <select id="role" v-model="role" name="role">
+            <option value="student">
+              {{ htmlWebpackPlugin.options.content.translations.feedback_role_user }}
+            </option>
+            <option value="company">
+              {{ htmlWebpackPlugin.options.content.translations.feedback_role_company }}
+            </option>
+          </select>
+        </div>
+        <div class="form-element">
+          <label for="name">
+            <span v-if="role === 'student'">
+              {{ htmlWebpackPlugin.options.content.translations.ff_name }}
+            </span>
+            <span v-else>
+              {{ htmlWebpackPlugin.options.content.translations.feedback_company_name }}
+            </span>
+            <sup>*</sup>
+          </label>
+          <input
+            type="text"
+            name="name"
+            :required="shouldBeValidated"
+            :placeholder="role === 'student' ? '{{
+              htmlWebpackPlugin.options.content.translations.ff_name_pl
+            }}' : ''"
+            autofocus
+            id="name"
+          />
+        </div>
+        <div class="form-element" v-if="role === 'student'">
+          <label for="surname">
+            {{ htmlWebpackPlugin.options.content.translations.ff_surname }}
+            <sup>*</sup>
+          </label>
+          <input
+            type="text"
+            name="surname"
+            :placeholder="role === 'student' ? '{{
+              htmlWebpackPlugin.options.content.translations.ff_surname_pl
+            }}' : ''"
+            :required="shouldBeValidated"
+            id="surname"
+          />
+        </div>
+        <div class="form-element">
+          <label for="link">
+            <span v-if="role === 'student'">
+              {{ htmlWebpackPlugin.options.content.translations.feedback_facebook }}
+            </span>
+            <span v-else>
+              {{ htmlWebpackPlugin.options.content.translations.feedback_company_site }}
+            </span>
+            <sup>*</sup>
+          </label>
+          <input
+            type="text"
+            :required="shouldBeValidated"
+            :placeholder="role === 'student' ? '{{
+              htmlWebpackPlugin.options.content.translations.feedback_facebook_pl
+            }}' : ''"
+            :pattern="role === 'student' ? 'https://(www.)?facebook.com/[a-zA-Z0-9._\\-\/]+' : 'https?://[a-zA-Z0-9._\\-\/\?\#]+'"
+            name="link"
+            id="link"
+          />
+        </div>
+        <div class="form-element">
+          <label for="image">
+            <span v-if="role === 'student'">
+              {{ htmlWebpackPlugin.options.content.translations.feedback_avatar }}
+            </span>
+            <span v-else>
+              {{ htmlWebpackPlugin.options.content.translations.feedback_company_logo }}
+            </span>
+            <sup>*</sup>
+          </label>
+          <image-upload
+            placeholder="{{ htmlWebpackPlugin.options.content.translations.feedback_file }}"
+            name="image"
+            :required="shouldBeValidated"
+          ></image-upload>
+        </div>
+        <div class="form-element">
+          <label for="message">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_message }}
+            <sup>*</sup>
+          </label>
+          <textarea :required="shouldBeValidated" name="message" id="message" rows="10"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="button-primary" type="button" disabled v-if="loading">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_submiting }}
+          </button>
+          <button class="button-primary" type="button" @click="validateAndSubmit" v-else>
+            {{ htmlWebpackPlugin.options.content.translations.feedback_submit }}
+          </button>
+        </div>
+        <Transition name="slide-fade">
+          <div class="notification notification-success snackbar" v-if="responseCode === 200">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_response_success }}
+          </div>
+          <div class="notification notification-error snackbar" v-else-if="responseCode === 418">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_response_error_418 }}
+          </div>
+          <div
+            class="notification notification-error snackbar"
+            v-else-if="[500, 400].includes(responseCode)"
+          >
+            {{ htmlWebpackPlugin.options.content.translations.feedback_response_error_500 }}
+          </div>
+        </Transition>
+      </form>
+    </main>
+    {{> ../../footer/footer}}
+  </body>
 </html>

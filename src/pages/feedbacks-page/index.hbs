@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="{{ htmlWebpackPlugin.options.content.lang }}">
-<head>
+  <head>
     {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.feedback_all}}
     {{> ../../template-partials/head}}
-</head>
-<body>
+  </head>
+  <body>
     <!-- End Google Tag Manager (noscript) -->
     {{> ../../header/header pageRoute='feedback-all'}}
     <main class="vue-container">
-        <section class="feedbacks">
-            <div class="feedbacks-container container">
-                <h2 class="feedbacks-title">
-                {{ htmlWebpackPlugin.options.content.translations.feedback_all_head }}
-                </h2>
-                <a
-                class="button-primary feedbacks-form-button"
-                href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form">
-                    {{ htmlWebpackPlugin.options.content.translations.feedback_button }}
-                </a>
-                <div class="feedback" v-for="(feedback, index) in feedbacks">
-                    <header class="feedback-header">
-                        <img class="feedback-image" :src="getImage(feedback)" :alt="getName(feedback)" />
-                        <a class="feedback-name-link" :href="feedback.link" target="_blank">
-                            <strong>\{{getName(feedback)}}</strong>
-                        </a>
-                    </header>
-                    <p class="feedback-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
-                    <p class="feedback-text" v-else>
-                        \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
-                        </br>
-                        <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{ htmlWebpackPlugin.options.content.translations.read_more }}</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+      <section class="feedbacks">
+        <div class="feedbacks-container container">
+          <h2 class="feedbacks-title">
+            {{ htmlWebpackPlugin.options.content.translations.feedback_all_head }}
+          </h2>
+          <a
+            class="button-primary feedbacks-form-button"
+            href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form"
+          >
+            {{ htmlWebpackPlugin.options.content.translations.feedback_button }}
+          </a>
+          <div class="feedback" v-for="(feedback, index) in feedbacks">
+            <header class="feedback-header">
+              <img class="feedback-image" :src="getImage(feedback)" :alt="getName(feedback)" />
+              <a class="feedback-name-link" :href="feedback.link" target="_blank">
+                <strong>\{{ getName(feedback) }}</strong>
+              </a>
+            </header>
+            <p class="feedback-text" v-if="!isLongText(feedback.message)">
+              \{{ feedback.message }}
+            </p>
+            <p class="feedback-text" v-else>
+              \{{ shouldShowFullText(index) ? feedback.message : getShortText(feedback.message) }}
+              <br />
+              <a class="feedback-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{
+                htmlWebpackPlugin.options.content.translations.read_more
+              }}</a>
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
     {{> ../../footer/footer}}
-</body>
+  </body>
 </html>

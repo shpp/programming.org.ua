@@ -27,31 +27,52 @@
             </li>
           </ul>
           <div class="banner-courses">
-            <a class="banner-course" href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults">
-              <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.title }}</h3>
-              <span class="banner-course-tip">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.tip }}</span>
-              <span class="banner-course-date">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.start }}{{ htmlWebpackPlugin.options.content.startDate }}</span>
+            <a
+              class="banner-course"
+              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults"
+            >
+              <h3 class="banner-course-type">
+                {{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.title }}
+              </h3>
+              <span class="banner-course-tip">{{
+                htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.tip
+              }}</span>
+              <span class="banner-course-date"
+                >{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.start
+                }}{{ htmlWebpackPlugin.options.content.startDate }}</span
+              >
             </a>
-            <a class="banner-course" href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens">
-              <h3 class="banner-course-type">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.title }}</h3>
-              <span class="banner-course-tip">{{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.age }}</span>
+            <a
+              class="banner-course"
+              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens"
+            >
+              <h3 class="banner-course-type">
+                {{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.title }}
+              </h3>
+              <span class="banner-course-tip">{{
+                htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.age
+              }}</span>
             </a>
           </div>
         </div>
       </section>
       <section class="war">
         <div class="war-container container">
-          <h2 class="war-title">{{htmlWebpackPlugin.options.content.translations.home.war.title}}</h2>
+          <h2 class="war-title">
+            {{ htmlWebpackPlugin.options.content.translations.home.war.title }}
+          </h2>
           <div class="war-text">
             {{#each htmlWebpackPlugin.options.content.translations.home.war.p}}
-              <p>{{{this}}}</p>
+            <p>{{{this}}}</p>
             {{/each}}
           </div>
         </div>
       </section>
       <section class="about-us">
         <div class="about-us-container container">
-          <h2 class="about-us-title">{{ htmlWebpackPlugin.options.content.translations.home.about.title }}</h2>
+          <h2 class="about-us-title">
+            {{ htmlWebpackPlugin.options.content.translations.home.about.title }}
+          </h2>
           <div class="about-us-text">
             {{#each htmlWebpackPlugin.options.content.translations.courses_p }}
             <p>{{{ this }}}</p>
@@ -60,23 +81,38 @@
         </div>
       </section>
       <section class="feedbacks vue-container">
-        <h2 class="feedbacks-title">{{ htmlWebpackPlugin.options.content.translations.home.feedbacks.title }}</h2>
+        <h2 class="feedbacks-title">
+          {{ htmlWebpackPlugin.options.content.translations.home.feedbacks.title }}
+        </h2>
         <div class="feedbacks-container container">
           <div class="feedbacks-slider-container">
             <div class="swiper feedbacks-slider" ref="sliderRef">
               <div class="swiper-wrapper">
                 <div class="feedbacks-slide swiper-slide" v-for="(feedback, index) in feedbacks">
                   <header class="feedbacks-slide-header">
-                    <img class="feedbacks-slide-image" :src="getImage(feedback)" :alt="getName(feedback)" />
+                    <img
+                      class="feedbacks-slide-image"
+                      :src="getImage(feedback)"
+                      :alt="getName(feedback)"
+                    />
                     <a class="feedbacks-slide-name-link" :href="feedback.link" target="_blank">
-                      <strong>\{{getName(feedback)}}</strong>
+                      <strong>\{{ getName(feedback) }}</strong>
                     </a>
                   </header>
-                  <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">\{{feedback.message}}</p>
+                  <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">
+                    \{{ feedback.message }}
+                  </p>
                   <p class="feedbacks-slide-text" v-else>
-                      \{{shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)}}
-                    </br>
-                    <a class="feedbacks-slide-link" v-if="!shouldShowFullText(index)" @click="more(index)">{{ htmlWebpackPlugin.options.content.translations.read_more }}</a>
+                    \{{
+                      shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)
+                    }}
+                    <br />
+                    <a
+                      class="feedbacks-slide-link"
+                      v-if="!shouldShowFullText(index)"
+                      @click="more(index)"
+                      >{{ htmlWebpackPlugin.options.content.translations.read_more }}</a
+                    >
                   </p>
                 </div>
               </div>
@@ -86,8 +122,16 @@
           </div>
           <div class="swiper-pagination"></div>
           <div class="feedbacks-buttons">
-            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form" class="feedbacks-buttons-leave-your-feedback button-primary">{{ htmlWebpackPlugin.options.content.translations.feedback_button }}</a>
-            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all" class="feedbacks-buttons-watch-all-responses">{{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.see_all }}</a>
+            <a
+              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form"
+              class="feedbacks-buttons-leave-your-feedback button-primary"
+              >{{ htmlWebpackPlugin.options.content.translations.feedback_button }}</a
+            >
+            <a
+              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all"
+              class="feedbacks-buttons-watch-all-responses"
+              >{{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.see_all }}</a
+            >
           </div>
         </div>
       </section>
@@ -101,7 +145,7 @@
                 <a :href="post.link">\{{ post.title.rendered }}</a>
               </h3>
               <div v-html="post.excerpt.rendered"></div>
-              <span class="date">\{{post.date.split('T')[0]}}</span>
+              <span class="date">\{{ post.date.split('T')[0] }}</span>
             </li>
           </ul>
           <div class="more-posts-container">
@@ -126,12 +170,12 @@
                   <i class="fa fa-chevron-right text-green" aria-hidden="true"></i>
                 </summary>
                 <div class="content">
-                  <p>
-                    {{{ this.description }}}
-                  </p>
+                  <p>{{{ this.description }}}</p>
                   {{#each this.blocks }}
                   <div>
-                    <p><strong>{{{ this.headline }}}</strong></p>
+                    <p>
+                      <strong>{{{ this.headline }}}</strong>
+                    </p>
                     {{#each this.p }}
                     <p>✅ {{{ this }}}</p>
                     {{/each}}
@@ -197,7 +241,11 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://dynamicstreaming.net/" class="partners-slide-link">
-                <img class="partners-slide-image" src="/img/dynamic_streaming.png" alt="dynamic_streaming" />
+                <img
+                  class="partners-slide-image"
+                  src="/img/dynamic_streaming.png"
+                  alt="dynamic_streaming"
+                />
               </a>
             </div>
 
@@ -221,7 +269,11 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://www.jetbrains.com" class="partners-slide-link">
-                <img class="partners-slide-image" src="/img/jetbrains-variant-4.svg" alt="jetbrains" />
+                <img
+                  class="partners-slide-image"
+                  src="/img/jetbrains-variant-4.svg"
+                  alt="jetbrains"
+                />
               </a>
             </div>
 

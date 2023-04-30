@@ -1,20 +1,20 @@
 @import '../../styles/constants';
 
 .war {
-    padding: 64px;
-    background-color: $color-dark-gray;
-    color: $color-white;
+  padding: 64px;
+  background-color: $color-dark-gray;
+  color: $color-white;
 
-    &-title {
-        text-align: center;
-        font-family: "Montserrat", sans-serif;
-    }
+  &-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-    &-container {
-        max-width: 550px;
-    }
+  &-container {
+    max-width: 550px;
+  }
 
-    &-text {
-        font-size: 20px;
-    }
+  &-text {
+    font-size: 20px;
+  }
 }

@@ -2,6 +2,7 @@ import { displayHiddenComponentMixin } from '../../mixins';
 import './index.scss';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 
+// eslint-disable-next-line no-unused-expressions
 ('use strict');
 
 createApp({
@@ -13,7 +14,9 @@ createApp({
         accept: 'application/json, text/plain, */*',
         'content-type': 'application/x-www-form-urlencoded',
       },
-      body: `count=6&onlyStudents=true&feedbackType=student&lang=${document.documentElement.lang ?? 'en'}`,
+      body: `count=6&onlyStudents=true&feedbackType=student&lang=${
+        document.documentElement.lang ?? 'en'
+      }`,
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',

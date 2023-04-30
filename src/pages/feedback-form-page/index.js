@@ -3,6 +3,7 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import ImageUpload from './image-upload';
 import { displayHiddenComponentMixin } from '../../mixins';
 
+// eslint-disable-next-line no-unused-expressions
 ('use strict');
 
 createApp({

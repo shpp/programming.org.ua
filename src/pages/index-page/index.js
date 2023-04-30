@@ -4,6 +4,7 @@ import 'swiper/css';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import { displayHiddenComponentMixin } from '../../mixins';
 
+// eslint-disable-next-line no-unused-expressions
 ('use strict');
 
 init();
@@ -27,14 +28,18 @@ function setupBlogPosts() {
         .then((res) => res.json())
         .then((res) => {
           this.blogPosts = res.filter(
-            ({ polylang_current_lang }) =>
-              polylang_current_lang === { en: 'en_GB', uk: 'uk', ru: 'ru_RU' }[document.documentElement.lang] ?? 'en_GB'
+            ({ polylang_current_lang: postLanguage }) =>
+              postLanguage ===
+                { en: 'en_GB', uk: 'uk', ru: 'ru_RU' }[document.documentElement.lang] ?? 'en_GB'
           );
         });
     },
     methods: {
       getImage(post = null) {
-        return post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.large?.source_url || null;
+        return (
+          post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.large?.source_url ||
+          null
+        );
       },
     },
   }).mount('.blog-posts');
@@ -50,7 +55,9 @@ function setupFeedbacks() {
           accept: 'application/json, text/plain, */*',
           'content-type': 'application/x-www-form-urlencoded',
         },
-        body: `count=6&onlyStudents=true&feedbackType=random&lang=${document.documentElement.lang ?? 'en'}`,
+        body: `count=6&onlyStudents=true&feedbackType=random&lang=${
+          document.documentElement.lang ?? 'en'
+        }`,
         method: 'POST',
         mode: 'cors',
         credentials: 'omit',
@@ -93,7 +100,8 @@ function setupFeedbacks() {
         return this.isFullTextMap[index];
       },
       getName: (feedback) => [feedback.name, feedback.surname].join(' '),
-      getImage: (feedback) => `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
+      getImage: (feedback) =>
+        `https://back.programming.org.ua/storage/img/feedbacks/${feedback.image}`,
       getShortText(text) {
         return `${text.slice(0, this.smallTextLength)}...`;
       },

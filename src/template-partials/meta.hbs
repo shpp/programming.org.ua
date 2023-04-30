@@ -1,24 +1,27 @@
-<meta charset='UTF-8' />
-<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' />
-<meta http-equiv='X-UA-Compatible' content='ie=edge' />
-<meta name='Description' content='{{ pageTranslations.meta.description }}' />
-<meta name='Keywords' content='{{ pageTranslations.meta.keywords }}' />
-<meta property='og:title' content='{{ pageTranslations.meta.title }}' />
-<meta property='og:type' content='website' />
-<meta property='og:url' content='https://programming.org.ua' />
-<meta property='og:description' content='{{ pageTranslations.meta.description }}' />
-<meta property='og:locale' content='{{ htmlWebpackPlugin.options.content.locale }}' />
-<meta property='og:site_name' content='Sh++' />
-<meta name='twitter:card' content='summary' />
-<meta name='twitter:site' content='@shplusplus' />
-<meta name='twitter:title' content='{{ pageTranslations.meta.title }}' />
-<meta name='twitter:description' content='{{ pageTranslations.meta.description }}' />
-<link rel='apple-touch-icon' sizes='180x180' href='/img/apple-touch-icon.png'>
-<link rel='icon' type='image/png' sizes='32x32' href='/img/favicon-32x32.png'>
-<link rel='icon' type='image/png' sizes='16x16' href='/img/favicon-16x16.png'>
-<link rel='manifest' href='/site.webmanifest'>
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="Description" content="{{ pageTranslations.meta.description }}" />
+<meta name="Keywords" content="{{ pageTranslations.meta.keywords }}" />
+<meta property="og:title" content="{{ pageTranslations.meta.title }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://programming.org.ua" />
+<meta property="og:description" content="{{ pageTranslations.meta.description }}" />
+<meta property="og:locale" content="{{ htmlWebpackPlugin.options.content.locale }}" />
+<meta property="og:site_name" content="Sh++" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@shplusplus" />
+<meta name="twitter:title" content="{{ pageTranslations.meta.title }}" />
+<meta name="twitter:description" content="{{ pageTranslations.meta.description }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <title>{{ pageTranslations.meta.title }}</title>
-<link rel='canonical' href='{{htmlWebpackPlugin.options.content.canonicalUrl}}' />
+<link rel="canonical" href="{{ htmlWebpackPlugin.options.content.canonicalUrl }}" />
 {{#each htmlWebpackPlugin.options.content.alternativeLocales}}
-    <link rel='alternate' hreflang='{{this.lang}}' href='{{this.url}}' />
+<link rel="alternate" hreflang="{{ this.lang }}" href="{{ this.url }}" />
 {{/each}}

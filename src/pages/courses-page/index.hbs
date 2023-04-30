@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ htmlWebpackPlugin.options.content.lang }}">
-<head>
-  {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.courses}}
-  {{> ../../template-partials/head}}
-</head>
-<body>
-{{> ../../header/header pageRoute='courses'}}
-<main>
-  courses page
-</main>
-{{> ../../footer/footer}}
-</body>
+  <head>
+    {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.courses}}
+    {{> ../../template-partials/head}}
+  </head>
+  <body>
+    {{> ../../header/header pageRoute='courses'}}
+    <main>courses page</main>
+    {{> ../../footer/footer}}
+  </body>
 </html>

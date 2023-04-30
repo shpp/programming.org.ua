@@ -1,120 +1,132 @@
 <!DOCTYPE html>
 <html lang="{{ htmlWebpackPlugin.options.content.lang }}">
-<head>
-  {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.support_us}}
-  {{> ../../template-partials/head}}
-</head>
-<body>
-{{> ../../header/header pageRoute='supportus'}}
-<main>
-  <section class="support-description">
-    <div class="support-description-container container">
-      <div>
-        {{{ htmlWebpackPlugin.options.content.shppCreation }}}
-      </div>
-      <div>
-        {{{ htmlWebpackPlugin.options.content.kowoCreation }}}
-      </div>
-      <div>
-        {{{ htmlWebpackPlugin.options.content.p2pCreation }}}
-      </div>
+  <head>
+    {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.support_us}}
+    {{> ../../template-partials/head}}
+  </head>
+  <body>
+    {{> ../../header/header pageRoute='supportus'}}
+    <main>
+      <section class="support-description">
+        <div class="support-description-container container">
+          <div>{{{ htmlWebpackPlugin.options.content.shppCreation }}}</div>
+          <div>{{{ htmlWebpackPlugin.options.content.kowoCreation }}}</div>
+          <div>{{{ htmlWebpackPlugin.options.content.p2pCreation }}}</div>
 
-      <br/>
+          <br />
 
-      <div>
-        {{ htmlWebpackPlugin.options.content.translations.we_grew_up }}
-      </div>
-      <div>
-        {{ htmlWebpackPlugin.options.content.translations.new_plans }}
-      </div>
+          <div>
+            {{ htmlWebpackPlugin.options.content.translations.we_grew_up }}
+          </div>
+          <div>
+            {{ htmlWebpackPlugin.options.content.translations.new_plans }}
+          </div>
 
-      <p>
-        <div>
-          {{ htmlWebpackPlugin.options.content.translations.we_need_your_help }}
+          <p>
+            {{ htmlWebpackPlugin.options.content.translations.we_need_your_help }}
+          </p>
+          <div class="support-description-why">
+            {{{ htmlWebpackPlugin.options.content.translations.why_we_deserve }}}
+          </div>
+
+          <div class="support-description-details">
+            <h3>{{ htmlWebpackPlugin.options.content.translations.support.achievements.title }}</h3>
+            <ol>
+              {{#each htmlWebpackPlugin.options.content.translations.support.achievements.items}}
+              <li>{{{this}}}</li>
+              {{/each}}
+            </ol>
+
+            <h3>{{ htmlWebpackPlugin.options.content.translations.support.plans.title }}</h3>
+            <ol>
+              {{#each htmlWebpackPlugin.options.content.translations.support.plans.items}}
+              <li>{{{this}}}</li>
+              {{/each}}
+            </ol>
+          </div>
         </div>
-        <div class="support-description-why">
-          {{{ htmlWebpackPlugin.options.content.translations.why_we_deserve }}}
+      </section>
+      <section class="support-help">
+        <div class="support-help-container container">
+          <ul class="support-help-list">
+            <li class="support-help-item support-help-deeds">
+              <h3 class="support-help-item-title">
+                {{ htmlWebpackPlugin.options.content.translations.help_with_deeds }}
+              </h3>
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.need_volunteers }}
+              </p>
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.we_are_harmful }}
+              </p>
+              <p class="support-help-item-text">
+                {{{ htmlWebpackPlugin.options.content.translations.needs_here }}}
+              </p>
+              <a
+                class="button"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfLuDDN2pLupuA8R1QmSNM7ED45DQI-OR0cdeDWp6DCXRuTQw/viewform"
+                target="_blank"
+                rel="noreferrer noopener"
+                >{{ htmlWebpackPlugin.options.content.translations.offer_your_services }}</a
+              >
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.thanks_inspiration }}
+              </p>
+            </li>
+            <li class="support-help-item support-help-money">
+              <h3 class="support-help-item-title">
+                {{ htmlWebpackPlugin.options.content.translations.help_with_money }}
+              </h3>
+              <p class="support-help-item-text">
+                {{{ htmlWebpackPlugin.options.content.translations.rental_premises }}}
+              </p>
+              <p class="support-help-item-text">
+                <i
+                  ><a
+                    href="https://donate.kowo.me/help"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="ng-binding"
+                    >{{ htmlWebpackPlugin.options.content.translations.financial_reports }}</a
+                  ></i
+                >
+              </p>
+              <p class="support-help-item-text">
+                {{{ htmlWebpackPlugin.options.content.translations.fairy_tales }}}
+              </p>
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.created_service }}
+              </p>
+              <a
+                class="button"
+                href="http://donate.kowo.me"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                donate.kowo.me
+              </a>
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.buy_bug }}
+              </p>
+            </li>
+            <li class="support-help-item support-help-equipment">
+              <h3 class="support-help-item-title">
+                {{ htmlWebpackPlugin.options.content.translations.help_with_equipment }}
+              </h3>
+              <p class="support-help-item-text">
+                {{ htmlWebpackPlugin.options.content.translations.want_more_equip }}
+              </p>
+              <p class="support-help-item-text">
+                {{{ htmlWebpackPlugin.options.content.translations.equip_needs_here }}}
+              </p>
+              <p class="support-help-item-text">
+                {{{ htmlWebpackPlugin.options.content.translations.write_to_info }}}
+              </p>
+            </li>
+          </ul>
         </div>
-      </p>
-
-      <div class="support-description-details">
-        <h3>{{ htmlWebpackPlugin.options.content.translations.support.achievements.title }}</h3>
-        <ol>
-          {{#each htmlWebpackPlugin.options.content.translations.support.achievements.items}}
-            <li>{{{this}}}</li>
-          {{/each}}
-        </ol>
-
-        <h3>{{ htmlWebpackPlugin.options.content.translations.support.plans.title }}</h3>
-        <ol>
-          {{#each htmlWebpackPlugin.options.content.translations.support.plans.items}}
-            <li>{{{this}}}</li>
-          {{/each}}
-        </ol>
-      </div>
-    </div>
-  </section>
-  <section class="support-help">
-    <div class="support-help-container container">
-      <ul class="support-help-list">
-        <li class="support-help-item support-help-deeds">
-          <h3 class="support-help-item-title">{{ htmlWebpackPlugin.options.content.translations.help_with_deeds }}</h3>
-          <p class="support-help-item-text">
-           {{ htmlWebpackPlugin.options.content.translations.need_volunteers }}
-          </p>
-          <p class="support-help-item-text">
-            {{ htmlWebpackPlugin.options.content.translations.we_are_harmful }}
-          </p>
-          <p class="support-help-item-text">
-            {{{ htmlWebpackPlugin.options.content.translations.needs_here }}}
-          </p>
-          <a
-            class="button"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfLuDDN2pLupuA8R1QmSNM7ED45DQI-OR0cdeDWp6DCXRuTQw/viewform"
-            target="_blank"
-            rel="noreferrer noopener"
-          >{{ htmlWebpackPlugin.options.content.translations.offer_your_services }}</a>
-          <p class="support-help-item-text">
-            {{ htmlWebpackPlugin.options.content.translations.thanks_inspiration }}
-          </p>
-        </li>
-        <li class="support-help-item support-help-money">
-          <h3 class="support-help-item-title">{{ htmlWebpackPlugin.options.content.translations.help_with_money }}</h3>
-          <p class="support-help-item-text">
-            {{{ htmlWebpackPlugin.options.content.translations.rental_premises }}}
-          </p>
-          <p class="support-help-item-text">
-            <i><a href="https://donate.kowo.me/help" target="_blank" rel="noreferrer noopener" class="ng-binding">{{ htmlWebpackPlugin.options.content.translations.financial_reports }}</a></i>
-          </p>
-          <p class="support-help-item-text">
-           {{{ htmlWebpackPlugin.options.content.translations.fairy_tales }}}
-          </p>
-          <p class="support-help-item-text">
-            {{ htmlWebpackPlugin.options.content.translations.created_service }}
-          </p>
-          <a class="button" href="http://donate.kowo.me" target="_blank" rel="noreferrer noopener">
-            donate.kowo.me
-          </a>
-          <p class="support-help-item-text">
-            {{ htmlWebpackPlugin.options.content.translations.buy_bug }}
-          </p>
-        </li>
-        <li class="support-help-item support-help-equipment">
-          <h3 class="support-help-item-title">{{ htmlWebpackPlugin.options.content.translations.help_with_equipment }}</h3>
-          <p class="support-help-item-text">
-            {{ htmlWebpackPlugin.options.content.translations.want_more_equip }}
-          </p>
-          <p class="support-help-item-text">
-            {{{ htmlWebpackPlugin.options.content.translations.equip_needs_here }}}
-          </p>
-          <p class="support-help-item-text">
-            {{{ htmlWebpackPlugin.options.content.translations.write_to_info }}}
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-</main>
-{{> ../../footer/footer}}
-</body>
+      </section>
+    </main>
+    {{> ../../footer/footer}}
+  </body>
 </html>
