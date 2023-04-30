@@ -1,11 +1,9 @@
+('use strict');
 import './index.scss';
 import Swiper, { Autoplay, Pagination, Navigation } from 'swiper';
 import 'swiper/css';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import { displayHiddenComponentMixin } from '../../mixins';
-
-// eslint-disable-next-line no-unused-expressions
-('use strict');
 
 init();
 

@@ -1,9 +1,7 @@
+('use strict');
 import { displayHiddenComponentMixin } from '../../mixins';
 import './index.scss';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
-
-// eslint-disable-next-line no-unused-expressions
-('use strict');
 
 createApp({
   mixins: [displayHiddenComponentMixin],
