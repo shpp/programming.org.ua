@@ -118,6 +118,7 @@ module.exports = async (_, { mode = 'development' }) => ({
             lang,
             url: `${BASE_URL}${langPrefix}${relativePagePath}`,
           })),
+          currentYear: new Date().getFullYear(),
         });
 
         return [

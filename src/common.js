@@ -7,3 +7,4 @@ globalThis.programmingOrgUa = {
 };
 
 document.querySelectorAll('.languages .language a').forEach((link) => (link.href += `${location.search}${location.hash}`));
+document.querySelector('.footer .footer-copyright .current-year').textContent = new Date().getFullYear();
