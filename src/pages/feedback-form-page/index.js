@@ -1,6 +1,6 @@
 import './index.scss';
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
-import ImageUpload from '../../image-upload';
+import ImageUpload from './image-upload';
 
 ('use strict');
 
