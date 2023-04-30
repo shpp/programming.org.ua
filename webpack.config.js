@@ -291,7 +291,7 @@ module.exports = async (_, { mode = 'development' }) => ({
         test: /\.hbs$/,
         loader: 'handlebars-loader',
         options: {
-          helperDirs: [path.resolve(__dirname, '/utils/handlebars-helpers')],
+          helperDirs: [path.resolve(__dirname, 'utils/handlebars-helpers')],
         },
       },
       {
