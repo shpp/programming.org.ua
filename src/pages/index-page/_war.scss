@@ -17,4 +17,12 @@
   &-text {
     font-size: 20px;
   }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $color-main-green;
+    }
+  }
 }
