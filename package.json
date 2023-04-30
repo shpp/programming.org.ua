@@ -6,7 +6,8 @@
     "build": "webpack --mode=production",
     "start": "webpack serve --open --mode=development",
     "bundle-analyze:prod": "webpack --mode=production --profile --json > stats.json && webpack-bundle-analyzer stats.json",
-    "lint": "npx prettier --write '**/*.{js,hbs,scss}' && npx eslint --ext .js ."
+    "lint": "npx prettier --write '**/*.{js,hbs,scss}' && npx eslint --ext .js .",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "**/*.{js,hbs,scss}": ["npx prettier --write"],
