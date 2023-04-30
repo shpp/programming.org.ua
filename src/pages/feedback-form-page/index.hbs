@@ -32,7 +32,7 @@
       <input
         type="text"
         name="name"
-        :required="validated"
+        :required="shouldBeValidated"
         :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.ff_name_pl}}' : ''"
         autofocus
         id="name">
@@ -46,7 +46,7 @@
         type="text"
         name="surname"
         :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.ff_surname_pl}}' : ''"
-        :required="validated"
+        :required="shouldBeValidated"
         id="surname">
     </div>
     <div class="form-element">
@@ -61,7 +61,7 @@
       </label>
       <input
         type="text"
-        :required="validated"
+        :required="shouldBeValidated"
         :placeholder="role === 'student' ? '{{htmlWebpackPlugin.options.content.translations.feedback_facebook_pl}}' : ''"
         :pattern="role === 'student' ? 'https://(www.)?facebook.com/[a-zA-Z0-9._\\-\/]+' : 'https?://[a-zA-Z0-9._\\-\/\?\#]+'"
         name="link"
@@ -80,7 +80,7 @@
       <image-upload
         placeholder="{{htmlWebpackPlugin.options.content.translations.feedback_file}}"
         name="image"
-        :required="validated"
+        :required="shouldBeValidated"
       />
     </div>
     <div class="form-element">
@@ -89,7 +89,7 @@
         <sup>*</sup>
       </label>
       <textarea
-        :required="validated"
+        :required="shouldBeValidated"
         name="message"
         id="message"
         rows="10"></textarea>

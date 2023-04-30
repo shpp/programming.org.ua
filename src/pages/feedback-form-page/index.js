@@ -9,45 +9,42 @@ createApp({
         ImageUpload
     },
     data: () => ({
-        validated: false,
+        shouldBeValidated: false,
         role: 'student',
         loading: false,
         responseCode: null
     }),
     methods: {
-        validateAndSubmit() {
-            this.validated = true;
+        async validateAndSubmit() {
+            this.shouldBeValidated = true;
+            await this.$nextTick();
+            const isFormValid = this.$refs.form.reportValidity();
 
-            setTimeout(() => {
-                const isFormValid = this.$refs.form.reportValidity();
+            if (!isFormValid) {
+                return;
+            }
 
-                if (!isFormValid) {
-                    return;
-                }
+            const formData = new FormData(this.$refs.form);
+            this.loading = true;
+            fetch(' https://back.programming.org.ua/api/feedback/create', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(res => res.json())
+                .then(({status}) => {
+                    this.responseCode = status;
+                    this.loading = false;
 
-                const formData = new FormData(this.$refs.form);
-                this.loading = true;
-                fetch(' https://back.programming.org.ua/api/feedback/create', {
-                    method: 'POST',
-                    body: formData,
+                    if (status === 200) {
+                        // not sure if it's needed
+                        // this.$refs.form.reset();
+                        this.shouldBeValidated = false;
+                    }
                 })
-                    .then(res => res.json())
-                    .then(({status}) => {
-                        this.responseCode = status;
-                        this.loading = false;
-
-                        if (status === 200) {
-                            // not sure if it's needed
-                            // this.$refs.form.reset();
-                            this.validated = false;
-                        }
-                    })
-                    .catch(err => {
-                        this.responseCode = err.code;
-                        this.loading = false;
-                    })
-            }, 0)
-
+                .catch(err => {
+                    this.responseCode = err.code;
+                    this.loading = false;
+                })
         },
     }
 }).mount('main');
