@@ -5,20 +5,32 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack serve --open --mode=development",
-    "bundle-analyze:prod": "webpack --mode=production --profile --json > stats.json && webpack-bundle-analyzer stats.json"
+    "bundle-analyze:prod": "webpack --mode=production --profile --json > stats.json && webpack-bundle-analyzer stats.json",
+    "lint": "npx prettier --write '**/*.{js,hbs,scss}' && npx eslint --ext .js ."
+  },
+  "lint-staged": {
+    "**/*.{js,hbs,scss}": ["npx prettier --write"],
+    "**/*.js": ["npm run lint -- --fix"]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihor-bobyr/programming.org.ua.git"
+    "url": "git+https://github.com/shpp/programming.org.ua.git"
   },
   "bugs": {
-    "url": "https://github.com/ihor-bobyr/programming.org.ua/issues"
+    "url": "https://github.com/shpp/programming.org.ua/issues"
   },
-  "homepage": "https://github.com/ihor-bobyr/programming.org.ua",
+  "homepage": "https://github.com/shpp/programming.org.ua",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "lint-staged": "^13.2.1",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.0",
     "prettier": "^2.7.1",
@@ -28,14 +40,6 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
-  },
-  "prettier": {
-    "printWidth": 140,
-    "singleQuote": true,
-    "useTabs": false,
-    "tabWidth": 2,
-    "semi": true,
-    "bracketSpacing": true
   },
   "dependencies": {
     "handlebars": "^4.7.7",
