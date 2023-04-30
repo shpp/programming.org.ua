@@ -20,10 +20,6 @@ a {
   text-decoration: underline;
   text-decoration-color: $color-main-green;
   text-underline-position: under;
-
-  &:visited {
-    color: inherit;
-  }
 }
 
 h1,
