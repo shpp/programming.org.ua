@@ -22,10 +22,6 @@ a {
   text-decoration-color: $color-main-green;
   text-underline-position: under;
 
-  &:focus {
-    outline: $color-main-green dashed 2px;
-  }
-
   &:visited {
     color: inherit;
   }
