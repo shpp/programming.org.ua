@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: ['standard', 'prettier'],
+  ignorePatterns: ['dist/*'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
