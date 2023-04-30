@@ -26,7 +26,7 @@ function setupBlogPosts() {
         .then((res) => {
           this.blogPosts = res.filter(
             ({ polylang_current_lang }) =>
-              polylang_current_lang === { en: 'en_GB', ua: 'uk', ru: 'ru_RU' }[document.documentElement.lang] ?? 'en_GB'
+              polylang_current_lang === { en: 'en_GB', uk: 'uk', ru: 'ru_RU' }[document.documentElement.lang] ?? 'en_GB'
           );
         });
     },
@@ -99,7 +99,7 @@ function setupFeedbacks() {
         setTimeout(() => this.slider?.updateAutoHeight(), 0);
       },
       isLongText(text) {
-        return text.length > this.smallTextLength;
+        return text && text.length > this.smallTextLength;
       },
     },
   }).mount('.feedbacks');

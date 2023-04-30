@@ -7,6 +7,7 @@
   color: $color-light-gray;
   position: relative;
   z-index: 1;
+  margin-top: auto;
 
   &:before {
     content: '';
