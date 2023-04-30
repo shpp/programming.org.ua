@@ -9,8 +9,7 @@ const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-s
   .then((res) => res.json())
   .then((response) => response.data.nearestStartDate);
 
-const getShppAge = (lang, pattern) => {
-  const creationDate = '01-05-2015';
+const getShppAge = (date, lang, pattern) => {
   const inRange = (x, from, to) => x >= from && x <= to;
   const tokens = {
     years1: { ru: 'лет', uk: 'років', en: 'years' },
@@ -18,7 +17,7 @@ const getShppAge = (lang, pattern) => {
     years3: { ru: 'года', uk: 'роки', en: 'years' },
   };
 
-  const [day, month, year] = creationDate.split('-');
+  const [day, month, year] = date.split('-');
   const schoolFoundationDate = new Date(year, month - 1, day);
   const ageDifMs = Date.now() - schoolFoundationDate;
   const ageDate = new Date(ageDifMs);
@@ -106,7 +105,7 @@ module.exports = async (_, { mode = 'development' }) => ({
       }))
     ).then((languages) =>
       languages.reduce((htmlWebpackPlugins, { filenamePrefix, translations, startDate, locale, langPrefix, lang }) => {
-        const shppAge = getShppAge(lang, translations.home.intro.item3);
+        const shppAge = getShppAge('01-05-2015', lang, translations.home.intro.item3);
         const alternativeLocales = ['en', 'ru', 'uk'].filter((l) => l !== lang).map((l) => localesConfig[l]);
 
         const getCommonContent = (relativePagePath) => ({
@@ -253,6 +252,9 @@ module.exports = async (_, { mode = 'development' }) => ({
             filename: `${filenamePrefix}supportus/index.html`,
             content: {
               ...getCommonContent('/supportus/'),
+              shppCreation: getShppAge('01-08-2012', lang, translations.before_shpp_creation),
+              kowoCreation: getShppAge('01-06-2014', lang, translations.before_kowo_creation),
+              p2pCreation: getShppAge('01-01-2017', lang, translations.before_p2p_creation),
             },
           }),
         ];

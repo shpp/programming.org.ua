@@ -1,0 +1,112 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+main {
+  a:not(.button) {
+    color: black;
+
+    &.link {
+      border-bottom: 1px dashed #27ae60;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $color-main-green;
+    }
+  }
+}
+
+.support-description {
+  &-container {
+    max-width: 800px;
+    padding: 16px 0 0;
+  }
+
+  .support-description-details {
+    display: none;
+  }
+
+  &.detailed {
+    .support-description-details {
+      display: block;
+    }
+
+    .support-description-why {
+      display: none;
+    }
+  }
+}
+
+.support-help {
+  margin: 16px 0 32px;
+
+  p {
+    font-size: 15px;
+  }
+
+  &-list {
+    display: flex;
+    gap: 16px;
+
+    @include media-md {
+      flex-direction: column;
+    }
+  }
+
+  &-item {
+    padding: 16px;
+    box-sizing: border-box;
+    width: 100%;
+
+    &-title {
+      text-align: center;
+    }
+  }
+
+  &-deeds,
+  &-money {
+    .button {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      width: fit-content;
+      margin: 0 auto;
+      height: 40px;
+    }
+  }
+
+  &-deeds {
+    background-color: rgba(255, 215, 0, 0.5);
+
+    .button {
+      background-color: gold;
+      color: rgba(black, 0.87);
+
+      &:hover {
+        background-color: #e6c200;
+        color: rgba(black, 0.87);
+      }
+    }
+  }
+
+  &-money {
+    background-color: rgba(39, 174, 96, 0.5);
+
+    .button {
+      background-color: #27ae60;
+      color: rgba(white, 0.87);
+
+      &:hover {
+        color: rgba(white, 0.87);
+        background-color: #295;
+      }
+    }
+  }
+
+  &-equipment {
+    background-color: rgba(30, 145, 233, 0.5);
+  }
+}
