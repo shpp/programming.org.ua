@@ -7,8 +7,8 @@
 <body>
     <!-- End Google Tag Manager (noscript) -->
     {{> ../../header/header pageRoute='feedback-all'}}
-    <section class="feedbacks" @vue:mounted="mounted()" :style="{ display: feedbacks?.length > 0 ? 'block' : 'none' }">
-        <div class="feedbacks-container container">
+    <section class="feedbacks">
+        <div class="feedbacks-container container hidden" ref="container">
             <h2 class="feedbacks-title">
               {{ htmlWebpackPlugin.options.content.translations.feedback_all_head }}
             </h2>

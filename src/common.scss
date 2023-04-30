@@ -72,6 +72,11 @@ ul {
 :focus {
   outline: $color-main-green dashed 2px;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
 @import "styles/font-asesome";
 @import "styles/container";
 @import "header/header";

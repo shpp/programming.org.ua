@@ -17,7 +17,10 @@ createApp({
       credentials: 'omit',
     })
       .then((res) => res.json())
-      .then((data) => (this.feedbacks = data.data.feedbacks));
+      .then((data) => {
+        this.feedbacks = data.data.feedbacks
+        this.$refs.container.classList.remove('hidden');
+      });
   },
   data() {
     return {

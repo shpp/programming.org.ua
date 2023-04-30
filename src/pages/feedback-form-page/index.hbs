@@ -7,7 +7,7 @@
 <body>
 {{> ../../header/header pageRoute='feedback-form'}}
 <main>
-  <form class="form" ref="form" @submit.prevent>
+  <form class="form hidden" ref="form" @submit.prevent>
     <h2>{{htmlWebpackPlugin.options.content.translations.feedback_form_head}}</h1>
     <div class="form-element">
       <label for="feedback-role">

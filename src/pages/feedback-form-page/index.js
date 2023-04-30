@@ -14,6 +14,9 @@ createApp({
         loading: false,
         responseCode: null
     }),
+    mounted() {
+        this.$refs.form.classList.remove('hidden');
+    },
     methods: {
         async validateAndSubmit() {
             this.shouldBeValidated = true;
