@@ -45,7 +45,8 @@ createApp({
         .catch((err) => {
           this.responseCode = err.code;
           this.loading = false;
-        });
+        })
+        .finally(() => setTimeout(() => (this.responseCode = null), 5 * 1000));
     },
   },
 }).mount('main');
