@@ -37,8 +37,8 @@ createApp({
           this.loading = false;
 
           if (status === 200) {
-            // not sure if it's needed
-            // this.$refs.form.reset();
+            this.$refs.form.reset();
+            this.$refs.imageUpload.clearInput();
             this.shouldBeValidated = false;
           }
         })
