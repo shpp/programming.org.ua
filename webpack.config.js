@@ -115,7 +115,6 @@ module.exports = async (_, { mode = 'development' }) => ({
           htmlWebpackPlugins,
           { filenamePrefix, translations, startDate, locale, langPrefix, lang }
         ) => {
-          const shppAge = getShppAge('01-05-2015', lang, translations.home.intro.item3);
           const alternativeLocales = ['en', 'ru', 'uk']
             .filter((l) => l !== lang)
             .map((l) => localesConfig[l]);
@@ -144,7 +143,7 @@ module.exports = async (_, { mode = 'development' }) => ({
               content: {
                 ...getCommonContent('/'),
                 startDate,
-                shppAge,
+                shppAge: getShppAge('01-05-2015', lang, translations.home.intro.item3),
               },
             }),
             new HtmlWebpackPlugin({
@@ -268,6 +267,11 @@ module.exports = async (_, { mode = 'development' }) => ({
                 shppCreation: getShppAge('01-08-2012', lang, translations.before_shpp_creation),
                 kowoCreation: getShppAge('01-06-2014', lang, translations.before_kowo_creation),
                 p2pCreation: getShppAge('01-01-2017', lang, translations.before_p2p_creation),
+                freeEducation: getShppAge(
+                  '01-05-2015',
+                  lang,
+                  translations.support.achievements.items[0]
+                ),
               },
             }),
           ];
