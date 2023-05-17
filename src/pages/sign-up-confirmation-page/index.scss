@@ -1,0 +1,42 @@
+@import '../../styles/constants';
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: 36px 16px;
+  box-sizing: border-box;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 32px;
+  background-color: white;
+  border: 2px solid rgba(black, 0.08);
+  box-sizing: border-box;
+  max-width: 550px;
+  word-break: break-word;
+
+  h2 {
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  p {
+    margin: 16px 0;
+    font-size: 18px;
+
+    &.warning {
+      background-color: $color-light-yellow;
+      color: #333;
+      font-size: 16px;
+      padding: 10px 15px;
+    }
+  }
+
+  svg {
+    margin: auto;
+    width: 100%;
+  }
+}
