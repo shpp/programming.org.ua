@@ -1,4 +1,4 @@
-@import '../../styles/constants';
+@import 'constants';
 
 .form {
   background-color: $color-white;
@@ -26,12 +26,15 @@
     }
 
     input[type='text'],
+    input[type='email'],
+    input[type='number'],
     select,
     textarea {
       border: 2px solid $color-light-gray-2;
       color: $color-menu;
       display: block;
       font-size: 18px;
+      font-family: 'Open Sans', sans-serif;
       min-height: 48px;
       padding: 8px;
       width: 100%;

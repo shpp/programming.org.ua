@@ -1,0 +1,14 @@
+@import '../../styles/forms';
+@import '../../styles/snackbar';
+@import '../../styles/constants';
+
+.question-form {
+  background-color: $color-light-gray-3;
+  overflow: auto;
+
+  .form {
+    background: none;
+    border: none;
+    max-width: 464px;
+  }
+}

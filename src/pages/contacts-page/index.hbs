@@ -6,7 +6,10 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='contacts'}}
-    <main>contacts page</main>
+    <main>
+      contacts page
+      {{> ../../template-partials/question-form/question-form page='contacts'}}
+    </main>
     {{> ../../footer/footer}}
   </body>
 </html>

@@ -1,0 +1,86 @@
+<section class="question-form vue-container">
+  <form class="form" ref="questionForm" @submit.prevent>
+    <h2>{{ htmlWebpackPlugin.options.content.translations.courses_ask }}</h2>
+    <input type="hidden" value="{{ page }}" name="fromPage" />
+    <div class="form-element">
+      <label for="name">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_name }}
+      </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        :required="shouldBeValidated"
+        placeholder="{{ htmlWebpackPlugin.options.content.translations.anketa_name_pl }}"
+      />
+    </div>
+    <div class="form-element">
+      <label for="age">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_age }}
+      </label>
+      <input
+        type="text"
+        name="age"
+        id="age"
+        :required="shouldBeValidated"
+        placeholder="{{ htmlWebpackPlugin.options.content.translations.anketa_age_pl }}"
+      />
+    </div>
+    <div class="form-element">
+      <label for="phone">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_phone }}
+      </label>
+      <input
+        type="text"
+        name="phone"
+        id="phone"
+        :required="shouldBeValidated"
+        pattern="(\+?38)?[0-9\-\s\(\)]+"
+        placeholder="066 000 00 00"
+      />
+    </div>
+    <div class="form-element">
+      <label for="email">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_email }}
+      </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        :required="shouldBeValidated"
+        placeholder="your.name@gmail.com"
+      />
+    </div>
+    <div class="form-element">
+      <label for="question">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_question }}
+      </label>
+      <textarea
+        :required="shouldBeValidated"
+        placeholder="{{ htmlWebpackPlugin.options.content.translations.anketa_question_pl }}"
+        name="question"
+        id="question"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="form-submit">
+      <button class="button-primary" type="button" disabled v-if="loading">
+        {{ htmlWebpackPlugin.options.content.translations.submitted }}
+      </button>
+      <button class="button-primary" type="button" @click="validateAndSubmit" v-else>
+        {{ htmlWebpackPlugin.options.content.translations.anketa_send }}
+      </button>
+    </div>
+    <Transition name="slide-fade">
+      <div class="notification notification-success snackbar" v-if="responseCode === 200">
+        {{ htmlWebpackPlugin.options.content.translations.anketa_thanks }}
+      </div>
+      <div
+        class="notification notification-error snackbar"
+        v-else-if="[500, 400].includes(responseCode)"
+      >
+        \{{ responseMessage ?? '{{htmlWebpackPlugin.options.content.translations.error}}' }}
+      </div>
+    </Transition>
+  </form>
+</section>

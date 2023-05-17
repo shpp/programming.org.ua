@@ -6,7 +6,10 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='courses'}}
-    <main>courses page</main>
+    <main class="vue-container">
+      courses page
+      {{> ../../template-partials/question-form/question-form page='courses'}}
+    </main>
     {{> ../../footer/footer}}
   </body>
 </html>
