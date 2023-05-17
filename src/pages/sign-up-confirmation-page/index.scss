@@ -39,12 +39,16 @@ main {
     margin: auto;
     width: 100%;
 
+    $radius: 55px;
+    $circumf: 3.1416 * $radius * 2;
+    $check-len: 75px;
+
     @keyframes outline {
       from {
-        stroke-dasharray: 0, 345.576px;
+        stroke-dasharray: 0, $circumf;
       }
       to {
-        stroke-dasharray: 345.576px, 345.576px;
+        stroke-dasharray: $circumf, $circumf;
       }
     }
     #outline {
@@ -69,15 +73,15 @@ main {
 
     @keyframes check {
       from {
-        stroke-dasharray: 0, 75px;
+        stroke-dasharray: 0, $check-len;
       }
       to {
-        stroke-dasharray: 75px, 75px;
+        stroke-dasharray: $check-len, $check-len;
       }
     }
     #check {
       animation: 0.34s cubic-bezier(0.65, 0, 1, 1) 0.8s forwards check;
-      stroke-dasharray: 0, 75px;
+      stroke-dasharray: 0, $check-len;
     }
 
     @keyframes check-group {
