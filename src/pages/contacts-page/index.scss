@@ -3,10 +3,9 @@
 
 .images a {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   border-bottom: 5px solid $color-main-green;
   min-height: 150px;
+  height: auto;
   overflow: hidden;
 
   @include media-xs() {
