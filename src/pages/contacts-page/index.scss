@@ -1,0 +1,57 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.images a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 5px solid $color-main-green;
+  min-height: 150px;
+  overflow: hidden;
+
+  @include media-xs() {
+    flex-direction: column;
+  }
+
+  img {
+    width: 50%;
+
+    @include media-xs() {
+      width: 100%;
+    }
+  }
+}
+
+.content-container {
+  padding: 32px 0 72px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 550px;
+
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    margin: 32px 0;
+  }
+
+  .section-text {
+    font-size: 20px;
+
+    a {
+      color: $color-font;
+
+      &:hover {
+        color: $color-main-green;
+      }
+    }
+
+    ul {
+      margin: 1rem 0;
+      padding-inline-start: 40px;
+
+      li {
+        list-style: initial;
+      }
+    }
+  }
+}

@@ -7,7 +7,41 @@
   <body>
     {{> ../../header/header pageRoute='contacts'}}
     <main>
-      contacts page
+      <section class="images">
+        <a href="https://g.page/shpp-kr">
+          <img src="/img/ourmap-cropped.jpg" alt="" />
+          <img src="/img/shpp-location.jpg" alt="" />
+        </a>
+      </section>
+
+      <section class="content">
+        <div class="content-container container">
+          <h1>{{ htmlWebpackPlugin.options.content.translations.contacts.default }}</h1>
+
+          <div class="section-text">
+            {{#each htmlWebpackPlugin.options.content.translations.contacts.p }}
+            <p>{{{ this }}}</p>
+            {{/each}}
+
+            <ul>
+              <li>
+                <a href="https://instagram.com/shpp.kr" target="_blank" rel="noreferrer noopener">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com/shpp.kr" target="_blank" rel="noreferrer noopener">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://t.me/shppkr" target="_blank" rel="noreferrer noopener">Telegram</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {{> ../../template-partials/question-form/question-form page='contacts'}}
     </main>
     {{> ../../footer/footer}}
