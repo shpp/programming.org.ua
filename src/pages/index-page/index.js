@@ -210,6 +210,7 @@ function setupPartnersSlider() {
       [992, 3],
       [1199, 4],
       [1200, 5],
+      [1500, 6],
     ].reduce(
       (breakPointsConfig, [resolution, numberOfSlides]) => ({
         ...breakPointsConfig,

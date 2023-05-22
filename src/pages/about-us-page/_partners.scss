@@ -1,0 +1,44 @@
+@import '../../styles/constants';
+
+.partners {
+  padding: 65px;
+  border-top: 8px solid $color-light-gray-3;
+
+  h2 {
+    sup {
+      color: $color-gray;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+    }
+  }
+
+  .partners-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+
+    .partner-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 60px;
+      margin: 24px auto;
+      max-width: 80%;
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .partnership-rules {
+    color: $color-gray;
+    font-size: 14px;
+    margin: auto;
+    max-width: 768px;
+  }
+}

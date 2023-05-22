@@ -6,8 +6,22 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='about'}}
-    <main>
+    <main class="about">
       about us page
+      <section class="partners">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.partners2 }}<sup> *</sup></h2>
+        <div class="partners-list">
+          {{#each htmlWebpackPlugin.options.content.partners}}
+          <a href="{{ this.link }}" class="partner-icon" target="_blank" rel="noreferrer noopener">
+            <img src="{{ this.imgSrc }}" alt="{{ this.title }}" />
+          </a>
+          {{/each}}
+        </div>
+        <div class="partnership-rules">
+          <p>{{ htmlWebpackPlugin.options.content.translations.partnership_rules_p1 }}</p>
+          <p>{{ htmlWebpackPlugin.options.content.translations.partnership_rules_p2 }}</p>
+        </div>
+      </section>
       {{> ../../template-partials/question-form/question-form page='about'}}
     </main>
     {{> ../../footer/footer}}

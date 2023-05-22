@@ -61,6 +61,84 @@ const localesConfig = {
   },
 };
 
+const partnersConfig = [
+  {
+    link: 'https://www.techsoup.org/',
+    imgSrc: '/img/partners/techsoup.png',
+    title: 'Techsoup Ukraine',
+  },
+  {
+    link: 'https://slack.com/',
+    imgSrc: '/img/partners/slack.png',
+    title: 'Slack',
+  },
+  {
+    link: 'https://notion.so/',
+    imgSrc: '/img/partners/notion.jpg',
+    title: 'Notion',
+  },
+  {
+    link: 'https://onix-systems.com/',
+    imgSrc: '/img/partners/onix.png',
+    title: 'Onix Systems',
+  },
+  {
+    link: 'https://bandapixels.com',
+    imgSrc: '/img/partners/bandapixels.svg',
+    title: 'Bandapixels',
+  },
+  {
+    link: 'http://www.roboclub.if.ua/',
+    imgSrc: '/img/partners/roboclub.png',
+    title: 'RoboClub',
+  },
+  {
+    link: 'https://probono.org.ua/',
+    imgSrc: '/img/partners/pbc.png',
+    title: 'Pro Bono Club',
+  },
+  {
+    link: 'https://codeclub.com.ua/',
+    imgSrc: '/img/partners/codeclub.png',
+    title: 'CodeClub',
+  },
+  {
+    link: 'https://italent.org.ua/',
+    imgSrc: '/img/partners/italent.png',
+    title: 'iTalent',
+  },
+  {
+    link: 'https://www.jetbrains.com/',
+    imgSrc: '/img/partners/jet.png',
+    title: 'Jet Brains',
+  },
+  {
+    link: 'https://www.grammarly.com/',
+    imgSrc: '/img/partners/grammarly.png',
+    title: 'Grammarly',
+  },
+  {
+    link: 'https://canva.com/',
+    imgSrc: '/img/partners/canva.png',
+    title: 'Canva',
+  },
+  {
+    link: 'https://cyberpolice.gov.ua/',
+    imgSrc: '/img/partners/cyberpolice.jpg',
+    title: 'Департамент кіберполіції національної поліції України',
+  },
+  {
+    link: 'https://200x300.com/',
+    imgSrc: '/img/partners/200x300.png',
+    title: '200x300 Studio',
+  },
+  {
+    link: 'https://www.wowza.com/',
+    imgSrc: '/img/partners/wowza.png',
+    title: 'Wowza Streaming Engine',
+  },
+];
+
 const BASE_URL = 'https://programming.org.ua';
 
 module.exports = async (_, { mode = 'development' }) => ({
@@ -144,6 +222,7 @@ module.exports = async (_, { mode = 'development' }) => ({
                 ...getCommonContent('/'),
                 startDate,
                 shppAge: getShppAge('01-05-2015', lang, translations.home.intro.item3),
+                partners: partnersConfig,
               },
             }),
             new HtmlWebpackPlugin({
@@ -164,6 +243,7 @@ module.exports = async (_, { mode = 'development' }) => ({
               filename: `${filenamePrefix}about/index.html`,
               content: {
                 ...getCommonContent('/about/'),
+                partners: partnersConfig,
               },
             }),
             new HtmlWebpackPlugin({
