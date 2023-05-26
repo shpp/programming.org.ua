@@ -139,6 +139,108 @@ const partnersConfig = [
   },
 ];
 
+const teamMembersConfig = [
+  {
+    name: { en: 'Vlad', uk: 'Влад', ru: 'Влад' },
+    surname: { en: 'Doncov', uk: 'Донцов', ru: 'Донцов' },
+    image: 'vdoncov',
+    occupation: 'Frontend developer / mentor (React)',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Artem', uk: 'Артем', ru: 'Артём' },
+    surname: { en: 'Dobrovolskyi', uk: 'Добровольський', ru: 'Добровольский' },
+    image: 'adobrovolskyi',
+    occupation: 'Fullstack developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Artem', uk: 'Артем', ru: 'Артём' },
+    surname: { en: 'Korniets', uk: 'Корнієць', ru: 'Корниец' },
+    image: 'akorniets',
+    occupation: 'Student, mentor Zero',
+    roles: ['adults-mentor'],
+    visible: false,
+  },
+  {
+    name: { en: 'Ivan', uk: 'Іван', ru: 'Иван' },
+    surname: { en: 'Sahnovskyi', uk: 'Сахновський', ru: 'Сахновский' },
+    image: 'isahnovskyi',
+    occupation: 'Mentor Frontend',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Roman', uk: 'Роман', ru: 'Роман' },
+    surname: { en: 'Shmelev', uk: 'Шмельов', ru: 'Шмелёв' },
+    image: 'rshmelev',
+    occupation: 'Streaming engineer, mentor CS, backend, coordinator',
+    roles: ['adults-mentor', 'team', 'teens-mentor'],
+  },
+  {
+    name: { en: 'Kate', uk: 'Катерина', ru: 'Катя' },
+    surname: { en: 'Boyko', uk: 'Бойко', ru: 'Бойко' },
+    image: 'kboyko',
+    occupation: 'Frontend developer / mentor, coordinator',
+    roles: ['adults-mentor', 'team', 'teens-mentor'],
+  },
+  {
+    name: { en: 'Anastasiia', uk: 'Анастасія', ru: 'Анастасия' },
+    surname: { en: 'Pereverzieva', uk: 'Перевєрзєва', ru: 'Переверзева' },
+    image: 'apereverzeva',
+    occupation: 'Frontend developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Yuriy', uk: 'Юрій', ru: 'Юрий' },
+    surname: { en: 'Degtyar', uk: 'Дегтяр', ru: 'Дегтярь' },
+    image: 'ydegtyar',
+    occupation: 'Fullstack developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Konstantin', uk: 'Костянтин', ru: 'Константин' },
+    surname: { en: 'Petrenko', uk: 'Петренко', ru: 'Петренко' },
+    image: 'kpetrenko',
+    occupation: 'Android developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Volodymyr', uk: 'Володимир', ru: 'Владимир' },
+    surname: { en: 'Nechai', uk: 'Нечай', ru: 'Нечай' },
+    image: 'vnechai',
+    occupation: 'Magento developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Antriy', uk: 'Андрій', ru: 'Андрей' },
+    surname: { en: 'Chudinovskyh', uk: 'Чудіновських', ru: 'Чудиновских' },
+    image: 'achudinovskyh',
+    occupation: 'Backend developer / mentor',
+    roles: ['adults-mentor'],
+  },
+  {
+    name: { en: 'Konstantin', uk: 'Костянтин', ru: 'Константин' },
+    surname: { en: 'Yakimenko', uk: 'Якименко', ru: 'Якименко' },
+    image: 'kyakimenko',
+    occupation: 'Backend developer / mentor',
+    roles: ['adults-mentor', 'team'],
+  },
+  {
+    name: { en: 'Constantine', uk: 'Костя', ru: 'Костя' },
+    surname: { en: 'Gorbach', uk: 'Горбач', ru: 'Горбач' },
+    image: 'kgorbach',
+    occupation: 'Android developer / mentor',
+    roles: ['team', 'adults-mentor'],
+  },
+  {
+    name: { en: 'Maryna', uk: 'Марина', ru: 'Марина' },
+    surname: { en: 'Sokol', uk: 'Сокол', ru: 'Сокол' },
+    image: 'msokol',
+    occupation: 'Mentor Frontend (Vue.js)',
+    roles: ['adults-mentor'],
+  },
+].filter((m) => m.visible !== false);
+
 const BASE_URL = 'https://programming.org.ua';
 
 module.exports = async (_, { mode = 'development' }) => ({
@@ -244,6 +346,7 @@ module.exports = async (_, { mode = 'development' }) => ({
               content: {
                 ...getCommonContent('/about/'),
                 partners: partnersConfig,
+                team: teamMembersConfig,
               },
             }),
             new HtmlWebpackPlugin({

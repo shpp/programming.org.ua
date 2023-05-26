@@ -1,0 +1,76 @@
+@import '../../styles/constants';
+
+.team {
+  background: $color-light-gray-3;
+  padding: 16px;
+
+  &-member {
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(45, 45, 45, 0.05);
+
+    &-picture,
+    &-picture-fun {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: auto;
+      aspect-ratio: 2/3;
+      transition: opacity $hover-transition-speed;
+      width: 100%;
+    }
+    &-picture {
+      &-wrapper {
+        position: relative;
+      }
+
+      left: 0;
+      position: absolute;
+      top: 0;
+
+      &:hover {
+        opacity: 0;
+        transition: opacity $hover-transition-speed;
+      }
+    }
+
+    &-text {
+      padding: 10px;
+    }
+
+    &-occupation {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  }
+
+  &-slider {
+    position: relative;
+    overflow: hidden;
+
+    &:not(.swiper-initialized) {
+      display: none;
+    }
+
+    &-previous,
+    &-next {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 1;
+      height: 48px;
+      font-size: 48px;
+      color: $color-light-gray;
+      width: 48px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    &-previous {
+      left: 0;
+    }
+    &-next {
+      right: 0;
+    }
+  }
+}

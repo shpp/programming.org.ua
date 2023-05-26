@@ -1,4 +1,5 @@
 @import 'constants';
+@import 'mixins';
 
 .form {
   background-color: $color-white;
@@ -132,6 +133,12 @@
   &-submit {
     text-align: center;
     padding: 24px;
+  }
+
+  @include media-sm {
+    padding: 16px;
+    border: none;
+    margin: 0;
   }
 }
 

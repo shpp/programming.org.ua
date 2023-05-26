@@ -1,7 +1,28 @@
 @import 'partners';
+@import 'team-members';
+@import '../../styles/mixins';
 
 .about {
   h2 {
     text-align: center;
+  }
+
+  .mission {
+    padding: 64px;
+
+    &-text {
+      max-width: 550px;
+      margin: auto;
+      font-size: 20px;
+    }
+  }
+
+  @include media-sm {
+    section {
+      padding: 16px !important;
+    }
+    .form {
+      padding: 0;
+    }
   }
 }
