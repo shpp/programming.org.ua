@@ -62,10 +62,50 @@
             </div>
             {{/each}}
           </div>
-          <div class="swiper-pagination"></div>
+          <div class="history-slider-pagination"></div>
         </div>
         <i class="history-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
         <i class="history-slider-next fa fa-chevron-right" aria-hidden="true"></i>
+      </section>
+      <section class="philosophy">
+        <div class="philosophy-card">
+          <div class="philosophy-card-text">
+            <h2>{{ htmlWebpackPlugin.options.content.translations.philosophy }}</h2>
+            <div class="philosophy-slider">
+              <div class="swiper-wrapper philosophy-slider-wrapper">
+                <div class="swiper-slide">
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p1}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p2}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p3}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p4}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p5}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil1_p6}}}</p>
+                </div>
+
+                <div class="swiper-slide">
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil2_p1}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil2_p2}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil2_p3}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil2_p4}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil2_p5}}}</p>
+                </div>
+                <div class="swiper-slide">
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil3_p1}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil3_p2}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil3_p3}}}</p>
+                  <p>{{{htmlWebpackPlugin.options.content.translations.phil3_p4}}}</p>
+                </div>
+              </div>
+              <div class="philosophy-slider-pagination"></div>
+            </div>
+          </div>
+          <div class="philosophy-card-image">
+            <img
+              src="/img/philosophy.jpg"
+              alt="{{ htmlWebpackPlugin.options.content.translations.philosophy }}"
+            />
+          </div>
+        </div>
       </section>
       <section class="partners">
         <h2>{{ htmlWebpackPlugin.options.content.translations.partners2 }}<sup> *</sup></h2>
