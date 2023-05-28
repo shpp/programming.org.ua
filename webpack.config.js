@@ -38,7 +38,7 @@ const getShppAge = (date, lang, pattern) => {
 const localesConfig = {
   uk: {
     lang: 'uk',
-    filenamePrefix: 'ua/',
+    filenamePrefix: 'uk/',
     locale: 'uk_UA',
     langPrefix: '',
   },
