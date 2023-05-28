@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
 
 const nearestDate = fetch('https://back.scs.p2p.programming.org.ua/ptp/nearest-start-date')
   .then((res) => res.json())
@@ -86,6 +87,35 @@ module.exports = async (_, { mode = 'development' }) => ({
     clean: true,
   },
   plugins: [
+    new SitemapPlugin({
+      base: BASE_URL,
+      paths: [
+        ...[
+          'about',
+          'contacts',
+          'email-confirmed',
+          'feedback-all',
+          '',
+          'support',
+          'courses/adults',
+          'courses',
+          'forms/feedback-form',
+          'forms/first-form',
+          'forms/last-form',
+          'forms/main-form',
+          'forms/main-school-form',
+        ].map((pageName) => ({
+          path: `/${pageName}`,
+          lastmod: new Date().toISOString(),
+          priority: 1,
+          changefreq: 'weekly',
+          links: ['ru', 'ua', 'en'].map((lang) => ({
+            hreflang: lang,
+            url: `/${lang}/${pageName}`,
+          })),
+        })),
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].css',
