@@ -109,7 +109,7 @@ module.exports = async (_, { mode = 'development' }) => ({
           lastmod: new Date().toISOString(),
           priority: 1,
           changefreq: 'weekly',
-          links: ['ru', 'ua', 'en'].map((lang) => ({
+          links: ['ru', 'uk', 'en'].map((lang) => ({
             hreflang: lang,
             url: `/${lang}/${pageName}`,
           })),
