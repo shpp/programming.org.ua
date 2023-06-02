@@ -1,14 +1,26 @@
 import './index.scss';
 
 const pageLocalStorageKey = 'anketa/last';
-
-document.querySelector('.content .email').innerHTML = `(${localStorage.getItem(
-  `${pageLocalStorageKey}.student.email`
-)})`;
-
 const pageVisitedKey = `${pageLocalStorageKey}.isVisited`;
+const studentEmailKey = `${pageLocalStorageKey}.student.email`;
 const languageKey = { en: 'en', uk: '', ru: 'ru' }[document.documentElement.lang] ?? '';
+const studentEmail = localStorage.getItem(studentEmailKey);
 
-!localStorage.getItem(pageVisitedKey)
-  ? localStorage.setItem(pageVisitedKey, 'true')
-  : (location.href = `/${languageKey}`);
+handleRedirects();
+function handleRedirects() {
+  if (!studentEmail) {
+    location.href = `/${languageKey}`;
+
+    return;
+  }
+
+  document.querySelector('.content .email').innerHTML = `(${studentEmail})`;
+
+  if (!localStorage.getItem(pageVisitedKey)) {
+    localStorage.setItem(pageVisitedKey, 'true');
+
+    return;
+  }
+
+  location.href = `/${languageKey}`;
+}
