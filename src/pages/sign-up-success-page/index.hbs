@@ -6,7 +6,16 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='anketa/last'}}
-    <main>sign up success page</main>
+    <main>
+      <section class="content container">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.lf_h1 }}</h2>
+        <p>
+          {{ htmlWebpackPlugin.options.content.translations.lf_p1 }}
+          <strong class="email"></strong>
+        </p>
+        <p>{{{htmlWebpackPlugin.options.content.translations.lf_p11}}}</p>
+      </section>
+    </main>
     {{> ../../footer/footer}}
   </body>
 </html>
