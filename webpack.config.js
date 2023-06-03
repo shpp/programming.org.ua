@@ -276,7 +276,7 @@ const mediaMentionsConfig = [
     },
   },
   {
-    imgSrc: '/img/media/dozor.png',
+    imgSrc: '/img/media/dozor.jpg',
     alt: 'Медіапортал DOZOR',
     date: '09.11.2018',
     link: 'https://dozor.kr.ua/post/hochesh-buti-programistom-bud-nim-nekirovogradska-filosofiya-kirovogradskoi-shkoli--8160.html',
@@ -298,7 +298,7 @@ const mediaMentionsConfig = [
     },
   },
   {
-    imgSrc: '/img/media/novagazeta.png',
+    imgSrc: '/img/media/novagazeta.jpg',
     alt: 'Нова газета',
     date: '08.10.2015',
     link: 'https://novagazeta.kr.ua/index.php/podii/socium/851-shkola-prohramuvannia-ta-altruizmu',
