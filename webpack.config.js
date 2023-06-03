@@ -562,7 +562,7 @@ module.exports = async (_, { mode = 'development' }) => ({
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]',
+          filename: (pathData) => `img/${pathData.filename.replace('assets/images/', '')}`,
         },
       },
       {
