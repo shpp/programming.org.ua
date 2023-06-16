@@ -1,0 +1,52 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+@import '../../styles/accordion';
+
+// todo: use classes for selectors
+.manifesto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  position: relative;
+  border-bottom: 8px solid $color-light-gray-3;
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    background-image: url('/assets/images/gsm.png');
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    max-height: 250px;
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+
+    @include media-lg {
+      display: none;
+    }
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  a {
+    color: black;
+
+    &:hover {
+      color: $color-main-green;
+    }
+  }
+
+  ul {
+    margin: 0 auto;
+    max-width: 700px;
+
+    li:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}
