@@ -1,6 +1,6 @@
 class AccodrionItem {
   // todo: review and simplify
-  constructor(el, params) {
+  constructor(el) {
     this.el = el;
     this.summary = el.querySelector('summary');
     this.content = el.querySelector('.content');
@@ -9,10 +9,6 @@ class AccodrionItem {
     this.isClosing = false;
     this.isExpanding = false;
     this.summary.addEventListener('click', (e) => this.onClick(e));
-
-    if (params.openItems === 'all' || params.openItems?.includes(this.el.id)) {
-      this.open();
-    }
   }
 
   onClick(e) {
@@ -81,11 +77,11 @@ class AccodrionItem {
 }
 
 class Accordion {
-  constructor(selector, params = {}) {
+  constructor(selector) {
     document
       .querySelector(selector)
       .querySelectorAll('details')
-      .forEach((el) => new AccodrionItem(el, params));
+      .forEach((el) => new AccodrionItem(el));
   }
 }
 
