@@ -7,7 +7,47 @@
   <body>
     {{> ../../header/header pageRoute='about'}}
     <main class="about">
-      about us page
+      <section class="mission">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.home.mission.title }}</h2>
+        <div class="mission-text">
+          {{#each htmlWebpackPlugin.options.content.translations.home.mission.blocks}}
+          {{#each this}}
+          <p>{{{this}}}</p>
+          {{/each}}
+          {{/each}}
+        </div>
+      </section>
+      <section class="team">
+        <div class="team-slider">
+          <div class="team-slider-wrapper swiper-wrapper">
+            {{#each htmlWebpackPlugin.options.content.team}}
+            <div class="team-slide team-member swiper-slide">
+              <div class="team-member-picture-wrapper">
+                <div
+                  class="team-member-picture-fun"
+                  style="background-image: url('/img/team-members/fun-{{ this.image }}.jpg')"
+                ></div>
+                <div
+                  class="team-member-picture"
+                  style="background-image: url('/img/team-members/{{ this.image }}.jpg')"
+                ></div>
+              </div>
+              <div class="team-member-text">
+                <div>
+                  <strong class="team-member-name">
+                    {{getProperty this.name ../htmlWebpackPlugin.options.content.lang}}
+                    {{getProperty this.surname ../htmlWebpackPlugin.options.content.lang}}
+                  </strong>
+                </div>
+                <div class="team-member-occupation">{{ this.occupation }}</div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <i class="team-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
+          <i class="team-slider-next fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </section>
       <section class="partners">
         <h2>{{ htmlWebpackPlugin.options.content.translations.partners2 }}<sup> *</sup></h2>
         <div class="partners-list">
