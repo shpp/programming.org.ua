@@ -48,6 +48,25 @@
           <i class="team-slider-next fa fa-chevron-right" aria-hidden="true"></i>
         </div>
       </section>
+      <section class="history">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.ach_descr1_h }}</h2>
+        <div class="history-slider">
+          <div class="history-slider-wrapper swiper-wrapper">
+            {{#each htmlWebpackPlugin.options.content.translations.about.history.events}}
+            <div class="history-event swiper-slide">
+              <img src="/img/history-slider/{{ this.image }}.jpg" alt="{{ this.description }}" />
+              <div class="history-event-text">
+                <div class="history-event-date">{{ this.date }}</div>
+                <div>{{ this.description }}</div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <i class="history-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
+        <i class="history-slider-next fa fa-chevron-right" aria-hidden="true"></i>
+      </section>
       <section class="partners">
         <h2>{{ htmlWebpackPlugin.options.content.translations.partners2 }}<sup> *</sup></h2>
         <div class="partners-list">
