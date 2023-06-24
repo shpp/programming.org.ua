@@ -1,0 +1,64 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.teens {
+  display: flex;
+  align-items: center;
+
+  &:before,
+  &:after {
+    content: '';
+    background-image: url('/assets/images/forteens.png');
+    background-repeat: no-repeat;
+    height: 152px;
+    margin-top: -76px;
+    position: absolute;
+    top: 50%;
+    width: 73px;
+
+    @include media-md {
+      display: none;
+    }
+  }
+
+  &:before {
+    background-position: 0 -10px;
+    left: 55px;
+  }
+
+  &:after {
+    background-position: -100px -10px;
+    right: 55px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 20px;
+    box-sizing: initial;
+
+    p {
+      margin: 25px 0;
+      font-size: 20px;
+
+      a {
+        &,
+        &:visited {
+          color: inherit;
+        }
+
+        &:hover {
+          color: $color-main-green;
+        }
+      }
+    }
+
+    .sign-up {
+      display: block;
+      margin: 0 auto;
+      width: fit-content;
+    }
+  }
+}

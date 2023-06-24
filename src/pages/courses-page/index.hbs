@@ -7,6 +7,22 @@
   <body>
     {{> ../../header/header pageRoute='courses'}}
     <main class="courses">
+      <section class="teens" id="teens">
+        <div class="content">
+          <h2>
+            {{ htmlWebpackPlugin.options.content.translations.teens.about.title }}
+          </h2>
+          {{#each htmlWebpackPlugin.options.content.translations.teens.about.p }}
+          <p>{{{ this }}}</p>
+          {{/each}}
+          <a
+            href="{{ htmlWebpackPlugin.options.content.langPrefix }}/anketa"
+            class="button-primary sign-up"
+          >
+            {{ htmlWebpackPlugin.options.content.translations.anketa }}
+          </a>
+        </div>
+      </section>
       <section class="faq">
         <h2>{{ htmlWebpackPlugin.options.content.translations.teens.faq.title }}</h2>
         <ul class="accordion">
