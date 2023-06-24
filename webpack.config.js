@@ -242,6 +242,74 @@ const teamMembersConfig = [
   },
 ].filter((m) => m.visible !== false);
 
+const mediaMentionsConfig = [
+  {
+    imgSrc: '/img/media/suspilne.svg',
+    alt: 'Суспільне Кропивницький',
+    date: '01.06.2023',
+    link: 'https://www.youtube.com/watch?v=DWq-b9VbBf8',
+    title: {
+      ru: 'Борьба в тылу | В Кропивницком действует бесплатная школа программирования для взрослых и подростков (язык: украинский)',
+      uk: 'Боротьба в тилу | В Кропивницькому діє безкоштовна школа програмування для дорослих і підлітків',
+      en: 'Fighting in the rear | There is a free programming school for adults and teenagers in Kropyvnytskyi (language: ukrainian)',
+    },
+  },
+  {
+    imgSrc: '/img/media/gre4ka.png',
+    alt: 'Гречка',
+    date: '18.06.2020',
+    link: 'https://gre4ka.info/statti/59680-yak-u-kropyvnytskomu-aitishnyky-podaruvaly-mistu-bezkoshtovnu-shkolu-prohramuvannia-i-kreatyvnyi-prostir',
+    title: {
+      ru: 'Как в Кропивницком айтишники подарили городу бесплатную школу программирования и креативное пространство (язык: украинский)',
+      uk: 'Як у Кропивницькому айтішники подарували місту безкоштовну школу програмування і креативний простір',
+      en: 'How programmers gave the Kropyvnytskyi a free programming school and a creative space (language: ukrainian)',
+    },
+  },
+  {
+    imgSrc: '/img/media/dou.svg',
+    alt: 'DOU',
+    date: '20.12.2019',
+    link: 'https://dou.ua/lenta/interviews/kropyvnytskyi-it-school/',
+    title: {
+      ru: 'IT-волонтеры: как в Кропивницком основали бесплатную школу программирования и социальное креативное пространство (язык: украинский)',
+      uk: 'IT-волонтери: як у Кропивницькому заснували безкоштовну школу програмування та соціальний креативний простір',
+      en: 'IT volunteers: how they founded a free programming school and social creative space in Kropyvnytskyi (language: ukrainian)',
+    },
+  },
+  {
+    imgSrc: '/img/media/dozor.jpg',
+    alt: 'Медіапортал DOZOR',
+    date: '09.11.2018',
+    link: 'https://dozor.kr.ua/post/hochesh-buti-programistom-bud-nim-nekirovogradska-filosofiya-kirovogradskoi-shkoli--8160.html',
+    title: {
+      ru: 'Хочешь быть программистом? Будь им!\nНекировоградская философия кировоградской школы (язык: украинский)',
+      uk: 'Хочеш бути програмістом? Будь ним!\nНекіровоградська філософія кіровоградської школи',
+      en: 'Do you want to be a programmer? Be him!\nNon-Kirovohrad philosophy of the Kirovohrad school (language: ukrainian)',
+    },
+  },
+  {
+    imgSrc: '/img/media/pravda-kr.jpg',
+    alt: 'Кіровоградська Правда',
+    date: '07.03.2018',
+    link: 'https://pravda-kr.com.ua/sotsium/11662-u-kirovogradi-die-shkola-de-bezplatno-vchat-programuvannyu-i-dayut-shans-na-nove-zhittya.html',
+    title: {
+      ru: 'В Кировограде действует школа, где бесплатно учат программированию и дают шанс на новую жизнь (язык: украинский)',
+      uk: 'У Кіровограді діє школа, де безплатно вчать програмуванню і дають шанс на нове життя',
+      en: 'There is a school in Kirovohrad that teaches programming for free and gives a chance for a new life (language: ukrainian)',
+    },
+  },
+  {
+    imgSrc: '/img/media/novagazeta.jpg',
+    alt: 'Нова газета',
+    date: '08.10.2015',
+    link: 'https://novagazeta.kr.ua/index.php/podii/socium/851-shkola-prohramuvannia-ta-altruizmu',
+    title: {
+      ru: 'Школа программирования и альтруизма (язык: украинский)',
+      uk: 'Школа програмування та альтруїзму',
+      en: 'School of programming and altruism (language: ukrainian)',
+    },
+  },
+];
 const BASE_URL = 'https://programming.org.ua';
 
 module.exports = async (_, { mode = 'development' }) => ({
@@ -373,6 +441,7 @@ module.exports = async (_, { mode = 'development' }) => ({
                 ...getCommonContent('/about/'),
                 partners: partnersConfig,
                 team: teamMembersConfig,
+                media: mediaMentionsConfig,
               },
             }),
             new HtmlWebpackPlugin({

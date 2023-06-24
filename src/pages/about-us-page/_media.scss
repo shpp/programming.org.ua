@@ -1,0 +1,55 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.media {
+  background: $color-light-gray-3;
+  padding: 48px;
+
+  &-list {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+
+    @include media-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-xs {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &-item {
+    box-shadow: $box-shadow;
+    margin-left: 32px;
+    font-size: 16px;
+    margin-bottom: 32px;
+    background: $color-white;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    h3 {
+      margin: 24px 0;
+    }
+    a {
+      color: $color-font;
+
+      &:hover {
+        color: $color-main-green;
+      }
+    }
+
+    img {
+      height: 50px;
+    }
+
+    span {
+      color: $color-gray-2;
+      font-size: 14px;
+      margin-top: auto;
+    }
+  }
+}
