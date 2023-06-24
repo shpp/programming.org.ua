@@ -6,8 +6,25 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='courses'}}
-    <main class="vue-container">
-      courses page
+    <main class="courses">
+      <section class="faq">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.teens.faq.title }}</h2>
+        <ul class="accordion">
+          {{#each htmlWebpackPlugin.options.content.translations.teens.faq.questions }}
+          <li>
+            <details>
+              <summary>
+                <span class="text">{{{ this.question }}}</span>
+                <i class="fa fa-chevron-right text-green" aria-hidden="true"></i>
+              </summary>
+              <div class="content">
+                <p>{{{ this.answer }}}</p>
+              </div>
+            </details>
+          </li>
+          {{/each}}
+        </ul>
+      </section>
       {{> ../../template-partials/question-form/question-form page='courses'}}
     </main>
     {{> ../../footer/footer}}

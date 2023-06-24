@@ -1,0 +1,30 @@
+@import '../../styles/accordion';
+@import '../../styles/constants';
+
+.faq {
+  padding: 64px;
+
+  ul {
+    margin: 0 auto;
+    max-width: 550px;
+
+    li:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  a {
+    &,
+    &:visited {
+      color: inherit;
+    }
+    &:hover {
+      color: $color-main-green;
+    }
+  }
+
+  & > p {
+    max-width: 550px;
+    margin: 36px auto;
+  }
+}
