@@ -8,24 +8,26 @@
     {{> ../../header/header pageRoute='courses/adults'}}
     <main class="adults">
       <section class="faq">
-        <h2>{{ htmlWebpackPlugin.options.content.translations.adults.faq.title }}</h2>
-        <ul class="accordion">
-          {{#each htmlWebpackPlugin.options.content.translations.adults.faq.questions }}
-          <li>
-            <details open>
-              <summary>
-                <span class="text">{{ this.question }}</span>
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-              </summary>
-              <div class="content">
-                <p>{{{ this.answer }}}</p>
-              </div>
-            </details>
-          </li>
-          {{/each}}
-        </ul>
-        <br />
-        <p>{{{htmlWebpackPlugin.options.content.translations.adults.faq.contact_us}}}</p>
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.faq.title }}</h2>
+          <ul class="accordion">
+            {{#each htmlWebpackPlugin.options.content.translations.adults.faq.questions }}
+            <li>
+              <details open>
+                <summary>
+                  <span class="text">{{ this.question }}</span>
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </summary>
+                <div class="content">
+                  <p>{{{ this.answer }}}</p>
+                </div>
+              </details>
+            </li>
+            {{/each}}
+          </ul>
+          <br />
+          <p>{{{htmlWebpackPlugin.options.content.translations.adults.faq.contact_us}}}</p>
+        </div>
       </section>
     </main>
     {{> ../../footer/footer}}
