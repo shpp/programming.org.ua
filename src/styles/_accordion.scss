@@ -1,0 +1,43 @@
+@import 'constants';
+
+.accordion {
+  details {
+    summary {
+      background-color: $color-light-gray-3;
+      list-style: none;
+      cursor: pointer;
+      font-size: 20px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+
+      &:focus {
+        outline-offset: -2px;
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      .text {
+        padding-right: 8px;
+      }
+
+      i {
+        margin-left: auto;
+        color: $color-main-green;
+        transition: all $hover-transition-speed ease-in-out;
+        transform-origin: center;
+      }
+    }
+
+    &[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 16px;
+      border: 2px solid $color-light-gray-3;
+    }
+  }
+}

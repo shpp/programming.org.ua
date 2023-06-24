@@ -2,6 +2,7 @@ import './index.scss';
 import '../../template-partials/question-form/question-form';
 import Swiper, { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
+import setupManifesto from '../../template-partials/good-school-manifesto/good-school-manifesto';
 
 function setupTeamSlider() {
   new Swiper(document.querySelector('.team-slider'), {
@@ -68,6 +69,7 @@ function main() {
   setupTeamSlider();
   setupHistorySlider();
   setupPhilosophySlider();
+  setupManifesto();
 }
 
 main();

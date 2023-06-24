@@ -155,39 +155,7 @@
           </div>
         </div>
       </section>
-      <section class="manifesto">
-        <div class="container">
-          <h2>
-            {{{ htmlWebpackPlugin.options.content.translations.good_school_manifesto.title }}}
-          </h2>
-
-          <ul>
-            {{#each htmlWebpackPlugin.options.content.translations.good_school_manifesto.p }}
-            <li>
-              <details>
-                <summary>
-                  <span class="text">{{{ this.title }}}</span>
-                  <i class="fa fa-chevron-right text-green" aria-hidden="true"></i>
-                </summary>
-                <div class="content">
-                  <p>{{{ this.description }}}</p>
-                  {{#each this.blocks }}
-                  <div>
-                    <p>
-                      <strong>{{{ this.headline }}}</strong>
-                    </p>
-                    {{#each this.p }}
-                    <p>✅ {{{ this }}}</p>
-                    {{/each}}
-                  </div>
-                  {{/each}}
-                </div>
-              </details>
-            </li>
-            {{/each}}
-          </ul>
-        </div>
-      </section>
+      {{> ../../template-partials/good-school-manifesto/good-school-manifesto}}
       <section class="partners">
         <div class="partners-slider">
           <div class="partners-slider-wrapper swiper-wrapper">
