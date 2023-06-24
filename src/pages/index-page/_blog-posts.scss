@@ -22,7 +22,7 @@
     li {
       display: flex;
       flex-direction: column;
-      box-shadow: 0 2px 20px rgb(45 45 45 / 5%);
+      box-shadow: $box-shadow;
       margin: 16px;
       padding: 16px;
       box-sizing: border-box;
@@ -56,7 +56,7 @@
 
       .date {
         margin-top: auto;
-        color: rgba(black, 0.6);
+        color: $color-gray-2;
         font-size: 14px;
       }
     }

@@ -1,0 +1,79 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.philosophy {
+  padding: 48px;
+  background-color: $color-light-gray-3;
+
+  &-card {
+    max-width: 1200px;
+    margin: auto;
+    background-color: $color-white;
+    box-shadow: $box-shadow;
+    display: flex;
+    flex-direction: row;
+
+    @include media-md {
+      flex-direction: column;
+    }
+
+    &-text {
+      padding: 32px;
+      width: 50%;
+
+      @include media-md {
+        padding: 16px;
+        width: 100%;
+      }
+
+      .swiper-slide p:nth-child(even) {
+        color: $color-main-green;
+      }
+    }
+
+    &-image {
+      width: 50%;
+
+      @include media-md {
+        display: none;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &-slider {
+    overflow: hidden;
+
+    &:not(.swiper-initialized) {
+      display: none;
+    }
+
+    &-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+
+      &-bullet {
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 10px;
+        height: 13px;
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 13px;
+        background-color: $color-gray;
+        cursor: pointer;
+
+        &-active {
+          background-color: $color-gray-2;
+        }
+      }
+    }
+  }
+}

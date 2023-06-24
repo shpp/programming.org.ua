@@ -26,7 +26,6 @@ function setupTeamSlider() {
 }
 
 function setupHistorySlider() {
-  console.log('call swiper');
   new Swiper(document.querySelector('.history-slider'), {
     loop: false,
     spaceBetween: 32,
@@ -36,8 +35,10 @@ function setupHistorySlider() {
       1400: { slidesPerView: 5 },
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.history-slider-pagination',
       clickable: true,
+      bulletClass: 'history-slider-pagination-bullet',
+      bulletActiveClass: 'history-slider-pagination-bullet-active',
     },
     navigation: {
       nextEl: '.history-slider-next',
@@ -47,9 +48,26 @@ function setupHistorySlider() {
   });
 }
 
+function setupPhilosophySlider() {
+  new Swiper(document.querySelector('.philosophy-slider'), {
+    loop: true,
+    autoplay: {
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.philosophy-slider-pagination',
+      clickable: true,
+      bulletClass: 'philosophy-slider-pagination-bullet',
+      bulletActiveClass: 'philosophy-slider-pagination-bullet-active',
+    },
+    modules: [Autoplay, Pagination],
+  });
+}
+
 function main() {
   setupTeamSlider();
   setupHistorySlider();
+  setupPhilosophySlider();
 }
 
 main();
