@@ -7,6 +7,44 @@
   <body>
     {{> ../../header/header pageRoute='courses/adults'}}
     <main class="adults">
+      <!-- Student flow -->
+      <section class="student-flow">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.student_flow.title }}</h2>
+          <div class="student-flow-items">
+            <div>
+              <h3>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[0].title}}
+              </h3>
+              <p>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[0].description}}
+              </p>
+            </div>
+            <div class="arrow-right">
+              <img src="/img/icons/002-down-arrow.svg" class="rotate-right" alt="" />
+            </div>
+            <div>
+              <h3>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[1].title}}
+              </h3>
+              <p>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[1].description}}
+              </p>
+            </div>
+            <div class="arrow-right">
+              <img src="/img/icons/002-down-arrow.svg" class="rotate-right" alt="" />
+            </div>
+            <div>
+              <h3>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[2].title}}
+              </h3>
+              <p>
+                {{htmlWebpackPlugin.options.content.translations.adults.student_flow.items.[2].description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!--  Mentors -->
       <section class="mentors">
         <a class="anchor" id="mentors"></a>

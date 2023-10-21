@@ -1,0 +1,33 @@
+@import '../../styles/constants';
+
+.student-flow {
+  background-color: $color-main-green;
+  color: $color-white;
+
+  img {
+    transform: rotateZ(-90deg);
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 36px;
+
+    .arrow-right {
+      width: 64px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 18px;
+      color: $color-light-gray;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+  }
+}
