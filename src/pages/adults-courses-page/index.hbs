@@ -7,6 +7,74 @@
   <body>
     {{> ../../header/header pageRoute='courses/adults'}}
     <main class="adults">
+      <!--  Feedbacks -->
+      <section class="feedbacks vue-container">
+        <h2 class="feedbacks-title">
+          {{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.title }}
+        </h2>
+        <div class="feedbacks-container">
+          <div class="feedbacks-slider-container">
+            <div class="swiper feedbacks-slider" ref="sliderRef">
+              <div class="swiper-wrapper">
+                <div
+                  class="feedbacks-slide swiper-slide"
+                  v-for="(feedback, index) in feedbacks"
+                  :key="'feedback-'+index"
+                >
+                  <header class="feedbacks-slide-header">
+                    <img
+                      class="feedbacks-slide-image"
+                      :src="getImage(feedback)"
+                      :alt="getName(feedback)"
+                    />
+                    <a class="feedbacks-slide-name-link" :href="feedback.link" target="_blank">
+                      <strong>\{{ getName(feedback) }}</strong>
+                    </a>
+                  </header>
+                  <p class="feedbacks-slide-text" v-if="!isLongText(feedback.message)">
+                    \{{ feedback.message }}
+                  </p>
+                  <p class="feedbacks-slide-text" v-else>
+                    \{{
+                      shouldShowFullText(index) ? feedback.message : getShortText(feedback.message)
+                    }}
+                    <br />
+                    <a
+                      class="feedbacks-slide-link"
+                      v-if="!shouldShowFullText(index)"
+                      @click="more(index)"
+                      >{{ htmlWebpackPlugin.options.content.translations.read_more }}</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <i class="feedbacks-slider-previous fa fa-chevron-left" aria-hidden="true"></i>
+            <i class="feedbacks-slider-next fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="feedbacks-buttons">
+            <a
+              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all"
+              class="feedbacks-buttons-watch-all-responses"
+              >{{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.see_all }}</a
+            >
+          </div>
+        </div>
+      </section>
+      <!--  Diploma -->
+      <section class="diploma">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.diploma.title }}</h2>
+          <p>{{ htmlWebpackPlugin.options.content.translations.adults.diploma.p }}</p>
+          <div class="image">
+            <img
+              src="/img/adults-courses/diploma-{{ htmlWebpackPlugin.options.content.lang }}.jpg"
+              alt="Школа програмування Ш++ диплом"
+            />
+          </div>
+        </div>
+      </section>
       <section class="faq">
         <h2>{{ htmlWebpackPlugin.options.content.translations.adults.faq.title }}</h2>
         <ul class="accordion">
