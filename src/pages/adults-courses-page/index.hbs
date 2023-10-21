@@ -7,6 +7,41 @@
   <body>
     {{> ../../header/header pageRoute='courses/adults'}}
     <main class="adults">
+      <!--  Mentors -->
+      <section class="mentors">
+        <a class="anchor" id="mentors"></a>
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.mentors.title }}</h2>
+          <p class="section-text text-center">
+            {{ htmlWebpackPlugin.options.content.translations.adults.mentors.text }}
+          </p>
+          <div class="mentors-list">
+            {{#each htmlWebpackPlugin.options.content.mentors}}
+            <div class="mentor">
+              <div class="mentor-picture-wrapper">
+                <div
+                  class="mentor-picture-fun"
+                  style="background-image: url('/img/team-members/fun-{{ this.image }}.jpg')"
+                ></div>
+                <div
+                  class="mentor-picture"
+                  style="background-image: url('/img/team-members/{{ this.image }}.jpg')"
+                ></div>
+              </div>
+              <div class="mentor-text">
+                <div>
+                  <strong class="mentor-name">
+                    {{getProperty this.name ../htmlWebpackPlugin.options.content.lang}}
+                    {{getProperty this.surname ../htmlWebpackPlugin.options.content.lang}}
+                  </strong>
+                </div>
+                <div class="mentor-occupation">{{ this.occupation }}</div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
       <!--  Feedbacks -->
       <section class="feedbacks vue-container">
         <h2 class="feedbacks-title">
