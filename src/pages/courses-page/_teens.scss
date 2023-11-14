@@ -1,6 +1,10 @@
 @import '../../styles/constants';
 @import '../../styles/mixins';
 
+:root {
+  scroll-padding-top: 90px;
+}
+
 .teens {
   display: flex;
   flex-direction: column;
