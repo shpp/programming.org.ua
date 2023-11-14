@@ -2,7 +2,7 @@
 @import '../../styles/mixins';
 
 :root {
-  scroll-padding-top: 90px;
+  scroll-padding-top: $header-height + $header-border-height;
 }
 
 .teens {

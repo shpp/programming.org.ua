@@ -6,7 +6,7 @@
   top: 0;
   width: 100%;
   z-index: 2;
-  border-bottom: 5px solid $color-main-green;
+  border-bottom: $header-border-height solid $color-main-green;
   background-color: white;
 
   &-container {
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: flex-end;
 
-    min-height: 90px;
+    min-height: $header-height;
     padding: 0 20px;
     box-sizing: border-box;
     max-width: 1920px;
@@ -30,7 +30,7 @@
       font-family: arial, serif;
       font-size: 64px;
       font-weight: 700;
-      line-height: 90px;
+      line-height: $header-height;
       text-decoration: none;
       color: $color-main-green;
       display: inline-block; // this line is required for ::first-letter selector to be working
