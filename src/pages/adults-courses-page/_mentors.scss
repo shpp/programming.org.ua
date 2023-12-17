@@ -1,0 +1,54 @@
+@import '../../styles/constants';
+
+.mentors {
+  p {
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 550px;
+    text-align: center;
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px;
+    padding: 20px;
+  }
+
+  .mentor {
+    &-picture,
+    &-picture-fun {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: auto;
+      aspect-ratio: 2/3;
+      transition: opacity $hover-transition-speed;
+      width: 100%;
+    }
+    &-picture {
+      &-wrapper {
+        position: relative;
+      }
+
+      left: 0;
+      position: absolute;
+      top: 0;
+
+      &:hover {
+        opacity: 0;
+        transition: opacity $hover-transition-speed;
+      }
+    }
+
+    &-text {
+      padding: 10px;
+    }
+
+    &-occupation {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  }
+}

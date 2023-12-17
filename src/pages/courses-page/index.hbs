@@ -7,23 +7,44 @@
   <body>
     {{> ../../header/header pageRoute='courses'}}
     <main class="courses">
-      <section class="faq">
-        <h2>{{ htmlWebpackPlugin.options.content.translations.teens.faq.title }}</h2>
-        <ul class="accordion">
-          {{#each htmlWebpackPlugin.options.content.translations.teens.faq.questions }}
-          <li>
-            <details open>
-              <summary>
-                <span class="text">{{ this.question }}</span>
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-              </summary>
-              <div class="content">
-                <p>{{{ this.answer }}}</p>
-              </div>
-            </details>
-          </li>
+      <section class="teens" id="teens">
+        <div class="content container">
+          <h2>
+            {{ htmlWebpackPlugin.options.content.translations.teens.about.title }}
+          </h2>
+          {{#each htmlWebpackPlugin.options.content.translations.teens.about.p }}
+          <p>{{{ this }}}</p>
           {{/each}}
-        </ul>
+          <a
+            href="{{ htmlWebpackPlugin.options.content.langPrefix }}/anketa"
+            class="button-primary sign-up"
+          >
+            {{ htmlWebpackPlugin.options.content.translations.anketa }}
+          </a>
+        </div>
+        <div class="container">
+          <hr />
+        </div>
+      </section>
+      <section class="faq">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.teens.faq.title }}</h2>
+          <ul class="accordion">
+            {{#each htmlWebpackPlugin.options.content.translations.teens.faq.questions }}
+            <li>
+              <details open>
+                <summary>
+                  <span class="text">{{ this.question }}</span>
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </summary>
+                <div class="content">
+                  <p>{{{ this.answer }}}</p>
+                </div>
+              </details>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
       </section>
       {{> ../../template-partials/question-form/question-form page='courses'}}
     </main>
