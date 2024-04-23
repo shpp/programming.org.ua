@@ -124,6 +124,10 @@
           flex-direction: column;
         }
 
+        li.active a {
+          background-color: rgba(black, 0.05);
+        }
+
         & > li {
           display: flex;
           position: relative;
