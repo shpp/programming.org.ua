@@ -69,6 +69,7 @@ function setupFeedbacks() {
             this.slider = new Swiper(this.$refs.sliderRef, {
               spaceBetween: 30,
               autoHeight: true,
+              loop: true,
               breakpoints: {
                 768: { slidesPerView: 1 },
                 1200: { slidesPerView: 3 },
