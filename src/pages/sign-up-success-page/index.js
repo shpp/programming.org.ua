@@ -1,4 +1,5 @@
 import './index.scss';
+import { StudentStorage } from '../sign-up-index-page/student-storage';
 
 const pageLocalStorageKey = 'anketa/last';
 const pageVisitedKey = `${pageLocalStorageKey}.isVisited`;
@@ -15,6 +16,7 @@ function handleRedirects() {
   }
 
   document.querySelector('.content .email').innerHTML = `(${studentEmail})`;
+  StudentStorage.reset();
 
   if (!localStorage.getItem(pageVisitedKey)) {
     localStorage.setItem(pageVisitedKey, 'true');
