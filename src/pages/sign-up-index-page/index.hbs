@@ -6,7 +6,64 @@
   </head>
   <body>
     {{> ../../header/header pageRoute='anketa'}}
-    <main>sign up first page</main>
+    <main>
+      <div class="first-form">
+        <h2>{{ htmlWebpackPlugin.options.content.translations.ff_h }}</h2>
+        <form>
+          <div class="warning hidden">
+            {{ htmlWebpackPlugin.options.content.translations.ff_you_are_too_young }}
+          </div>
+          <div class="info-input">
+            <label for="name" class="question">
+              {{ htmlWebpackPlugin.options.content.translations.ff_name
+              }}<span class="important">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="{{ htmlWebpackPlugin.options.content.translations.ff_name_pl }}"
+              pattern="^[\w'&quot;а-яА-ЯёЁіІїЇєЄґҐ\-.,:]+"
+              required
+            />
+          </div>
+
+          <div class="info-input">
+            <label for="surname" class="question">
+              {{ htmlWebpackPlugin.options.content.translations.ff_surname
+              }}<span class="important">*</span>
+            </label>
+            <input
+              type="text"
+              name="surname"
+              id="surname"
+              placeholder="{{ htmlWebpackPlugin.options.content.translations.ff_surname_pl }}"
+              pattern="^[\w'&quot;а-яА-ЯёЁіІїЇєЄґҐ\-.,:]+"
+              required
+            />
+          </div>
+          <div class="info-input">
+            <label for="date" class="question"
+              >{{ htmlWebpackPlugin.options.content.translations.ff_birthday
+              }}<span class="important">*</span></label
+            >
+            <input
+              type="date"
+              id="date"
+              name="birthday"
+              min="1920-12-31"
+              value="2000-01-31"
+              required
+            />
+          </div>
+          <div class="row pa center">
+            <button class="button-primary">
+              {{ htmlWebpackPlugin.options.content.translations.ff_submit }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
     {{> ../../footer/footer}}
   </body>
 </html>
