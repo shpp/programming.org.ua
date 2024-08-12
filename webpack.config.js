@@ -398,6 +398,7 @@ module.exports = async (_, { mode = 'development' }) => ({
             translations,
             locale,
             langPrefix,
+            relativePagePath,
             canonicalUrl: `${BASE_URL}${filenamePrefix}${relativePagePath}`,
             alternativeLocales: alternativeLocales.map(({ langPrefix, lang }) => ({
               lang,

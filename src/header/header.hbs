@@ -41,38 +41,18 @@
               <i class="fa fa-angle-down" aria-hidden="true"></i
             ></a>
             <ul>
-              <li>
-                <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults">{{
-                  htmlWebpackPlugin.options.content.translations.courses.adults
-                }}</a>
-              </li>
-              <li>
-                <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens">{{
-                  htmlWebpackPlugin.options.content.translations.courses.teens
-                }}</a>
-              </li>
+              {{ headerMenuLink "courses.adults" "/courses/adults" htmlWebpackPlugin.options.content }}
+              {{ headerMenuLink "courses.teens" "/courses#teens" htmlWebpackPlugin.options.content }}
             </ul>
           </li>
-          <li>
-            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/about">{{
-              htmlWebpackPlugin.options.content.translations.about.title
-            }}</a>
-          </li>
-          <li>
-            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all">{{
-              htmlWebpackPlugin.options.content.translations.feedback_all_link
-            }}</a>
-          </li>
+          {{ headerMenuLink "about.title" "/about" htmlWebpackPlugin.options.content }}
+          {{ headerMenuLink "feedback_all_link" "/feedback-all" htmlWebpackPlugin.options.content }}
           <li>
             <a href="https://blog.programming.org.ua">{{
               htmlWebpackPlugin.options.content.translations.news
             }}</a>
           </li>
-          <li>
-            <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/contacts">{{
-              htmlWebpackPlugin.options.content.translations.contacts.default
-            }}</a>
-          </li>
+          {{ headerMenuLink "contacts.default" "/contacts" htmlWebpackPlugin.options.content }}
         </ul>
       </nav>
       <div class="authenticate">
