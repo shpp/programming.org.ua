@@ -1,7 +1,16 @@
+@import 'student-flow';
+@import 'mentors';
+@import 'feedbacks';
+@import 'diploma';
 @import 'faq';
 
 .adults {
   h2 {
     text-align: center;
+  }
+
+  section {
+    padding: 50px 0;
+    position: relative;
   }
 }
