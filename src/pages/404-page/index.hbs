@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ htmlWebpackPlugin.options.content.lang }}">
+  <head>
+    {{> ../../template-partials/meta pageTranslations=htmlWebpackPlugin.options.content.translations.about_us}}
+    {{> ../../template-partials/head}}
+  </head>
+  <body>
+    {{> ../../header/header }}
+    <main class="page-not-found">
+      <h1>
+        {{ lookup htmlWebpackPlugin.options.content.pageNotFound.title htmlWebpackPlugin.options.content.lang }}
+      </h1>
+      <h2>
+        {{ lookup htmlWebpackPlugin.options.content.pageNotFound.message htmlWebpackPlugin.options.content.lang }}
+        <i class="fa fa-face-frown"></i>
+      </h2>
+      <img src="/img/travolta.gif" alt="" />
+    </main>
+    {{> ../../footer/footer}}
+  </body>
+</html>

@@ -312,6 +312,19 @@ const mediaMentionsConfig = [
 ];
 const BASE_URL = 'https://programming.org.ua';
 
+const pageNotFound = {
+  title: {
+    en: 'Four-zero-four',
+    uk: 'Чотири-нуль-чотири',
+    ru: 'Четыре-ноль-четыре',
+  },
+  message: {
+    en: 'You were looking for something we don’t have, or something that has been removed',
+    uk: 'Ви шукали те, чого в нас немає, або те, що було видалено',
+    ru: 'Вы искали то, чего у нас нет, или то, что было удалено',
+  },
+};
+
 module.exports = async (_, { mode = 'development' }) => ({
   entry: {
     common: './src/common.js',
@@ -328,11 +341,13 @@ module.exports = async (_, { mode = 'development' }) => ({
     'anketa/last/index': './src/pages/sign-up-success-page/index.js',
     'email-confirmed/index': './src/pages/sign-up-confirmation-page/index.js',
     'supportus/index': './src/pages/support-us-page/index.js',
+    '404/index': './src/pages/404-page/index.js',
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    publicPath: '/',
   },
   plugins: [
     new SitemapPlugin({
@@ -553,6 +568,17 @@ module.exports = async (_, { mode = 'development' }) => ({
                 ),
               },
             }),
+            new HtmlWebpackPlugin({
+              template: 'src/pages/404-page/index.hbs',
+              chunks: ['common', '404/index'],
+              inject: 'body',
+              minify: mode === 'production',
+              filename: `${filenamePrefix}404.html`,
+              content: {
+                ...getCommonContent('/404/'),
+                pageNotFound,
+              },
+            }),
           ];
         },
         []
@@ -606,6 +632,22 @@ module.exports = async (_, { mode = 'development' }) => ({
     devServer: {
       static: './dist',
       hot: false,
+      historyApiFallback: {
+        rewrites: [
+          {
+            from: /^\/ru\/.*$/,
+            to: '/ru/404.html',
+          },
+          {
+            from: /^\/en\/.*$/,
+            to: '/en/404.html',
+          },
+          {
+            from: /^\/[^.]*$/,
+            to: '/404.html',
+          },
+        ],
+      },
     },
   }),
   ...(mode === 'production' && {

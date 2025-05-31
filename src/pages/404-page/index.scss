@@ -1,0 +1,27 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
+
+.page-not-found {
+  text-align: center;
+  padding: 64px 16px 0;
+
+  h1,
+  h2 {
+    margin: 15px 0;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  img {
+    vertical-align: top;
+    max-width: 360px;
+    width: 100%;
+  }
+}
