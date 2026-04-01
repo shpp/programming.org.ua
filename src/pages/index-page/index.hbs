@@ -29,7 +29,7 @@
           <div class="banner-courses">
             <a
               class="banner-course"
-              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses/adults"
+              href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}courses/adults"
             >
               <h3 class="banner-course-type">
                 {{ htmlWebpackPlugin.options.content.translations.home.intro.courses.adults.title }}
@@ -44,7 +44,7 @@
             </a>
             <a
               class="banner-course"
-              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/courses#teens"
+              href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}courses#teens"
             >
               <h3 class="banner-course-type">
                 {{ htmlWebpackPlugin.options.content.translations.home.intro.courses.teens.title }}
@@ -123,12 +123,12 @@
           <div class="swiper-pagination"></div>
           <div class="feedbacks-buttons">
             <a
-              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-form"
+              href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}feedback-form"
               class="feedbacks-buttons-leave-your-feedback button-primary"
               >{{ htmlWebpackPlugin.options.content.translations.feedback_button }}</a
             >
             <a
-              href="{{ htmlWebpackPlugin.options.content.langPrefix }}/feedback-all"
+              href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}feedback-all"
               class="feedbacks-buttons-watch-all-responses"
               >{{ htmlWebpackPlugin.options.content.translations.adults.feedbacks.see_all }}</a
             >
@@ -161,19 +161,19 @@
           <div class="partners-slider-wrapper swiper-wrapper">
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://roboclub.if.ua/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/roboclub.png" alt="roboclub" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/roboclub.png" alt="roboclub" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://probono.org.ua/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/pbc.png" alt="pbc" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/pbc.png" alt="pbc" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://200x300.com/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/200x300.png" alt="200x300" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/200x300.png" alt="200x300" />
               </a>
             </div>
 
@@ -181,7 +181,7 @@
               <a target="_blank" href="http://www.advection.net/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/advection.png"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/advection.png"
                   alt="advection"
                 />
               </a>
@@ -191,7 +191,7 @@
               <a target="_blank" href="https://bandapixels.com/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/bandapixels.svg"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/bandapixels.svg"
                   alt="bandapixels"
                 />
               </a>
@@ -199,13 +199,13 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://canva.com/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/canva.png" alt="canva" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/canva.png" alt="canva" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://codeclub.com.ua/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/codeclub.png" alt="codeclub" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/codeclub.png" alt="codeclub" />
               </a>
             </div>
 
@@ -213,7 +213,7 @@
               <a target="_blank" href="https://cyberpolice.gov.ua/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/cyberpolice.jpg"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/cyberpolice.jpg"
                   alt="cyberpolice"
                 />
               </a>
@@ -223,7 +223,7 @@
               <a target="_blank" href="http://dynamicstreaming.net/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/dynamic_streaming.png"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/dynamic_streaming.png"
                   alt="dynamic_streaming"
                 />
               </a>
@@ -233,7 +233,7 @@
               <a target="_blank" href="https://www.grammarly.com/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/grammarly.png"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/grammarly.png"
                   alt="grammarly"
                 />
               </a>
@@ -243,7 +243,7 @@
               <a target="_blank" href="https://htmlacademy.ru/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/htmlacademy.png"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/htmlacademy.png"
                   alt="htmlacademy"
                 />
               </a>
@@ -251,7 +251,7 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://italent.org.ua/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/italent.png" alt="italent" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/italent.png" alt="italent" />
               </a>
             </div>
 
@@ -259,7 +259,7 @@
               <a target="_blank" href="http://www.jetbrains.com" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/jetbrains-variant-4.svg"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/jetbrains-variant-4.svg"
                   alt="jetbrains"
                 />
               </a>
@@ -267,13 +267,13 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://notion.so/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/notion.jpg" alt="notion" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/notion.jpg" alt="notion" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://onix-systems.com/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/onix.png" alt="onix" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/onix.png" alt="onix" />
               </a>
             </div>
 
@@ -281,7 +281,7 @@
               <a target="_blank" href="https://ring-ukraine.com/" class="partners-slide-link">
                 <img
                   class="partners-slide-image"
-                  src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/ring_labs.png"
+                  src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/ring_labs.png"
                   alt="ring_labs"
                 />
               </a>
@@ -289,19 +289,19 @@
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="https://slack.com/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/slack.png" alt="slack" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/slack.png" alt="slack" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://www.techsoup.org/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/techsoup.png" alt="techsoup" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/techsoup.png" alt="techsoup" />
               </a>
             </div>
 
             <div class="partners-slide swiper-slide">
               <a target="_blank" href="http://www.wowza.com/" class="partners-slide-link">
-                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.basePath }}/img/partners/wowza.png" alt="wowza" />
+                <img class="partners-slide-image" src="{{ htmlWebpackPlugin.options.content.baseHref }}img/partners/wowza.png" alt="wowza" />
               </a>
             </div>
           </div>
