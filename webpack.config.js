@@ -311,6 +311,24 @@ const mediaMentionsConfig = [
   },
 ];
 const BASE_URL = 'https://programming.org.ua';
+const fixPaths = (obj, baseHref) => {
+  if (typeof obj === 'string') {
+    return obj
+      .replace(/href='\/([^']+)'/g, `href='${baseHref}$1'`)
+      .replace(/href="\/([^"]+)"/g, `href="${baseHref}$1"`);
+  } else if (Array.isArray(obj)) {
+    return obj.map((o) => fixPaths(o, baseHref));
+  } else if (obj && typeof obj === 'object') {
+    return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fixPaths(v, baseHref)]));
+  }
+  return obj;
+};
+
+const getBaseHref = (filenamePrefix, relativePagePath) => {
+  const fullPath = (filenamePrefix + relativePagePath).replace(/^\//, '').replace(/\/$/, '');
+  const depth = fullPath ? fullPath.split('/').length : 0;
+  return depth === 0 ? './' : '../'.repeat(depth);
+};
 
 module.exports = async (_, { mode = 'development' }) => ({
   entry: {
@@ -332,6 +350,7 @@ module.exports = async (_, { mode = 'development' }) => ({
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'auto',
     clean: true,
   },
   plugins: [
@@ -393,19 +412,24 @@ module.exports = async (_, { mode = 'development' }) => ({
             .filter((l) => l !== lang)
             .map((l) => localesConfig[l]);
 
-          const getCommonContent = (relativePagePath) => ({
-            lang,
-            translations,
-            locale,
-            langPrefix,
-            relativePagePath,
-            canonicalUrl: `${BASE_URL}${filenamePrefix}${relativePagePath}`,
-            alternativeLocales: alternativeLocales.map(({ langPrefix, lang }) => ({
+          const getCommonContent = (relativePagePath) => {
+            const baseHref = getBaseHref(filenamePrefix, relativePagePath);
+            return {
               lang,
-              url: `${BASE_URL}${langPrefix}${relativePagePath}`,
-            })),
-            currentYear: new Date().getFullYear(),
-          });
+              translations: fixPaths(translations, baseHref),
+              locale,
+              langPrefix,
+              baseHref,
+              langPrefixPath: langPrefix ? langPrefix.replace(/^\//, '') + '/' : '',
+              relativePagePath,
+              canonicalUrl: `${BASE_URL}${filenamePrefix}${relativePagePath}`,
+              alternativeLocales: alternativeLocales.map(({ langPrefix, lang }) => ({
+                lang,
+                url: `${BASE_URL}${langPrefix}${relativePagePath}`,
+              })),
+              currentYear: new Date().getFullYear(),
+            };
+          };
 
           return [
             ...htmlWebpackPlugins,

@@ -54,7 +54,7 @@
           <div class="history-slider-wrapper swiper-wrapper">
             {{#each htmlWebpackPlugin.options.content.translations.about.history.events}}
             <div class="history-event swiper-slide">
-              <img src="/img/history-slider/{{ this.image }}.jpg" alt="{{ this.description }}" />
+              <img src="{{ htmlWebpackPlugin.options.content.baseHref }}img/history-slider/{{ this.image }}.jpg" alt="{{ this.description }}" />
               <div class="history-event-text">
                 <div class="history-event-date">{{ this.date }}</div>
                 <div>{{ this.description }}</div>
@@ -101,7 +101,7 @@
           </div>
           <div class="philosophy-card-image">
             <img
-              src="/img/philosophy.jpg"
+              src="{{ htmlWebpackPlugin.options.content.baseHref }}img/philosophy.jpg"
               alt="{{ htmlWebpackPlugin.options.content.translations.philosophy }}"
             />
           </div>
