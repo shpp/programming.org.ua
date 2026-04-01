@@ -332,6 +332,7 @@ module.exports = async (_, { mode = 'development' }) => ({
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'auto',
     clean: true,
   },
   plugins: [
