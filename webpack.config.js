@@ -311,6 +311,7 @@ const mediaMentionsConfig = [
   },
 ];
 const BASE_URL = 'https://programming.org.ua';
+const BASE_PATH = process.env.BASE_PATH || '';
 
 module.exports = async (_, { mode = 'development' }) => ({
   entry: {
@@ -399,6 +400,7 @@ module.exports = async (_, { mode = 'development' }) => ({
             translations,
             locale,
             langPrefix,
+            basePath: BASE_PATH,
             relativePagePath,
             canonicalUrl: `${BASE_URL}${filenamePrefix}${relativePagePath}`,
             alternativeLocales: alternativeLocales.map(({ langPrefix, lang }) => ({
