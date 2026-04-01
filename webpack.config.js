@@ -477,6 +477,7 @@ module.exports = async (_, { mode = 'development' }) => ({
               filename: `${filenamePrefix}courses/adults/index.html`,
               content: {
                 ...getCommonContent('/courses/adults/'),
+                team: teamMembersConfig.filter((m) => m.roles.includes('adults-mentor')),
               },
             }),
             new HtmlWebpackPlugin({

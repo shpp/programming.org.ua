@@ -1,7 +1,196 @@
+@import '../../styles/constants';
+@import '../../styles/mixins';
 @import 'faq';
 
 .adults {
-  h2 {
-    text-align: center;
+  h2 { text-align: center; margin-bottom: 32px; }
+  h3 { color: $color-dark-green; margin-bottom: 8px; }
+  h4 { font-weight: 600; margin: 16px 0 8px; }
+}
+
+.adults-intro {
+  background: linear-gradient(135deg, $color-dark-green, $color-main-green);
+  color: white;
+  padding: 80px 0 64px;
+  text-align: center;
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: pre-line;
+    margin-bottom: 16px;
+    @media (max-width: 600px) { font-size: 1.8rem; }
   }
+
+  &__subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 32px; }
+
+  &__cta {
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    background: white;
+    color: $color-dark-green !important;
+    &:hover { background: $color-light-green; }
+  }
+}
+
+.adults-advantages {
+  padding: 64px 0;
+  background: $color-light-green;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: $box-shadow;
+  }
+
+  &__action { display: block; color: $color-gray-2; font-size: 0.9rem; margin-bottom: 4px; }
+  &__fact { display: block; font-size: 1.5rem; color: $color-dark-green; margin-bottom: 6px; }
+  &__note { display: block; font-size: 0.8rem; color: $color-gray; }
+
+  &__text {
+    max-width: 700px;
+    margin: 0 auto;
+    p { margin-bottom: 16px; }
+    .warning {
+      background: $color-light-yellow;
+      border-left: 4px solid $color-dark-yellow;
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.adults-flow {
+  padding: 64px 0;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+    @media (max-width: 600px) { flex-direction: column; align-items: center; }
+  }
+
+  &__item {
+    text-align: center;
+    padding: 24px 32px;
+    position: relative;
+    &:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: $color-main-green;
+      @media (max-width: 600px) { display: none; }
+    }
+  }
+
+  &__step { display: block; font-size: 1.1rem; color: $color-dark-green; margin-bottom: 8px; }
+  &__desc { white-space: pre-line; color: $color-gray-2; font-size: 0.9rem; }
+}
+
+.adults-curriculum {
+  padding: 64px 0;
+  background: $color-light-gray-3;
+  &__subtitle { text-align: center; color: $color-gray-2; margin-top: -24px; margin-bottom: 48px; }
+}
+
+.adults-course {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: $box-shadow;
+
+  &__note { font-size: 0.85rem; color: $color-gray-2; font-weight: 400; margin-left: 8px; }
+  &__duration {
+    display: inline-block;
+    background: $color-light-green;
+    color: $color-dark-green;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  &__warning {
+    background: $color-light-yellow;
+    border-left: 4px solid $color-dark-yellow;
+    padding: 10px 14px;
+    margin-top: 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  ul { padding-left: 20px; margin-bottom: 12px; li { margin-bottom: 4px; } }
+}
+
+.adults-p2p {
+  padding: 64px 0;
+  background: $color-menu;
+  color: white;
+  text-align: center;
+  h2 { color: white; }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 32px;
+    max-width: 500px;
+    text-align: left;
+    li { padding: 8px 0; font-size: 1rem; i { color: $color-main-green; margin-right: 8px; } }
+  }
+
+  p { max-width: 600px; margin: 0 auto; opacity: 0.85; }
+}
+
+.adults-mentors {
+  padding: 64px 0;
+  p {
+    text-align: center;
+    white-space: pre-line;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: $color-gray-2;
+  }
+  &__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+}
+
+.adults-mentor-card {
+  text-align: center;
+  width: 140px;
+  &__img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 3px solid $color-light-green;
+  }
+  &__name { display: block; font-size: 0.85rem; margin-bottom: 4px; }
+  &__role { display: block; font-size: 0.75rem; color: $color-gray; }
+}
+
+.adults-cta {
+  padding: 64px 0;
+  background: $color-light-green;
+  text-align: center;
+  .button-primary { margin-top: 24px; padding: 14px 40px; font-size: 1.1rem; }
 }

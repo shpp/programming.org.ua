@@ -7,7 +7,158 @@
   <body>
     {{> ../../header/header pageRoute='courses/adults'}}
     <main class="adults">
-      <section class="faq">
+
+      {{! INTRO }}
+      <section class="adults-intro">
+        <div class="container">
+          <h1 class="adults-intro__title">{{ htmlWebpackPlugin.options.content.translations.adults.intro.title }}</h1>
+          <p class="adults-intro__subtitle">{{ htmlWebpackPlugin.options.content.translations.adults.intro.subtitle }}</p>
+          <a
+            class="button-primary adults-intro__cta"
+            href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}anketa"
+          >{{ htmlWebpackPlugin.options.content.translations.anketa }}</a>
+        </div>
+      </section>
+
+      {{! IT ADVANTAGES }}
+      <section class="adults-advantages">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.it_advantages.title }}</h2>
+          <ul class="adults-advantages__list">
+            {{#each htmlWebpackPlugin.options.content.translations.adults.it_advantages.items}}
+            <li class="adults-advantages__item">
+              <span class="adults-advantages__action">{{ this.action }}</span>
+              <strong class="adults-advantages__fact">{{ this.fact }}</strong>
+              {{#if this.note}}<span class="adults-advantages__note">{{ this.note }}</span>{{/if}}
+            </li>
+            {{/each}}
+          </ul>
+          <div class="adults-advantages__text">
+            {{#each htmlWebpackPlugin.options.content.translations.adults.it_advantages.p}}
+            <p>{{{ this }}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+
+      {{! STUDENT FLOW }}
+      <section class="adults-flow">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.student_flow.title }}</h2>
+          <ul class="adults-flow__list">
+            {{#each htmlWebpackPlugin.options.content.translations.adults.student_flow.items}}
+            <li class="adults-flow__item">
+              <strong class="adults-flow__step">{{ this.title }}</strong>
+              <p class="adults-flow__desc">{{ this.description }}</p>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </section>
+
+      {{! CURRICULUM }}
+      <section class="adults-curriculum">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.title }}</h2>
+          <p class="adults-curriculum__subtitle">{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.subtitle }}</p>
+
+          {{! Zero }}
+          <div class="adults-course" id="zero">
+            <h3>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.title }}
+              <span class="adults-course__note">{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.note }}</span>
+            </h3>
+            <span class="adults-course__duration"><i class="fa fa-clock"></i> {{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.duration }}</span>
+            <p>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.p1 }}</p>
+            <p>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.p2 }}</p>
+            <h4>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.format.title }}</h4>
+            <ul>
+              {{#each htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.format.items}}
+              <li>{{ this }}</li>
+              {{/each}}
+            </ul>
+            <h4>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.curriculum.title }}</h4>
+            <ul>
+              {{#each htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.zero.curriculum.items}}
+              <li>{{ this }}</li>
+              {{/each}}
+            </ul>
+          </div>
+
+          {{! CS }}
+          <div class="adults-course" id="cs">
+            <h3>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.title }}
+              <span class="adults-course__note">{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.note }}</span>
+            </h3>
+            <span class="adults-course__duration"><i class="fa fa-clock"></i> {{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.duration }}</span>
+            <p>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.p1 }}</p>
+            <h4>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.format.title }}</h4>
+            <ul>
+              {{#each htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.format.items}}
+              <li>{{ this }}</li>
+              {{/each}}
+            </ul>
+            <h4>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.curriculum.title }}</h4>
+            <ul>
+              {{#each htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.curriculum.items}}
+              <li>{{ this }}</li>
+              {{/each}}
+            </ul>
+            <p>{{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.cs.p3 }}}</p>
+          </div>
+
+          {{! Mentor }}
+          <div class="adults-course" id="mentors">
+            <h3>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.title }}</h3>
+            <span class="adults-course__duration"><i class="fa fa-clock"></i> {{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.duration }}</span>
+            <p>{{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.p1 }}}</p>
+            <p>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.p2 }}</p>
+            <h4>{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.courses.title }}</h4>
+            <ul>
+              {{#each htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.courses.items}}
+              <li>{{ this }}</li>
+              {{/each}}
+            </ul>
+            <p class="adults-course__warning">{{ htmlWebpackPlugin.options.content.translations.adults.curriculum.courses.mentor.p5 }}</p>
+          </div>
+        </div>
+      </section>
+
+      {{! P2P FORMAT }}
+      <section class="adults-p2p">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.p2p_format.title }}</h2>
+          <ul class="adults-p2p__list">
+            {{#each htmlWebpackPlugin.options.content.translations.adults.p2p_format.items}}
+            <li><i class="fa fa-check"></i> {{ this }}</li>
+            {{/each}}
+          </ul>
+          <p>{{ htmlWebpackPlugin.options.content.translations.adults.p2p_format.p }}</p>
+        </div>
+      </section>
+
+      {{! MENTORS }}
+      <section class="adults-mentors">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.mentors.title }}</h2>
+          <p>{{ htmlWebpackPlugin.options.content.translations.adults.mentors.text }}</p>
+          <div class="adults-mentors__grid">
+            {{#each htmlWebpackPlugin.options.content.team}}
+            <div class="adults-mentor-card">
+              <img
+                class="adults-mentor-card__img"
+                src="{{ htmlWebpackPlugin.options.content.baseHref }}img/team-members/{{ this.image }}.jpg"
+                alt="{{ this.name.uk }} {{ this.surname.uk }}"
+              />
+              <strong class="adults-mentor-card__name">{{ getProperty this.name ../lang }} {{ getProperty this.surname ../lang }}</strong>
+              <span class="adults-mentor-card__role">{{ this.occupation }}</span>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+
+      {{! FAQ }}
+      <section class="faq" id="faq">
         <div class="container">
           <h2>{{ htmlWebpackPlugin.options.content.translations.adults.faq.title }}</h2>
           <ul class="accordion">
@@ -25,10 +176,21 @@
             </li>
             {{/each}}
           </ul>
-          <br />
           <p>{{{htmlWebpackPlugin.options.content.translations.adults.faq.contact_us}}}</p>
         </div>
       </section>
+
+      {{! CTA }}
+      <section class="adults-cta">
+        <div class="container">
+          <h2>{{ htmlWebpackPlugin.options.content.translations.adults.quick_anketa.title2 }}</h2>
+          <a
+            class="button-primary"
+            href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}anketa"
+          >{{ htmlWebpackPlugin.options.content.translations.anketa }}</a>
+        </div>
+      </section>
+
     </main>
     {{> ../../footer/footer}}
   </body>
