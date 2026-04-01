@@ -67,13 +67,13 @@
       </div>
       <ul class="languages">
         <li class="language ru">
-          <a href="/ru/{{ pageRoute }}">RU</a>
+          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/ru/{{ pageRoute }}">RU</a>
         </li>
         <li class="language uk">
-          <a href="/{{ pageRoute }}">UA</a>
+          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/{{ pageRoute }}">UA</a>
         </li>
         <li class="language en">
-          <a href="/en/{{ pageRoute }}">EN</a>
+          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/en/{{ pageRoute }}">EN</a>
         </li>
       </ul>
     </div>
