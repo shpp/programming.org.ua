@@ -18,7 +18,7 @@
   {{/isEqual}}
   <div class="header-container">
     <div class="header-title">
-      <a href="{{ htmlWebpackPlugin.options.content.langPrefix }}/" class="logo">Ш++</a>
+      <a href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}" class="logo">Ш++</a>
       <div class="mobile-menu">
         <button class="mobile-menu-open" type="button" onclick="programmingOrgUa.openMobileMenu()">
           <i class="fa fa-bars"></i>
@@ -57,7 +57,7 @@
       </nav>
       <div class="authenticate">
         <a
-          href="{{ htmlWebpackPlugin.options.content.langPrefix }}/anketa"
+          href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ htmlWebpackPlugin.options.content.langPrefixPath }}anketa"
           class="button-primary sign-up"
           >{{ htmlWebpackPlugin.options.content.translations.anketa }}</a
         >
@@ -67,13 +67,13 @@
       </div>
       <ul class="languages">
         <li class="language ru">
-          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/ru/{{ pageRoute }}">RU</a>
+          <a href="{{ htmlWebpackPlugin.options.content.baseHref }}ru/{{ pageRoute }}">RU</a>
         </li>
         <li class="language uk">
-          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/{{ pageRoute }}">UA</a>
+          <a href="{{ htmlWebpackPlugin.options.content.baseHref }}{{ pageRoute }}">UA</a>
         </li>
         <li class="language en">
-          <a href="{{ htmlWebpackPlugin.options.content.basePath }}/en/{{ pageRoute }}">EN</a>
+          <a href="{{ htmlWebpackPlugin.options.content.baseHref }}en/{{ pageRoute }}">EN</a>
         </li>
       </ul>
     </div>
